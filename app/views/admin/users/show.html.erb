@@ -1,0 +1,59 @@
+<h1>Viewing <%= resource.username %></h1>
+
+<p>
+  <b>Username:</b>
+  <%=h resource.username %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h resource.email %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%=h resource.admin? %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h resource.active? %>
+</p>
+
+<p>
+  <b>Login Count:</b>
+  <%=h resource.login_count %>
+</p>
+
+<p>
+  <b>Failed Login Count:</b>
+  <%=h resource.failed_login_count %>
+</p>
+
+<p>
+  <b>Last Request At:</b>
+  <%=h resource.last_request_at %>
+</p>
+
+<p>
+  <b>Current Login At:</b>
+  <%=h resource.current_login_at %>
+</p>
+
+<p>
+  <b>Last Login At:</b>
+  <%=h resource.last_login_at %>
+</p>
+
+<p>
+  <b>Current Login IP:</b>
+  <%=h resource.current_login_ip %>
+</p>
+
+<p>
+  <b>Last Login IP:</b>
+  <%=h resource.last_login_ip %>
+</p>
+
+<%= link_to 'Edit', edit_admin_restaurant_user_path(resource) %> |
+<%= link_to 'Back', admin_restaurant_users_path %>

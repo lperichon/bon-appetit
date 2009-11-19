@@ -1,0 +1,9 @@
+<% semantic_form_for([:admin, parent, resource]) do |f| %>
+  <% f.inputs do %>
+    <%= f.input :restaurant %>
+    <%= f.input :generated_at %>
+    <%= f.input :discount, :as => :select, :collection => discounts, :prompt => false %>
+    <%= f.input :closed %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

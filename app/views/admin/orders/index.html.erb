@@ -1,0 +1,25 @@
+<h1>Listing orders for <%= link_to parent.name, admin_restaurant_path(parent) %></h1>
+
+<table class='table'>
+  <tr>
+    <th>Generated At</th>
+    <th>Discount</th>
+    <th>Total</th>
+    <th>Closed</th>
+    <th class='last'>Actions</th>
+  </tr>
+
+<% collection.each_with_index do |resource, index| %>
+  <% parent = resource.restaurant %>
+  <tr class='<%= odd_or_even(index) %>'>
+    <td><%=h resource.generated_at %></td>
+    <td><%=h number_to_percentage(resource.discount*100, :precision => 0)%></td>
+    <td><%=h number_to_currency(resource.total, :unit => "$") %></td>
+    <td><%=h resource.closed? %></td>
+    <td class='last'><%= link_to 'Show', admin_restaurant_order_path(parent, resource) %> | <%= link_to 'Edit', edit_admin_restaurant_order_path(parent, resource) %> | <%= link_to 'Destroy', admin_restaurant_order_path(parent, resource), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class='actions-bar'>
+  <%= link_to 'New order', new_admin_restaurant_order_path(parent) %>
+</div>

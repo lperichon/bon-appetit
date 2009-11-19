@@ -1,0 +1,10 @@
+<h1>Activate your account</h1>
+
+<% semantic_form_for @user, :url => activate_path(@user.id) do |f| %>
+    <% f.inputs do %>
+      <%= f.input :username if @user.username.blank? %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+    <% end %>
+    <%= f.buttons %>
+<% end %>

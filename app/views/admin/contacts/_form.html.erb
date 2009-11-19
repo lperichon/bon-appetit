@@ -1,0 +1,34 @@
+<% semantic_form_for([:admin, parent, resource]) do |f| %>
+  <% f.inputs do %>
+    <%= f.input :first_name %>
+    <%= f.input :middle_name %>
+    <%= f.input :last_name %>
+    <%= f.input :birthday %>
+    <% f.inputs :name => 'Phone #%i', :for => :phones do |pf|%>
+       <%= pf.input :number %>
+       <%= pf.input :type %>
+    <% end %>
+    <% f.inputs :name => 'Address #%i', :for => :addresses do |af|%>
+       <%= af.input :address %>
+       <%= af.input :city %>
+       <%= af.input :zip %>
+       <%= af.input :province %>
+       <%= af.input :country %>
+       <%= af.input :type %>
+    <% end %>
+    <% f.inputs :name => 'Email #%i', :for => :emails do |ef|%>
+       <%= ef.input :address %>
+       <%= ef.input :type %>
+    <% end %>
+    <% f.inputs :name => 'Instant Messenger #%i', :for => :instant_messengers do |imf|%>
+       <%= imf.input :nick %>
+       <%= imf.input :protocol %>
+       <%= imf.input :type %>
+    <% end %>
+    <% f.inputs :name => 'Website #%i', :for => :websites do |imf|%>
+       <%= imf.input :address %>
+       <%= imf.input :type %>
+    <% end %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Listing provinces for <%= link_to parent.name, admin_country_path(parent) %></h1>
+
+<table class='table'>
+  <tr>
+    <th>Name</th>
+    <th class='last'>Actions</th>
+  </tr>
+
+<% collection.each_with_index do |resource, index| %>
+  <% parent = resource.country %>
+  <tr class='<%= odd_or_even(index) %>'>
+    <td><%=h resource.name %></td>
+    <td class='last'><%= link_to 'Show', admin_country_province_path(parent, resource) %> | <%= link_to 'Edit', edit_admin_country_province_path(parent, resource) %> | <%= link_to 'Destroy', admin_country_province_path(parent, resource), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class='actions-bar'>
+  <%= link_to 'New province', new_admin_country_province_path %>
+</div>

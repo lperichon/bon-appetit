@@ -1,0 +1,20 @@
+<h1>Listing contacts</h1>
+
+<table class='table'>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th class='last'>Actions</th>
+  </tr>
+
+<% @contacts.each_with_index do |contact, index| %>
+  <tr class='<%= odd_or_even(index) %>'>
+    <td><%=h contact.name %></td>
+    <td><%=h contact.age %> Years old</td>
+    <td class='last'><%= link_to 'Show', contact_path(contact) %> | <%= link_to 'Edit', edit_contact_path(contact) %> | <%= link_to 'Destroy', contact_path(contact), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class='actions-bar'>
+  <%= link_to 'New contact', new_contact_path %>
+</div>

@@ -1,0 +1,18 @@
+<h1>Listing product types</h1>
+
+<table class='table'>
+  <tr>
+    <th>Name</th>
+    <th class='last'>Actions</th>
+  </tr>
+
+<% @product_types.each_with_index do |product_type, index| %>
+  <tr class='<%= odd_or_even(index) %>'>
+    <td><%=h product_type.name %></td>
+    <td class='last'><%= link_to 'Show', product_type_path(product_type) %> | <%= link_to 'Edit', edit_product_type_path(product_type) %> | <%= link_to 'Destroy', product_type_path(product_type), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class='actions-bar'>
+  <%= link_to 'New product type', new_product_type_path %>
+</div>

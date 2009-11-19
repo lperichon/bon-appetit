@@ -1,0 +1,7 @@
+<% semantic_form_for(@user) do |f| %>
+  <% f.inputs do %>
+    <%= render :partial => 'signup_fields', :locals => {:f => f} %>
+    <%= render :partial => 'contacts/fields', :locals => {:f => f} unless @user.new_record? %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>

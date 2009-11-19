@@ -1,0 +1,28 @@
+<h1>Listing users for <%= link_to parent.name, admin_restaurant_path(parent)%></h1>
+
+<table class='table'>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Admin</th>
+    <th>Active</th>
+    <th>Last Login At</th>
+    <th>Current Login At</th>
+    <th class='last'>Actions</th>
+  </tr>
+
+<% collection.each_with_index do |resource, index| %>
+  <tr class='<%= odd_or_even(index) %>'>
+    <td><%=h resource.username %></td>
+    <td><%=h resource.email %></td>
+    <td><%=h resource.admin? %></td>
+    <td><%=h resource.active? %></td>
+    <td><%=h resource.last_login_at %></td>
+    <td><%=h resource.current_login_at %></td>
+    <td class='last'><%= link_to 'Show', admin_restaurant_user_path(parent, resource) %> | <%= link_to 'Edit', edit_admin_restaurant_user_path(parent, resource) %> | <%= link_to 'Destroy', admin_restaurant_user_path(parent, resource), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<div class='actions-bar'>
+  <%= link_to 'New user', new_admin_restaurant_user_path %>
+</div>

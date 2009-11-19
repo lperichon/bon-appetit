@@ -1,0 +1,33 @@
+<h1>Viewing <%= resource.to_s %></h1>
+
+<p>
+  <b>Generated At:</b>
+  <%=h resource.generated_at %>
+</p>
+
+<p>
+  <b>Discount:</b>
+  <%=h number_to_percentage(resource.discount*100, :precision => 0) %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%=h number_to_currency(resource.total, :unit => "$") %>
+</p>
+
+<p>
+  <b>Closed:</b>
+  <%=h resource.closed? %>
+</p>
+
+<%= link_to 'Edit', edit_admin_restaurant_order_path(parent, resource) %> |
+<%= link_to 'Back', admin_restaurant_orders_path(parent) %>
+
+<% content_for :sidebar do %>
+  <% content_tag :div, :class => 'block' do %>
+    <h3>List</h3>
+    <ul class='navigation'>
+      <li><%= link_to 'Order Items', admin_restaurant_order_order_items_path(parent, resource)%></li>
+    </ul>
+  <% end %>
+<% end %>

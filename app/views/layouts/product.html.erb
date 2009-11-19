@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Bon Appetit</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "scaffold" %>
+  <%= stylesheet_link_tag "formtastic" %>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h1><a href="/">Bon Appetit</a></h1>
+      <div id="user_menu">
+        <ul>
+          <li><%= link_to 'Login', login_path %></li>
+          <li><%= link_to 'Signup', signup_path %></li>
+        </ul>
+      </div>
+    </div>
+    <div id="main">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="footer">
+      <p>Copyright &copy; 2009 Bon Appetit.</p>
+    </div>
+  </div>
+</body>
+</html>

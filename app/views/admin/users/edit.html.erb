@@ -1,0 +1,6 @@
+<h1>Editing <%= resource.username %></h1>
+
+<%=render :partial => 'form' %>
+
+<%= link_to 'Show', admin_restaurant_user_path(parent, resource) %> |
+<%= link_to 'Back', admin_restaurant_users_path(parent) %>

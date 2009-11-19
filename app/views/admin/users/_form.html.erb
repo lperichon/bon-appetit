@@ -1,0 +1,8 @@
+<% semantic_form_for([:admin, parent, resource]) do |f| %>
+  <% f.inputs do %>
+    <%= f.input :username %>
+    <%= f.input :email %>
+    <%= f.input :admin %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>
