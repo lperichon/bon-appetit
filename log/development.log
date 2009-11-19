@@ -1,7 +1,0 @@
-# Logfile created on Thu Nov 19 15:41:27 -0300 2009
-
-Processing HighVoltage::PagesController#show (for 127.0.0.1 at 2009-11-19 15:41:47) [GET]
-  Parameters: {"action"=>"show", "id"=>"index", "controller"=>"high_voltage/pages"}
-Rendering template within layouts/product
-Rendering pages/index
-Completed in 134ms (View: 44, DB: 0) | 200 OK [http://localhost/]
