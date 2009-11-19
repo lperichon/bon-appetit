@@ -1,0 +1,7 @@
+config/database.yml
+db/schema.rb
+db/*.sql*
+log/*.log
+tmp/**/*
+.idea
+*~
