@@ -3,6 +3,7 @@
 <table class='table'>
   <tr>
     <th class='first'>Product type</th>
+    <th>Code</th>
     <th>Name</th>
     <th>Description</th>
     <th>Price</th>
@@ -12,6 +13,7 @@
 <% @products.each_with_index do |product, index| %>
   <tr class='<%= odd_or_even(index) %>'>
     <td><%=h product.product_type.name %></td>
+    <td><%=h product.code %></td>
     <td><%=h product.name %></td>
     <td><%=h product.description %></td>
     <td><%=h number_to_currency(product.price, :unit => "$") %></td>
