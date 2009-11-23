@@ -13,5 +13,13 @@ class SignupsControllerTest < ActionController::TestCase
     end
 
     should_redirect_to("the login page") { login_path }
+
+    should('send an activation email') do
+      assert_sent_email do |email|
+        email.subject =~ /Activation Instructions/ &&
+        email.to.include?('test@test.com') &&
+        email.body.include?('Thank you for creating an account!')
+      end
+    end
   end
 end

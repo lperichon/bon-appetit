@@ -26,7 +26,16 @@ class UsersControllerTest < ActionController::TestCase
       setup { post :create, :user => User.plan }
 
       should_assign_to :user
+
       should_redirect_to("user's show page") { user_path(assigns(:user)) }
+
+      should('send an activation email') do
+        assert_sent_email do |email|
+          email.subject =~ /Activation Instructions/ &&
+          email.to.include?(assigns(:user).email) &&
+          email.body.include?("An account on #{@current_restaurant.name} has been created for you!")
+        end
+      end
     end
 
     context "show user" do

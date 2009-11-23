@@ -44,7 +44,7 @@ class UsersController < UserApplicationController
 
     respond_to do |format|
       if @user.signup!(params)
-        @user.deliver_activation_instructions!
+        @user.deliver_invited_activation_instructions!(current_restaurant)
         current_restaurant.users << @user
         current_restaurant.save
         flash[:notice] = 'User was successfully created.'

@@ -48,6 +48,11 @@ class User < ActiveRecord::Base
     UserNotifier.deliver_activation_instructions(self)
   end
 
+  def deliver_invited_activation_instructions!(restaurant)
+    reset_perishable_token!
+    UserNotifier.deliver_invited_activation_instructions(restaurant, self)
+  end
+
   def deliver_activation_confirmation!
     reset_perishable_token!
     UserNotifier.deliver_activation_confirmation(self)

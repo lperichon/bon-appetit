@@ -11,7 +11,7 @@ class Admin::UsersController < InheritedResources::Base
     @restaurant = Restaurant.find(params[:restaurant_id]) if params[:restaurant_id]
 
     if @user.signup!(params)
-      @user.deliver_activation_instructions!
+      @user.deliver_invited_activation_instructions!
       if @restaurant
         @restaurant.users << @user
         @restaurant.save
