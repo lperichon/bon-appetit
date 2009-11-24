@@ -9,6 +9,10 @@
   <%=h resource.quantity %>
 </p>
 <p>
+  <b>Unit Price:</b>
+  <%=h resource.unit_price %>
+</p>
+<p>
   <b>Discount:</b>
   <%=h number_to_percentage(resource.discount*100, :precision => 0) %>
 </p>

@@ -13,10 +13,31 @@ class OrderItem < ActiveRecord::Base
   end
 
   def subtotal
-    unless self.order.closed? || !self[:subtotal].nil?
-      calculated = self.quantity*self.product.price
-      self.update_attribute(:subtotal, calculated - self.discount*calculated)
+    if self.order.closed?
+      self[:subtotal]
+    else
+      calculate_subtotal
     end
-    return self[:subtotal]
+  end
+
+  def unit_price
+    if self.order.closed?
+      self[:unit_price]
+    else
+      self.product.price
+    end
+  end
+
+  def freeze_values
+    self.unit_price = self.product.price
+    self.subtotal =  calculate_subtotal
+  end
+
+  private
+
+  def calculate_subtotal
+    calculated = self.quantity*self.unit_price
+    subtotal = calculated - self.discount*calculated
+    subtotal
   end
 end

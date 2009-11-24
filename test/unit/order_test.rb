@@ -38,5 +38,13 @@ class OrderTest < ActiveSupport::TestCase
     should("calculate a total") do
       assert @order.total >= 0
     end
+
+    context("after being closed") do
+      setup { @order.closed = true; @order.save! }
+
+      should("freeze the total") do
+        assert_no_difference("@order.total") { @order.discount = 1 }
+      end
+    end
   end
 end

@@ -9,15 +9,34 @@ class Order < ActiveRecord::Base
     self.discount ||= 0 
   end
 
-  def total
-    unless self.closed? || !self[:total].nil?
-      subtotal = order_items.collect {|oi| oi.subtotal}.sum
-      self.update_attribute(:total, subtotal - self.discount*subtotal)
+  def before_save
+    if self.closed_changed? && closed?
+      freeze_values
     end
-    return self[:total]
+  end
+
+  def total
+    if self.closed?
+      self[:total]
+    else
+      calculate_total
+    end
   end
 
   def to_s
     "Order ##{id.to_s}"
+  end
+
+  protected
+
+  def calculate_total
+    subtotal = self.order_items.collect {|oi| oi.subtotal}.sum
+    total =  subtotal - self.discount*subtotal
+    total
+  end
+
+  def freeze_values
+    self.order_items.each { |oi| oi.freeze_values; oi.save }
+    self.total = calculate_total
   end
 end

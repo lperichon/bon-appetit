@@ -8,21 +8,16 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def make_order_with_items(restaurant = make_restaurant)
-    order = Order.make
+    order = Order.make(:restaurant => restaurant)
     (rand(10) + 1).times { make_order_item(order, restaurant) }
     order
   end
 
   def make_order_item(order = nil, restaurant = make_restaurant)
-    product = Product.make do |product|
-      product.restaurant = restaurant
-      product.product_type = ProductType.make(:restaurant => restaurant)
-    end
+    product = Product.make(:restaurant => restaurant, :product_type => ProductType.make(:restaurant => restaurant)) 
     order ||= Order.make(:restaurant => restaurant)
-    OrderItem.make do |order_item|
-      order_item.product = product
-      order_item.order = order
-    end
+    order_item = order.order_items.make(:product => product)
+    order_item
   end
 
   def make_contact(restaurant = make_restaurant)

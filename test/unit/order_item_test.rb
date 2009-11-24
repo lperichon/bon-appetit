@@ -38,4 +38,16 @@ class OrderItemTest < ActiveSupport::TestCase
       assert_equal 1, @order_item.quantity
     end
   end
+
+  context "an order item" do
+    setup {@order_item = make_order_item}
+
+    context "after the order is closed" do
+      setup { @order_item.order.closed = true; @order_item.order.save; }
+
+      should "freeze the unit price" do
+        #assert_no_difference("@order_item.unit_price") { @order_item.product.price = 10 }
+      end
+    end
+  end
 end
