@@ -1,24 +1,18 @@
-<h1>Listing orders</h1>
-
-<table class='table'>
-  <tr>
-    <th>Generated At</th>
-    <th>Discount</th>
-    <th>Total</th>
-    <th>Closed</th>
-    <th class='last'>Actions</th>
-  </tr>
-
+<h2>Listing orders</h2>
+<div class="orders">
 <% @orders.each_with_index do |order, index| %>
-  <tr class='<%= odd_or_even(index) %>'>
-    <td><%=h order.generated_at %></td>
-    <td><%=h number_to_percentage(order.discount*100, :precision => 0)%></td>
-    <td><%=h number_to_currency(order.total, :unit => "$") %></td>
-    <td><%=h order.closed? %></td>
-    <td class='last'><%= link_to 'Show', order_path(order) %> | <%= link_to 'Edit', edit_order_path(order) %> | <%= link_to 'Destroy', order_path(order), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class='<%= odd_or_even(index) %> order'>
+    <ul>
+        <li><%=h order.to_s %></li>
+        <li><%=h order.generated_at %></li>
+        <li><%=h discount_label(order.discount) %></li>
+        <li><%=h number_to_currency(order.total, :unit => "$") %></li>
+        <li><%=h order_status_label(order) %></li>
+    </ul>
+    <div class='order-actions'><%= link_to 'Show', order_path(order) %> | <%= link_to_unless order.closed?, 'Edit', edit_order_path(order) %></div>
+  </div>
 <% end %>
-</table>
+</div>
 <div class='actions-bar'>
   <%= link_to 'New order', new_order_path %>
 </div>

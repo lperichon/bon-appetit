@@ -5,9 +5,15 @@ module ApplicationHelper
     (number % 2)==1 ? :odd : :even
   end
 
+  DISCOUNTS = {0.0 => 'No Discount', 0.5 => '50%', 1.0 => 'Free'}
+
+  def discount_label(discount)
+    DISCOUNTS[discount.to_f]
+  end
+
   # Array of discount options for selects
   def discounts()
-    [["No Discount", 0],["50%",0.5],["Free", 1]]
+    DISCOUNTS.collect {|key, value| [value, key]}
   end
 
   # Helpers for contact nested forms
@@ -22,10 +28,28 @@ module ApplicationHelper
     end
   end
 
+  # remove link
   def remove_link_unless_new_record(fields)
     out = ''
     out << fields.hidden_field(:_delete) unless fields.object.new_record?
     out << link_to_function("remove", "$(this).parent().parent().hide(); $(this).siblings('input[type=hidden]')[0].value = 1;", :class => 'remove')
     out
+  end
+
+  # RJS conditional helpers
+  def rjs_if_element_exists(e)
+    page << "if($('#{e}')){"
+  end
+
+  def rjs_elsif(e)
+    page << "}else if($('#{e}')){"
+  end
+
+  def rjs_else
+    page << "}else{"
+  end
+
+  def rjs_end
+    page << "}"
   end
 end

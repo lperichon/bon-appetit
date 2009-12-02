@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :product_types
   map.resources :products
   map.resources :contacts
-  map.resources :orders
+  map.resources :orders, :has_many => :order_items
   map.resource :dashboard
   map.resource :profile
   map.resource :restaurant

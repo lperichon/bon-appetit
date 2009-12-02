@@ -1,2 +1,2 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+// This sets up the proper header for rails to understand the request type,
+// and therefore properly respond to js requests (via respond_to block, for example)

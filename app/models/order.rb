@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   belongs_to :restaurant
   has_many :order_items
 
+  accepts_nested_attributes_for :order_items
+
   validates_presence_of :restaurant
   validates_numericality_of :discount, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1
 
@@ -25,6 +27,10 @@ class Order < ActiveRecord::Base
 
   def to_s
     "Order ##{id.to_s}"
+  end
+
+  def open?
+    !self.closed?
   end
 
   protected

@@ -1,0 +1,16 @@
+<h2>Editing <%= @order.to_s %></h2>
+<%= render :partial => 'form' %>
+<div id='add_order_item'>
+  <h2>Add a new order item</h2>
+  <%= render :partial => 'order_items/form' %>
+</div>
+<div id='order_items'>
+  <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
+    <h3><%= product_type.name %></h3>
+    <div id='<%= product_type.name.dasherize %>'>
+      <% order_items.each do |order_item| %>
+        <%= render :partial => 'order_item', :locals => {:order_item => order_item} %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<% semantic_form_remote_for([@order, @order.order_items.new]) do |oi_f| %>
+  <% oi_f.inputs do %>
+    <%= oi_f.input :product %>
+    <%= oi_f.input :quantity %>
+    <%= oi_f.input :discount, :as => :select, :collection => discounts, :prompt => false %>
+  <% end %>
+  <%= oi_f.buttons %>
+<% end %>
