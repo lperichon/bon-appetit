@@ -1,38 +1,10 @@
 <h2>Viewing <%= @order.to_s %></h2>
-
-<p>
-  <b>Generated At:</b>
-  <%=h @order.generated_at %>
-</p>
-
-<p>
-  <b>Discount:</b>
-  <%=h discount_label(@order.discount) %>
-</p>
-
-<p>
-  <b>Total:</b>
-  <%=h number_to_currency(@order.total, :unit => "$") %>
-</p>
-
-<p>
-  <b>Closed:</b>
-  <%=h @order.closed? %>
-</p>
-
-<div id='order_items'>
-  <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
-    <h3><%= product_type.name %></h3>
-    <div id='<%= product_type.name.dasherize %>'>
-      <% order_items.each do |order_item| %>
-         <div class='order-item'>
-           <h4><%= order_item.product.name %></h4>
-           <ul>
-             <li>Quantity: <%= order_item.quantity %></li>
-             <li>Discount: <%= discount_label(order_item.discount) %></li>
-           </ul>
-         </div>
-      <% end %>
-    </div>
-  <% end %>
+<% unless @order.closed? %>
+<div id='add_order_item'>
+  <h2>Add a new order item</h2>
+  <%= render :partial => 'order_items/form' %>
+</div>
+<% end %>
+<div id='<%= dom_id @order %>'>
+    <%= render @order %>
 </div>

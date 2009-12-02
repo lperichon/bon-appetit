@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :order_items
 
-  validates_presence_of :restaurant
+  validates_presence_of :restaurant, :generated_at
   validates_numericality_of :discount, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1
 
   def before_validation

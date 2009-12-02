@@ -9,7 +9,7 @@
         <li><%=h number_to_currency(order.total, :unit => "$") %></li>
         <li><%=h order_status_label(order) %></li>
     </ul>
-    <div class='order-actions'><%= link_to 'Show', order_path(order) %> | <%= link_to_unless order.closed?, 'Edit', edit_order_path(order) %></div>
+    <div class='order-actions'><%= link_to 'Show', order_path(order) %></div>
   </div>
 <% end %>
 </div>

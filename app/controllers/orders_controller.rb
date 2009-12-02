@@ -14,10 +14,6 @@ class OrdersController < UserApplicationController
     @order = current_restaurant.orders.find(params[:id])
   end
 
-  def edit
-    @order = current_restaurant.orders.find(params[:id])
-  end
-
   def update
     @order = current_restaurant.orders.find(params[:id])
 
@@ -26,9 +22,11 @@ class OrdersController < UserApplicationController
         flash[:notice] = 'Order was successfully updated.'
         format.html { redirect_to orders_path }
         format.xml  { head :ok }
+        format.js {}
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
+        format.js {}
       end
     end
   end
@@ -43,7 +41,7 @@ class OrdersController < UserApplicationController
     respond_to do |format|
       if @order.save
         flash[:notice] = 'Order was successfully created.'
-        format.html { redirect_to edit_order_path @order }
+        format.html { redirect_to order_path @order }
         format.xml  { head :ok }
       else
         format.html { render :action => "new" }

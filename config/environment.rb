@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "foreigner"
   config.gem "authlogic"
   config.gem "contactable", :source => "http://gemcutter.org"
-  config.gem 'rubymood-jintastic', :lib => 'jintastic'
+  config.gem 'lperichon-jintastic', :lib => 'jintastic'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

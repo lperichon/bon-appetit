@@ -1,7 +1,0 @@
-<div class='order-item'>
- <h4><%= order_item.product.name %></h4>
- <ul>
-   <li>Quantity: <%= order_item.quantity %> <%= link_to_function '-', 'return false;' %> <%= link_to_function '+', 'return false;' %></li>
-   <li>Discount: <%= discount_label(order_item.discount) %> <%= link_to_function 'edit', 'return false;' %></li>
- </ul>
-</div>
