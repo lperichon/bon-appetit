@@ -1,0 +1,5 @@
+<ul>
+<%- for product in @products -%>
+  <%= content_tag :li, h(product.name), :id => "result_#{product.id}" %>
+<%- end -%>
+</ul>

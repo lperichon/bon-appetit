@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :users
   map.resources :product_types
-  map.resources :products
+  map.resources :products, :collection => {:autocomplete => :get}
   map.resources :contacts
   map.resources :orders, :has_many => :order_items
   map.resource :dashboard
