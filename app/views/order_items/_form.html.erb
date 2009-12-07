@@ -1,4 +1,4 @@
-<% semantic_form_remote_for([@order, @order.order_items.new]) do |oi_f| %>
+<% semantic_form_remote_for([@order, @order_item]) do |oi_f| %>
   <% oi_f.inputs do %>
     <%= oi_f.input :product, :as => :autocomplete, :url => autocomplete_products_path %>
     <%= oi_f.input :quantity %>

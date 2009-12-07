@@ -12,6 +12,7 @@ class OrdersController < UserApplicationController
 
   def show
     @order = current_restaurant.orders.find(params[:id])
+    @order_item = @order.order_items.new(:quantity => 1, :discount => 0)
   end
 
   def update
