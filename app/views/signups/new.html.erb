@@ -1,4 +1,4 @@
-<h2>New user</h2>
+<h2><%= t('signups.create.title') %></h2>
 
 <% semantic_form_for(@user, :url => signups_path) do |f| %>
   <% f.inputs do %>
@@ -7,4 +7,4 @@
   <%= f.buttons %>
 <% end %>
 
-<%= link_to 'Back', root_path %>
+<%= link_to t('actions.back'), root_path %>

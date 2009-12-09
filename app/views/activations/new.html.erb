@@ -1,4 +1,4 @@
-<h1>Activate your account</h1>
+<h1><%= t('activations.new.title') %></h1>
 
 <% semantic_form_for @user, :url => activate_path(@user.id) do |f| %>
     <% f.inputs do %>

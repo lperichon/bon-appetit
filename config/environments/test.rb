@@ -31,3 +31,7 @@ config.action_mailer.delivery_method = :test
 config.gem 'thoughtbot-shoulda', :lib => 'shoulda', :source => "http://gemcutter.org" 
 config.gem 'machinist', :source => "http://gemcutter.org"
 config.gem 'faker'
+
+class ActionMailer::Base
+  default_url_options[:host] = "localhost:3000"
+end

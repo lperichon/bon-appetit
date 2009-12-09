@@ -1,5 +1,192 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
-en:
-  hello: "Hello world"
+--- 
+en: 
+  number: 
+    format: 
+      separator: .
+      precision: 3
+      delimiter: ","
+    human: 
+      format: 
+        precision: 1
+        delimiter: ""
+      storage_units: 
+        format: "%n %u"
+        units: 
+          kb: KB
+          tb: TB
+          gb: GB
+          byte: 
+            one: Byte
+            other: Bytes
+          mb: MB
+    percentage: 
+      format: 
+        delimiter: ""
+    currency: 
+      format: 
+        format: "%u%n"
+        unit: $
+        separator: .
+        precision: 2
+        delimiter: ","
+    precision: 
+      format: 
+        delimiter: ""
+  actions: 
+    back: Back
+    reset_password: "Reset Password"
+    signup: "Signup"
+  activerecord: 
+    errors: 
+      messages: 
+        greater_than_or_equal_to: must be greater than or equal to {{count}}
+        less_than_or_equal_to: must be less than or equal to {{count}}
+        confirmation: doesn't match confirmation
+        blank: can't be blank
+        exclusion: is reserved
+        invalid: is invalid
+        odd: must be odd
+        too_short: is too short (minimum is {{count}} characters)
+        wrong_length: is the wrong length (should be {{count}} characters)
+        empty: can't be empty
+        even: must be even
+        less_than: must be less than {{count}}
+        equal_to: must be equal to {{count}}
+        greater_than: must be greater than {{count}}
+        taken: has already been taken
+        accepted: must be accepted
+        too_long: is too long (maximum is {{count}} characters)
+        not_a_number: is not a number
+        inclusion: is not included in the list
+      template: 
+        body: "There were problems with the following fields:"
+        header: 
+          one: 1 error prohibited this {{model}} from being saved
+          other: "{{count}} errors prohibited this {{model}} from being saved"
+  time: 
+    am: am
+    formats: 
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    pm: pm
+  date: 
+    month_names: 
+    - 
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order: 
+    - :year
+    - :month
+    - :day
+    abbr_day_names: 
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    formats: 
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+    day_names: 
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    abbr_month_names: 
+    - 
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+  support: 
+    array: 
+      words_connector: ", "
+      last_word_connector: ", and "
+      two_words_connector: " and "
+  activations: 
+    new: 
+      title: Activate your account
+    create: 
+      success: Your account has been activated.
+  user_sessions: 
+    new: 
+      title: Login
+    destroy: 
+      success: Logout successful!
+    create: 
+      success: Login successful!
+  signups: 
+    create: 
+      title: Signup
+      success: Your account has been created. Please check your e-mail for your account activation instructions!
+  datetime: 
+    prompts: 
+      minute: Minute
+      second: Seconds
+      month: Month
+      hour: Hour
+      day: Day
+      year: Year
+    distance_in_words: 
+      less_than_x_minutes: 
+        one: less than a minute
+        other: less than {{count}} minutes
+      x_days: 
+        one: 1 day
+        other: "{{count}} days"
+      x_seconds: 
+        one: 1 second
+        other: "{{count}} seconds"
+      about_x_hours: 
+        one: about 1 hour
+        other: about {{count}} hours
+      less_than_x_seconds: 
+        one: less than 1 second
+        other: less than {{count}} seconds
+      x_months: 
+        one: 1 month
+        other: "{{count}} months"
+      x_minutes: 
+        one: 1 minute
+        other: "{{count}} minutes"
+      about_x_years: 
+        one: about 1 year
+        other: about {{count}} years
+      about_x_months: 
+        one: about 1 month
+        other: about {{count}} months
+      over_x_years: 
+        one: over 1 year
+        other: over {{count}} years
+      half_a_minute: half a minute
+  common:
+    errors:
+      admin_required: "You must be logged in as an admin to access this page"
+    notice:
+      session_required: "You must be logged in to access this page"
+      no_session_required: "You must be logged out to access this page"

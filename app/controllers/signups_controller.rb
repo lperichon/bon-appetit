@@ -10,7 +10,7 @@ class SignupsController < ApplicationController
 
     if @user.signup!(params)
       @user.deliver_activation_instructions!
-      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+      flash[:notice] = t('signups.create.success')
       redirect_to login_url
     else
       render :action => :new
