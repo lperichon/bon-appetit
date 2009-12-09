@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  Translate::Routes.translation_ui(map) if RAILS_ENV != "production"
+  
   map.namespace :admin do |admin|
     admin.root :controller => :restaurants
     admin.resources :restaurants do |restaurant|
