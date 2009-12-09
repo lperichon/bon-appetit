@@ -27,6 +27,15 @@
       <%=h @order.closed? %>
     </p>
 
+    <p>
+      <b>Notes:</b>
+      <% if @order.open? %>
+        <%= in_place_editor_for @order, {:notes => 'orders/notes'} %>
+      <% else %>
+        <%=h @order.notes %>
+      <% end %>
+    </p>
+
     <div id='order_items'>
       <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
         <h3><%= product_type.name %></h3>

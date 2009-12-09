@@ -2,6 +2,7 @@
   <% f.inputs do %>
     <%= f.input :generated_at %>
     <%= f.input :discount, :as => :select, :collection => discounts, :prompt => false %>
+    <%= f.input :notes %>
     <%= f.input :closed %>
   <% end %>
   <%= f.buttons %>

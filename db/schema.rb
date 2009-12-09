@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091124142520) do
+ActiveRecord::Schema.define(:version => 20091207215717) do
 
   create_table "address_types", :force => true do |t|
     t.string "description"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20091124142520) do
     t.decimal  "discount"
     t.decimal  "subtotal",   :precision => 8, :scale => 2
     t.decimal  "unit_price", :precision => 8, :scale => 2
+    t.text     "notes"
   end
 
   create_table "orders", :force => true do |t|
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20091124142520) do
     t.decimal  "discount"
     t.boolean  "closed"
     t.decimal  "total",         :precision => 8, :scale => 2
+    t.text     "notes"
   end
 
   create_table "phone_types", :force => true do |t|

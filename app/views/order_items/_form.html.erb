@@ -3,6 +3,7 @@
     <%= oi_f.input :product, :as => :autocomplete, :url => autocomplete_products_path %>
     <%= oi_f.input :quantity %>
     <%= oi_f.input :discount, :as => :select, :collection => discounts, :prompt => false %>
+    <%= oi_f.input :notes %>
   <% end %>
   <%= oi_f.buttons %>
 <% end %>

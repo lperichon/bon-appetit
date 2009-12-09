@@ -15,5 +15,12 @@
        <%= discount_label(order_item.discount) %>
      <% end %>
    </li>
+   <li>Notes:
+     <% if @order.open? %>
+       <%= in_place_editor_for [@order, order_item], {:notes => 'orders/notes'} %>
+     <% else %>
+       <%=h order_item.notes %>
+     <% end %>
+   </li>
  </ul>
 </div>
