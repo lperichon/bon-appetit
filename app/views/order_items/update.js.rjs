@@ -1,1 +1,0 @@
-page << "$('##{dom_id @order_item}').replaceWith('#{escape_javascript render @order_item}');"

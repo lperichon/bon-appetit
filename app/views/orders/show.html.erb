@@ -2,7 +2,7 @@
 <% unless @order.closed? %>
 <div id='add_order_item'>
   <h2>Add a new order item</h2>
-  <%= render :partial => 'order_items/form' %>
+  <%= render :partial => 'order_items/form', :locals => {:order_item => @order.order_items.new(:discount => 0, :quantity => 1)} %>
 </div>
 <% end %>
 

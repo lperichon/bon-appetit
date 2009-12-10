@@ -197,3 +197,6 @@ en:
     update:
       success: "Password successfully updated"
     perishable_token_not_found: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+  orders:
+    update:
+      success: "Order was successfully updated."

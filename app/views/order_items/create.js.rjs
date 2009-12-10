@@ -1,4 +1,4 @@
-page.replace("#new_order_item", :partial => 'form')
+page.replace("#new_order_item", :partial => 'form', :locals => {:order_item => @order.order_items.new(:quantity => 1, :discount => 0)})
 
 product_type_name = @order_item.product.product_type.name
 product_type_group = "##{product_type_name.dasherize}"
@@ -10,4 +10,4 @@ page.rjs_if_element_exists product_type_group
 page.rjs_end
 
 # add the new item
-page.insert_html(:bottom, product_type_group , :partial => 'orders/order_item', :locals => {:order_item => @order_item})
+page.insert_html(:bottom, product_type_group , :partial => 'order_item', :locals => {:order_item => @order_item})
