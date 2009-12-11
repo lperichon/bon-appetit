@@ -12,7 +12,7 @@ class UsersController < UserApplicationController
         @user.deliver_invited_activation_instructions!(current_restaurant)
         current_restaurant.users << @user
         current_restaurant.save
-        flash[:notice] = 'User was successfully created.'
+        flash[:notice] = t('users.create.success')
         format.html { redirect_to(@user) }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else

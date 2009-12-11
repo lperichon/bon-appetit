@@ -11,7 +11,7 @@ class RestaurantsController < UserApplicationController
 
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
-        flash[:notice] = 'Restaurant was successfully updated.'
+        flash[:notice] = t('restaurants.update.success')
         format.html { redirect_to dashboard_path }
         format.xml  { head :ok }
       else

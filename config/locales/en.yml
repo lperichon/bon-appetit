@@ -200,3 +200,12 @@ en:
   orders:
     update:
       success: "Order was successfully updated."
+  profiles:
+    update:
+      success: "Profile successfully updated"
+  restaurants:
+    update:
+      success: "Restaurant was successfully updated."
+  users:
+    create:
+      success: "User was successfully created."

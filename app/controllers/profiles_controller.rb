@@ -7,7 +7,7 @@ class ProfilesController < UserApplicationController
     @user = current_user
     @user.attributes = params[:user]
     if @user.save
-      flash[:notice] = "Profile successfully updated"
+      flash[:notice] = t('profiles.update.success')
       redirect_to dashboard_path
     else
       render :action => :edit
