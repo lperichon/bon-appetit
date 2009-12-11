@@ -133,6 +133,8 @@ en:
       title: Activate your account
     create: 
       success: Your account has been activated.
+    perishable_token_not_found: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or contact us to restart the activation process."
+    already_active: "The user already appears to be active. Try to log in or reset your password."
   user_sessions: 
     new: 
       title: Login
