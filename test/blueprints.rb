@@ -5,6 +5,9 @@ require 'faker'
 Sham.name  { Faker::Name.name }
 Sham.email { Faker::Internet.email }
 Sham.description  { Faker::Lorem.paragraph }
+Sham.date do
+  rand(30).days.ago
+end
 
 Restaurant.blueprint do
   name { Faker::Company.name }
@@ -38,6 +41,7 @@ end
 Order.blueprint do
   restaurant
   discount {rand}
+  generated_at { Sham.date }
 end
 
 User.blueprint do
