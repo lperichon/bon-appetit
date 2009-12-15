@@ -1,11 +1,13 @@
 class Order < ActiveRecord::Base
   belongs_to :restaurant
+  belongs_to :contact
   has_many :order_items
 
   accepts_nested_attributes_for :order_items
 
   validates_presence_of :restaurant, :generated_at
   validates_numericality_of :discount, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1
+  validates_numericality_of :table_id, :greater_than => 0, :allow_blank => true
 
   def before_validation
     self.discount ||= 0 

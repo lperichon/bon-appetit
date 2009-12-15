@@ -1,5 +1,7 @@
 <% semantic_form_for(@order) do |f| %>
   <% f.inputs do %>
+    <%= f.input :contact, :as => :autocomplete, :url => autocomplete_contacts_path %>
+    <%= f.input :table_id, :as => :numeric %>
     <%= f.input :generated_at %>
     <%= f.input :discount, :as => :select, :collection => discounts, :prompt => false %>
     <%= f.input :notes %>

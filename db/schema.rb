@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091214124649) do
+ActiveRecord::Schema.define(:version => 20091215135709) do
 
   create_table "address_types", :force => true do |t|
     t.string "description"
@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(:version => 20091214124649) do
     t.boolean  "closed"
     t.decimal  "total",         :precision => 8, :scale => 2
     t.text     "notes"
+    t.integer  "table_id"
+    t.integer  "contact_id"
   end
 
   create_table "phone_types", :force => true do |t|

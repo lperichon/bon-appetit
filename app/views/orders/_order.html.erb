@@ -1,51 +1,69 @@
 <div id='<%= dom_id @order %>'>
-    <p>
-      <b>Generated At:</b>
-      <% if @order.open? %>
-        <%= in_place_editor_for @order, :generated_at => 'orders/generated_at' %>
-      <% else %>
-        <%=h @order.generated_at %>
-      <% end %>
-    </p>
+  <p>
+    <b>Contact:</b>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, {:contact => 'orders/contact'}, {:display => @order.contact.nil? ? 'no contact' : @order.contact.name} %>
+    <% else %>
+      <%=h @order.contact.name if @order.contact %>
+    <% end %>
+  </p>
 
-    <p>
-      <b>Discount:</b>
-      <% if @order.open? %>
-        <%= in_place_editor_for @order, {:discount => 'orders/discount'}, {:display => discount_label(@order.discount)} %>
-      <% else %>
-        <%= discount_label(@order.discount) %>
-      <% end %>
-    </p>
+  <p>
+    <b>Table:</b>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, {:table => 'orders/table'}, {:display => @order.table_id.blank? ? 'no table' : @order.table_id} %>
+    <% else %>
+      <%=h @order.table_id %>
+    <% end %>
+  </p>
 
-    <p>
-      <b>Total:</b>
-      <%=h number_to_currency(@order.total, :unit => "$") %>
-    </p>
+  <p>
+    <b>Generated At:</b>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, :generated_at => 'orders/generated_at' %>
+    <% else %>
+      <%=h @order.generated_at %>
+    <% end %>
+  </p>
 
-    <p>
-      <b>Closed:</b>
-      <%=h @order.closed? %>
-    </p>
+  <p>
+    <b>Discount:</b>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, {:discount => 'orders/discount'}, {:display => discount_label(@order.discount)} %>
+    <% else %>
+      <%= discount_label(@order.discount) %>
+    <% end %>
+  </p>
 
-    <p>
-      <b>Notes:</b>
-      <% if @order.open? %>
-        <%= in_place_editor_for @order, {:notes => 'orders/notes'} %>
-      <% else %>
-        <%=h @order.notes %>
-      <% end %>
-    </p>
+  <p>
+    <b>Total:</b>
+    <%=h number_to_currency(@order.total, :unit => "$") %>
+  </p>
 
-    <div id='order_items'>
-      <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
-        <h3><%= product_type.name %></h3>
-        <div id='<%= product_type.name.dasherize %>'>
-          <% order_items.each do |order_item| %>
-             <div class='order-item'>
-               <%= render :partial => 'order_items/order_item', :locals => {:order_item => order_item} %>
-             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+  <p>
+    <b>Closed:</b>
+    <%=h @order.closed? %>
+  </p>
+
+  <p>
+    <b>Notes:</b>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, {:notes => 'orders/notes'} %>
+    <% else %>
+      <%=h @order.notes %>
+    <% end %>
+  </p>
+
+  <div id='order_items'>
+    <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
+      <h3><%= product_type.name %></h3>
+      <div id='<%= product_type.name.dasherize %>'>
+        <% order_items.each do |order_item| %>
+           <div class='order-item'>
+             <%= render :partial => 'order_items/order_item', :locals => {:order_item => order_item} %>
+           </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

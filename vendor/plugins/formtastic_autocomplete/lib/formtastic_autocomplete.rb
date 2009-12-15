@@ -51,7 +51,7 @@ module ElanDesign
         #template.content_tag(:div, "", :id => "#{@object_name}_#{method}_results", :class => 'auto_complete') +
         template.javascript_tag(<<-EOT
 $("input##{@object_name}_#{method}_autocomplete").autocomplete({
-  ajax: '/products/autocomplete',
+  ajax: "/#{method.to_s.pluralize}/autocomplete",
   timeout: 500,
   threshold: 2,
   match: function(typed) {
