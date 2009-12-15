@@ -41,10 +41,12 @@
           root.add "Orders", orders_path
           root.add "Contacts", contacts_path
           if current_restaurant && current_restaurant.manager == current_user
-            root.add "Restaurant", edit_restaurant_path
-            root.add "Users", users_path
-            root.add "Products", products_path
-            root.add "Product Types", product_types_path
+            root.add "Admin", '#' do |admin|
+              admin.add "Restaurant", edit_restaurant_path
+              admin.add "Users", users_path
+              admin.add "Products", products_path
+              admin.add "Product Types", product_types_path
+            end
           end
         end %>
       </div>
