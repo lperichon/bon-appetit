@@ -211,3 +211,20 @@ en:
   users:
     create:
       success: "User was successfully created."
+  menu:
+    dashboard: "Dashboard"
+    orders: "Orders"
+    contacts: "Contacts"
+    admin: "Admin"
+    restaurant: "Restaurant"
+    users: "Users"
+    products: "Products"
+    product_types: "Product Types"
+    logout: "Logout"
+    profile: "Edit Profile"
+    login: "Login"
+    signup: "Signup"
+  application:
+    copyright: "Copyright &copy; 2009 Bon Appetit."
+  product:
+    welcome: "Welcome {{name}}! go to your {{dashboard_link}}"
