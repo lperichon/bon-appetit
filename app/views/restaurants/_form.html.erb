@@ -1,6 +1,8 @@
-<% semantic_form_for(@restaurant, :url => profile_path) do |f| %>
+<% semantic_form_for(@restaurant, :url => restaurant_path) do |f| %>
   <% f.inputs do %>
     <%= f.input :name %>
+    <%= f.input :include_tax %>
+    <%= f.input :tax_value %>
   <% end %>
   <%= f.buttons %>
 <% end %>

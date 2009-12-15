@@ -35,10 +35,17 @@ class Order < ActiveRecord::Base
 
   protected
 
-  def calculate_total
+  def calculate_subtotal
     subtotal = self.order_items.collect {|oi| oi.subtotal}.sum
-    total =  subtotal - self.discount*subtotal
-    total
+    subtotal - self.discount*subtotal
+  end
+
+  def calculate_total
+    self.calculate_subtotal + self.calculate_tax
+  end
+
+  def calculate_tax
+    self.restaurant.include_tax? ? self.restaurant.tax_value*self.calculate_subtotal : 0
   end
 
   def freeze_values

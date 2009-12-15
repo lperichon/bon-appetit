@@ -7,4 +7,6 @@ class Restaurant < ActiveRecord::Base
   belongs_to :manager, :class_name => 'User'
 
   validates_presence_of :name, :manager
+  validates_presence_of :tax_value, :if => :include_tax?
+  validates_numericality_of :tax_value, :greater_than => 0, :less_than => 1, :if => :include_tax?
 end
