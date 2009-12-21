@@ -11,6 +11,7 @@
   <%= javascript_include_tag 'jintastic' %>
   <%= javascript_include_tag 'calendar' %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'jquery.jgrowl' %>
 
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "menu" %>
@@ -19,8 +20,14 @@
   <%= stylesheet_link_tag 'calendar' %>
   <%= stylesheet_link_tag 'autocomplete' %>
   <%= stylesheet_link_tag 'jquery.ui.autocomplete' %>
+  <%= stylesheet_link_tag 'jquery.jgrowl' %>
 </head>
 <body>
+  <% flash.each do |type, message| -%>
+    <% javascript_tag do -%>
+      $.jGrowl('<%= message %>');
+    <% end -%>
+  <% end -%>
   <div id="wrapper">
     <div id="header">
       <h1><a href="/">Bon Appetit</a></h1>
@@ -45,13 +52,6 @@
       <% end %>
     </div>
     <div id="main">
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
