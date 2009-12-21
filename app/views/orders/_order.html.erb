@@ -11,7 +11,7 @@
   <p>
     <b>Table:</b>
     <% if @order.open? %>
-      <%= in_place_editor_for @order, {:table => 'orders/table'}, {:display => @order.table_id.blank? ? 'no table' : @order.table_id} %>
+        <%= in_place_editor_for @order, {:table_id => 'orders/table'}, {:display => @order.table_id.blank? ? 'no table' : @order.table_id} %>
     <% else %>
       <%=h @order.table_id %>
     <% end %>
