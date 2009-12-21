@@ -1,3 +1,16 @@
 body {
     background:transparent url(/images/content_back_top.gif) repeat-x scroll center top;
 }
+
+#header {
+  clear: both;
+}
+
+#header h1 {
+  float: left;
+  margin: 10px;
+}
+
+#main {
+  clear: both;
+}

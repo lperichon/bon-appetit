@@ -215,7 +215,7 @@ en:
     dashboard: "Dashboard"
     orders: "Orders"
     contacts: "Contacts"
-    admin: "Admin"
+    administrator: "Administrator"
     restaurant: "Restaurant"
     users: "Users"
     products: "Products"
@@ -224,6 +224,7 @@ en:
     profile: "Edit Profile"
     login: "Login"
     signup: "Signup"
+    welcome: "Welcome {{username}}!"
   application:
     copyright: "Copyright &copy; 2009 Bon Appetit."
   product:

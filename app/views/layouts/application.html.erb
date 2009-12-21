@@ -13,6 +13,7 @@
   <%= javascript_include_tag 'application' %>
 
   <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "menu" %>
   <%= stylesheet_link_tag "scaffold" %>
   <%= stylesheet_link_tag "formtastic" %>
   <%= stylesheet_link_tag 'calendar' %>
@@ -24,32 +25,23 @@
     <div id="header">
       <h1><a href="/">Bon Appetit</a></h1>
       <% unless current_user.nil? %>
-      <div id="user_menu">
-        <ul>
-          <% if current_user %>
-          <li><%= link_to t('menu.logout'), logout_path %></li>
-          <li><%= link_to t('menu.profile'), edit_profile_path %></li>
-          <% else %>
-          <li><%= link_to t('menu.login'), login_path %></li>
-          <li><%= link_to t('menu.signup'), signup_path %></li>
+      <ul class='menu'>
+          <li><%= link_to t('menu.dashboard'), dashboard_path %></li>
+          <li><%= link_to t('menu.orders'), orders_path %></li>
+          <li><%= link_to t('menu.contacts'), contacts_path %></li>
+          <% if current_restaurant && current_restaurant.manager == current_user %>
+            <li class='drop'><%= link_to t('menu.administrator'), '#' %><ul>
+              <li><%= link_to t('menu.restaurant'), edit_restaurant_path %></li>
+              <li><%= link_to t('menu.users'), users_path %></li>
+              <li><%= link_to t('menu.products'), products_path %></li>
+              <li><%= link_to t('menu.product_types'), product_types_path %></li>
+            </ul></li>
           <% end %>
+          <li class='drop'><%= link_to t('menu.welcome', :username => current_user.username), '#' %><ul>
+            <li><%= link_to t('menu.logout'), logout_path %></li>
+            <li><%= link_to t('menu.profile'), edit_profile_path %></li>
+          </ul></li>
         </ul>
-      </div>
-      <div id="main_menu">
-        <%= semantic_menu do |root|
-          root.add t('menu.dashboard'), dashboard_path
-          root.add t('menu.orders'), orders_path
-          root.add t('menu.contacts'), contacts_path
-          if current_restaurant && current_restaurant.manager == current_user
-            root.add t('menu.admin'), '#' do |admin|
-              admin.add t('menu.restaurant'), edit_restaurant_path
-              admin.add t('menu.users'), users_path
-              admin.add t('menu.products'), products_path
-              admin.add t('menu.product_types'), product_types_path
-            end
-          end
-        end %>
-      </div>
       <% end %>
     </div>
     <div id="main">
