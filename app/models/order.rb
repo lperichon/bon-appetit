@@ -9,6 +9,8 @@ class Order < ActiveRecord::Base
   validates_numericality_of :discount, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1
   validates_numericality_of :table_id, :greater_than => 0, :allow_blank => true
 
+  default_scope :conditions => {:closed => false}, :order => 'generated_at ASC'
+
   def before_validation
     self.discount ||= 0 
   end
