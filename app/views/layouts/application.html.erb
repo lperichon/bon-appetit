@@ -17,10 +17,12 @@
   <%= stylesheet_link_tag "menu" %>
   <%= stylesheet_link_tag "scaffold" %>
   <%= stylesheet_link_tag "formtastic" %>
+  <%= stylesheet_link_tag "formtastic_changes" %>
   <%= stylesheet_link_tag 'calendar' %>
   <%= stylesheet_link_tag 'autocomplete' %>
   <%= stylesheet_link_tag 'jquery.ui.autocomplete' %>
   <%= stylesheet_link_tag 'jquery.jgrowl' %>
+  <%= stylesheet_link_tag "modal" %>
 </head>
 <body>
   <% flash.each do |type, message| -%>
@@ -44,7 +46,7 @@
               <li><%= link_to t('menu.product_types'), product_types_path %></li>
             </ul></li>
           <% end %>
-          <li class='drop'><%= link_to t('menu.welcome', :username => current_user.username), '#' %><ul>
+          <li class='drop last'><%= link_to t('menu.welcome', :username => current_user.username), '#' %><ul>
             <li><%= link_to t('menu.logout'), logout_path %></li>
             <li><%= link_to t('menu.profile'), edit_profile_path %></li>
           </ul></li>
@@ -55,7 +57,7 @@
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
-      <div id="content">
+      <div id="content" class='<%= controller_name %> <%= controller.action_name %>'>
         <%= yield %>
       </div>
       <div class="clear"></div>

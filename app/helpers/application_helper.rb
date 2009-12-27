@@ -38,7 +38,11 @@ module ApplicationHelper
 
   # RJS conditional helpers
   def rjs_if_element_exists(e)
-    page << "if($('#{e}')){"
+    page << "if($('##{e}')){"
+  end
+
+  def rjs_unless_element_exists(e)
+    page << "if(!$('##{e}')){"
   end
 
   def rjs_elsif(e)

@@ -1,4 +1,4 @@
-<h2>Editing your profile</h2>
+<h1>Editing your profile</h1>
 <% semantic_form_for(@user, :url => profile_path) do |f| %>
   <% f.inputs do %>
     <%= render :partial => 'users/signup_fields', :locals => {:f => f} %>

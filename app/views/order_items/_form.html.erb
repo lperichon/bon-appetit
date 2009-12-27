@@ -5,5 +5,8 @@
     <%= oi_f.input :discount, :as => :select, :collection => discounts, :prompt => false %>
     <%= oi_f.input :notes %>
   <% end %>
-  <%= oi_f.buttons %>
+  <% oi_f.buttons do %>
+    <%= oi_f.commit_button %>
+    <li><%= link_to_function t('actions.cancel'), "$('#add_order_item.modal').hide();$('#new_order_item').reset()"%></li>
+  <% end %>
 <% end %>

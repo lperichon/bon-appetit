@@ -1,18 +1,23 @@
-<h2>Listing orders</h2>
-<div class="orders">
+<h1>Listing orders</h1>
+<div class='actions-bar'>
+  <%= link_to 'New order', new_order_path %>
+</div>
+<div id="orders">
 <% @orders.each_with_index do |order, index| %>
-  <div class='<%= odd_or_even(index) %> order'>
+  <div id='order' class='<%= odd_or_even(index) %>'>
+    <h3><%=h order.to_s %> - <%=h order.generated_at %></h3>
     <ul>
-        <li><%=h order.to_s %></li>
-        <li><%=h order.generated_at %></li>
-        <li><%=h discount_label(order.discount) %></li>
-        <li><%=h number_to_currency(order.total, :unit => "$") %></li>
-        <li><%=h order_status_label(order) %></li>
+      <% if order.contact.present? %>
+      <li><span class='label'><%= Order.human_attribute_name('contact') %>:</span> <%=h order.contact.name %></li>
+      <% end %>
+      <% if order.table_id.present? %>
+      <li><span class='label'><%= Order.human_attribute_name('table') %>:</span> <%=h order.table_id %></li>
+      <% end %>
+      <li><span class='label'><%= Order.human_attribute_name('discount') %>:</span> <%=h discount_label(order.discount) %></li>
+      <li><span class='label'><%= Order.human_attribute_name('total') %>:</span> <%=h number_to_currency(order.total, :unit => "$") %></li>
+      <li><span class='label'><%= Order.human_attribute_name('status') %>:</span> <%=h order_status_label(order) %></li>
     </ul>
     <div class='order-actions'><%= link_to 'Show', order_path(order) %></div>
   </div>
 <% end %>
-</div>
-<div class='actions-bar'>
-  <%= link_to 'New order', new_order_path %>
 </div>

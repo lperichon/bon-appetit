@@ -1,9 +1,14 @@
-<h2>Viewing <%= @order.to_s %></h2>
+<h2><%= @order.to_s %></h2>
+<%= render @order %>
+
 <% unless @order.closed? %>
-<div id='add_order_item'>
+<div id='add_order_item' class='modal' style='display: none;'>
   <h2>Add a new order item</h2>
   <%= render :partial => 'order_items/form', :locals => {:order_item => @order.order_items.new(:discount => 0, :quantity => 1)} %>
 </div>
 <% end %>
 
-<%= render @order %>
+<div id='order_items'>
+  <h2><%= Order.human_attribute_name('order_items') %> <% if @order.open? %> (<%= link_to_function t('orders.show.new_order_item'), "$('#add_order_item.modal').show();"%>) <% end %></h2>
+  <%= render :partial => 'order_items' %>
+</div>

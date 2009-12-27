@@ -36,6 +36,7 @@ en:
     back: Back
     reset_password: "Reset Password"
     signup: "Signup"
+    cancel: "Cancel"
   activerecord: 
     errors: 
       messages: 
@@ -202,6 +203,8 @@ en:
   orders:
     update:
       success: "Order was successfully updated."
+    show:
+      new_order_item: "Add new"
   profiles:
     update:
       success: "Profile successfully updated"
@@ -229,3 +232,8 @@ en:
     copyright: "Copyright &copy; 2009 Bon Appetit."
   product:
     welcome: "Welcome {{name}}! go to your {{dashboard_link}}"
+  order_items:
+    create:
+      notice: "Order Item created successfully"
+    update:
+      notice: "Order Item updated successfully"

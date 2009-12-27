@@ -67,7 +67,7 @@ $("input##{@object_name}_#{method}_autocomplete").autocomplete({
     }
     return false;
   },
-  insertText: function(obj) { console.log(obj.id);$('##{@object_name}_#{method}_id').val(obj.id); return obj.text; },
+  insertText: function(obj) { $('##{@object_name}_#{method}_id').val(obj.id); return obj.text; },
   templateText: "<li><%= pre_match %><span class='matching' ><%= match %></span><%= post_match %></li>"
 })
 EOT

@@ -1,7 +1,7 @@
 <%= f.input :first_name %>
 <%= f.input :middle_name %>
 <%= f.input :last_name %>
-<%= f.input :birthday %>
+<%= f.input :birthday, :as => :calendar %>
 
 <div id='phones'>
   <%= f.label :phones, 'Phones' %>

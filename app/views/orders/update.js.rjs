@@ -1,1 +1,5 @@
 page << "$('##{dom_id @order}').replaceWith('#{escape_javascript render @order}');"
+
+flash.each do |type, message|
+  page << "$.jGrowl('#{message}');"
+end

@@ -53,17 +53,4 @@
       <%=h @order.notes %>
     <% end %>
   </p>
-
-  <div id='order_items'>
-    <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
-      <h3><%= product_type.name %></h3>
-      <div id='<%= product_type.name.dasherize %>'>
-        <% order_items.each do |order_item| %>
-           <div class='order-item'>
-             <%= render :partial => 'order_items/order_item', :locals => {:order_item => order_item} %>
-           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
 </div>

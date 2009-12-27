@@ -4,6 +4,7 @@ class OrderItemsController < UserApplicationController
     @order_item = @order.order_items.new(params[:order_item])
 
     if @order_item.save
+      flash[:notice] = t('order_items.create.notice')
       respond_to do |format|
         format.js {}
       end
@@ -18,10 +19,13 @@ class OrderItemsController < UserApplicationController
     @order = current_restaurant.orders.find(params[:order_id])
     @order_item = @order.order_items.find(params[:id])
 
-    @order_item.update_attributes(params[:order_item])
+    @order_item.attributes = params[:order_item]
+    if @order_item.save
+      flash[:notice] = t('order_items.update.notice')
 
-    respond_to do |format|
-      format.js {}
+      respond_to do |format|
+        format.js {}
+      end
     end
   end
 end
