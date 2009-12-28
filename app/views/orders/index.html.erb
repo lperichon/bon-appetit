@@ -1,6 +1,11 @@
 <h1>Listing orders</h1>
 <div class='actions-bar'>
   <%= link_to 'New order', new_order_path %>
+  <% if params[:opened].present? %>
+    <%= link_to t('orders.index.hide_closed'), orders_path %>
+  <% else %>
+    <%= link_to t('orders.index.show_closed'), orders_path(:opened => 'false') %>
+  <% end %>
 </div>
 <div id="orders">
 <% @orders.each_with_index do |order, index| %>

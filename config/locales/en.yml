@@ -205,6 +205,9 @@ en:
       success: "Order was successfully updated."
     show:
       new_order_item: "Add new"
+    index:
+      show_closed: "Show closed"
+      hide_closed: "Hide closed"
   profiles:
     update:
       success: "Profile successfully updated"
