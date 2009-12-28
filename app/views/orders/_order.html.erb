@@ -1,6 +1,6 @@
 <div id='<%= dom_id @order %>'>
   <p>
-    <b>Contact:</b>
+    <b><%= Order.human_attribute_name('contact') %>:</b>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:contact => 'orders/contact'}, {:display => @order.contact.nil? ? 'no contact' : @order.contact.name} %>
     <% else %>
@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <b>Table:</b>
+    <b><%= Order.human_attribute_name('table') %>:</b>
     <% if @order.open? %>
         <%= in_place_editor_for @order, {:table_id => 'orders/table'}, {:display => @order.table_id.blank? ? 'no table' : @order.table_id} %>
     <% else %>
@@ -18,7 +18,7 @@
   </p>
 
   <p>
-    <b>Generated At:</b>
+    <b><%= Order.human_attribute_name('generated_at') %>:</b>
     <% if @order.open? %>
       <%= in_place_editor_for @order, :generated_at => 'orders/generated_at' %>
     <% else %>
@@ -27,7 +27,7 @@
   </p>
 
   <p>
-    <b>Discount:</b>
+    <b><%= Order.human_attribute_name('discount') %>:</b>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:discount => 'orders/discount'}, {:display => discount_label(@order.discount)} %>
     <% else %>
@@ -36,17 +36,17 @@
   </p>
 
   <p>
-    <b>Total:</b>
+    <b><%= Order.human_attribute_name('total') %>:</b>
     <%=h number_to_currency(@order.total, :unit => "$") %>
   </p>
 
   <p>
-    <b>Closed:</b>
+    <b><%= Order.human_attribute_name('closed') %>:</b>
     <%=h @order.closed? %>
   </p>
 
   <p>
-    <b>Notes:</b>
+    <b><%= Order.human_attribute_name('notes') %>:</b>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:notes => 'orders/notes'} %>
     <% else %>

@@ -1,21 +1,21 @@
 <div id='<%= dom_id order_item %>' class='order-item'>
  <h4><%= order_item.product.name %></h4>
  <ul>
-   <li>Quantity:
+   <li><%= OrderItem.human_attribute_name('quantity') %>:
      <% if @order.open? %>
         <%= in_place_editor_for [@order, order_item], :quantity %>
      <% else %>
         <%= order_item.quantity %>
      <% end %>
    </li>
-   <li>Discount:
+   <li><%= OrderItem.human_attribute_name('discount') %>:
      <% if @order.open? %>
         <%= in_place_editor_for [@order, order_item], {:discount => 'orders/discount'}, {:display => discount_label(order_item.discount)} %>
      <% else %>
        <%= discount_label(order_item.discount) %>
      <% end %>
    </li>
-   <li>Notes:
+   <li><%= OrderItem.human_attribute_name('notes') %>:
      <% if @order.open? %>
        <%= in_place_editor_for [@order, order_item], {:notes => 'orders/notes'} %>
      <% else %>
