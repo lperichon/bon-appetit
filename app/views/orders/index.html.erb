@@ -1,4 +1,4 @@
-<h1>Listing orders</h1>
+<h1><%= t('orders.index.title') %></h1>
 <div class='actions-bar'>
   <%= link_to 'New order', new_order_path %>
   <% if params[:opened].present? %>
@@ -22,7 +22,7 @@
       <li><span class='label'><%= Order.human_attribute_name('total') %>:</span> <%=h number_to_currency(order.total, :unit => "$") %></li>
       <li><span class='label'><%= Order.human_attribute_name('status') %>:</span> <%=h order_status_label(order) %></li>
     </ul>
-    <div class='order-actions'><%= link_to 'Show', order_path(order) %></div>
+    <div class='order-actions'><%= link_to t('actions.show'), order_path(order) %></div>
   </div>
 <% end %>
 </div>

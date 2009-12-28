@@ -1,0 +1,4 @@
+<div id='add_order_item' class='modal' style='display: none;'>
+  <h2><%= t('orders.new_order_item.title') %></h2>
+  <%= render :partial => 'order_items/form', :locals => {:order_item => @order.order_items.new(:discount => 0, :quantity => 1)} %>
+</div>

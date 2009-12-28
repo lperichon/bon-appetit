@@ -37,6 +37,7 @@ en:
     reset_password: "Reset Password"
     signup: "Signup"
     cancel: "Cancel"
+    show: "Show"
   activerecord: 
     errors: 
       messages: 
@@ -208,6 +209,11 @@ en:
     index:
       show_closed: "Show closed"
       hide_closed: "Hide closed"
+      title: "Listing orders"
+    new:
+      title: "New Order"
+    new_order_item:
+      title: "Add a new order item"
   profiles:
     update:
       success: "Profile successfully updated"
