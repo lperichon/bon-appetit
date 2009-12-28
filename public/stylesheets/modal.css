@@ -1,8 +1,6 @@
 /* Modals windows according to http://www.zurb.com/playground/drop-in-modals */
 div.modal {
   position: absolute;
-  top: 40px;
-  left: 40px;
   border: solid 1px #6F705B;
   padding: 10px;
   background: #fff;

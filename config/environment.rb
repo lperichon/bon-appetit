@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "lperichon-formtastic", :lib => 'formtastic', :source  => "http://gemcutter.org"
   config.gem "inherited_resources", :source => "http://gemcutter.org"
+  config.gem "has_scope", :source => "http://gemcutter.org"
   config.gem "foreigner"
   config.gem "authlogic"
   config.gem "contactable", :source => "http://gemcutter.org"

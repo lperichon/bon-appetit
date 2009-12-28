@@ -1,5 +1,12 @@
 <h1>Listing contacts</h1>
 
+<div>
+  <%= link_to t('contacts.index.all'), contacts_path %>
+<% ('a'..'z').each do |c| %>
+  <%= link_to c, contacts_path(:starts_with => c) %>
+<% end %>
+</div>
+
 <table class='table'>
   <tr>
     <th>Name</th>

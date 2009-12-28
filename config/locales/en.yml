@@ -237,3 +237,6 @@ en:
       notice: "Order Item created successfully"
     update:
       notice: "Order Item updated successfully"
+  contacts:
+    index:
+      all: "all"
