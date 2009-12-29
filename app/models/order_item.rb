@@ -7,7 +7,7 @@ class OrderItem < ActiveRecord::Base
   validates_numericality_of :quantity, :only_integer => true, :greater_than => 0
   validates_numericality_of :discount, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1
 
-  def before_validation
+  def after_initialize
     self.quantity ||= 1
     self.discount ||= 0
   end

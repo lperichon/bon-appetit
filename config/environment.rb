@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "has_scope", :source => "http://gemcutter.org"
   config.gem "foreigner"
   config.gem "authlogic"
+  config.gem "searchlogic"
   config.gem "contactable", :source => "http://gemcutter.org"
   config.gem 'lperichon-jintastic', :lib => 'jintastic'
 

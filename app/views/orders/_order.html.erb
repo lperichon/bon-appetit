@@ -42,7 +42,12 @@
 
   <p>
     <b><%= Order.human_attribute_name('closed') %>:</b>
-    <%=h @order.closed? %>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, {:closed => 'orders/closed'} %>
+    <% else %>
+      <%=h @order.closed? %>
+    <% end %>
+
   </p>
 
   <p>

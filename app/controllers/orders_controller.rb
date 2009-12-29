@@ -9,7 +9,7 @@ class OrdersController < UserApplicationController
 
   respond_to :js, :only => :update
 
-  has_scope :opened, :type => :boolean, :default => true
+  has_scope :opened, :type => :boolean, :default => true, :only => :index
 
   protected
 

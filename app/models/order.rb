@@ -12,9 +12,15 @@ class Order < ActiveRecord::Base
   default_scope :order => 'generated_at ASC'
 
   named_scope :opened, :conditions  => {:closed => false}
+  named_scope :this_month, :conditions => ["generated_at > ?", Date.today.beginning_of_month]
 
-  def before_validation
-    self.discount ||= 0 
+  # sqlite3 specific move this to environments or find out what happened to Searchlogic's modifiers
+  named_scope :by_dow, proc {|dow| {:conditions => ["strftime('%w', generated_at) = '?'", dow]} }
+  named_scope :by_hour, proc {|h| {:conditions => ["strftime('%H', generated_at) = '?'", h]} }
+
+  def after_initialize
+    self.generated_at ||= DateTime.now
+    self.discount ||= 0
   end
 
   def before_save

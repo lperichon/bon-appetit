@@ -47,3 +47,16 @@ body {
   margin: 0;
 }
 /* End Orders */
+
+/* Begin Dashboard */
+#products_pie {
+  margin: 0 auto;
+  width: 400px;
+  height: 260px;
+}
+#total_by_dow_hour {
+  margin: 0 auto;
+  width: 610px;
+  height: 300px;
+}
+/* End Dashboard */
