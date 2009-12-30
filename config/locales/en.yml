@@ -194,6 +194,15 @@ en:
     notice:
       session_required: "You must be logged in to access this page"
       no_session_required: "You must be logged out to access this page"
+#  flash:
+#    actions:
+#      create:
+#        notice: "{resource_name} was successfully created"
+#      update:
+#        notice: "{resource_name} was successfully updated"
+#      destroy:
+#        notice: "{resource_name} was successfully destroyed"
+#        alert: "{resource_name} could not be destroyed"
   password_resets:
     create:
       success: "Instructions to reset your password have been emailed to you. Please check your email."

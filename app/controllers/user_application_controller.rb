@@ -12,4 +12,8 @@ class UserApplicationController < ApplicationController
       redirect_to setup_wizard_path
     end
   end
+
+  def responder
+    AppResponder
+  end
 end

@@ -9,6 +9,12 @@ class OrdersController < UserApplicationController
 
   respond_to :js, :only => :update
 
+  def update
+    update! do |success, failure|
+      success.js { flash[:notice] = t('orders.update.success') }
+    end
+  end
+
   has_scope :opened, :type => :boolean, :default => true, :only => :index
 
   protected

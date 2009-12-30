@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   config.gem "lperichon-formtastic", :lib => 'formtastic', :source  => "http://gemcutter.org"
   config.gem "inherited_resources", :source => "http://gemcutter.org"
   config.gem "has_scope", :source => "http://gemcutter.org"
+  config.gem "responders", :source => "http://gemcutter.org"
   config.gem "foreigner"
   config.gem "authlogic"
   config.gem "searchlogic"
@@ -46,5 +47,4 @@ Rails::Initializer.run do |config|
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
-
 end
