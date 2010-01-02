@@ -9,14 +9,14 @@ class Order < ActiveRecord::Base
   validates_numericality_of :discount, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1
   validates_numericality_of :table_id, :greater_than => 0, :allow_blank => true
 
-  default_scope :order => 'generated_at ASC'
+  default_scope :order => 'generated_at DESC'
 
   named_scope :opened, :conditions  => {:closed => false}
-  named_scope :this_month, :conditions => ["generated_at > ?", Date.today.beginning_of_month]
+  named_scope :this_month, :conditions => ["generated_at >= ?", Date.today.beginning_of_month]
 
   # sqlite3 specific move this to environments or find out what happened to Searchlogic's modifiers
   named_scope :by_dow, proc {|dow| {:conditions => ["strftime('%w', generated_at) = '?'", dow]} }
-  named_scope :by_hour, proc {|h| {:conditions => ["strftime('%H', generated_at) = '?'", h]} }
+  named_scope :by_hour, proc {|h| {:conditions => ["strftime('%H', generated_at) = ?", "%02d" % h]} }
 
   def after_initialize
     self.generated_at ||= DateTime.now
