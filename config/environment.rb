@@ -28,6 +28,11 @@ Rails::Initializer.run do |config|
   config.gem "searchlogic"
   config.gem "contactable", :source => "http://gemcutter.org"
   config.gem 'lperichon-jintastic', :lib => 'jintastic'
+  # gems required for saasramp
+  config.gem 'activemerchant', :lib => 'active_merchant'
+  config.gem "money"
+  config.gem 'state_machine'
+  config.gem 'lockfile'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

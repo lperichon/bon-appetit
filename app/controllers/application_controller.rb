@@ -8,11 +8,15 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-  filter_parameter_logging :password, :password_confirmation
+  filter_parameter_logging :password, :password_confirmation, :credit_card
   
   helper_method :current_user_session, :current_user, :current_restaurant
 
   private
+    def login_required
+      true
+    end
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = UserSession.find

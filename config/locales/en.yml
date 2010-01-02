@@ -246,6 +246,7 @@ en:
     login: "Login"
     signup: "Signup"
     welcome: "Welcome {{username}}!"
+    subscription: "Subscription"
   application:
     copyright: "Copyright &copy; 2009 Bon Appetit."
   product:

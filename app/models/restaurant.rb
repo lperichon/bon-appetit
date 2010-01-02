@@ -1,4 +1,5 @@
 class Restaurant < ActiveRecord::Base
+  acts_as_subscriber
   has_many :product_types
   has_many :products
   has_many :orders

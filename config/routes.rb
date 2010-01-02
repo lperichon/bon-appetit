@@ -29,6 +29,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :dashboard
   map.resource :profile
   map.resource :restaurant
+  map.resource :subscription, :member=>{:history=>:get, :credit_card=>:get, :cancel=>:get, :store_credit_card=>:post}
   map.setup_wizard 'setup', :controller => 'setup'
   
   map.resources :signups
