@@ -1,11 +1,3 @@
-<%
-  @contact.emails.build if @contact.emails.empty?
-  @contact.phones.build if @contact.phones.empty?
-  @contact.addresses.build if @contact.addresses.empty?
-  @contact.websites.build if @contact.websites.empty?
-  @contact.instant_messengers.build if @contact.instant_messengers.empty?
-%>
-
 <% semantic_form_for(@contact) do |f| %>
   <% f.inputs do %>
     <%= render :partial => 'fields', :locals => {:f => f} %>

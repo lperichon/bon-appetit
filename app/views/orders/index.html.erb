@@ -7,9 +7,9 @@
     <%= link_to t('orders.index.show_closed'), orders_path(:opened => 'false') %>
   <% end %>
 </div>
-<div id="orders">
+<div id="orders" class='list'>
 <% @orders.each_with_index do |order, index| %>
-  <div id='order' class='<%= odd_or_even(index) %>'>
+  <div class='order element <%= odd_or_even(index) %>'>
     <h3><%=h order.to_s %> - <%=h order.generated_at %></h3>
     <ul>
       <% if order.contact.present? %>

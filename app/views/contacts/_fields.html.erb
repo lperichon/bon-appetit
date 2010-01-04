@@ -6,7 +6,7 @@
 <div id='phones'>
   <%= f.label :phones, 'Phones' %>
   <% f.inputs :for => :phones do |pf|%>
-    <%= render :partial => 'contacts/phone', :locals => {:f => pf} %>
+    <%= render :partial => 'phones/phone', :locals => {:f => pf} %>
     <%= remove_link_unless_new_record(pf) %>
   <% end %>
 </div>

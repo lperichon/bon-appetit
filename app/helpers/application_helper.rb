@@ -22,7 +22,7 @@ module ApplicationHelper
     plural_name = name.pluralize
     link_to_function "add a new #{name}", :class => 'add' do |page|
       form_builder.semantic_fields_for plural_name, record.send(plural_name).build, :child_index => 'NEW_RECORD' do |p|
-        html = "<fieldset class='inputs'><ol>#{render(:partial => 'contacts/' + name, :locals => { :f => p })}</ol></fieldset>"
+        html = "<fieldset class='inputs'><ol>#{render(:partial => plural_name + '/' + name, :locals => { :f => p })}</ol></fieldset>"
         page << "$('##{plural_name}').append('#{escape_javascript(html)}'.replace(/NEW_RECORD/g, new Date().getTime()));"
       end
     end

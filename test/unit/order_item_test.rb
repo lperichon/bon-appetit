@@ -13,11 +13,11 @@ class OrderItemTest < ActiveSupport::TestCase
     should_validate_presence_of :order
     should_validate_presence_of :product
 
-    should_allow_values_for(:discount, 0, 0.5, 1, nil)
-    should_not_allow_values_for(:discount, -0.2, 1.2, 'a')
+    should_allow_values_for(:discount, 0, 0.5, 1)
+    should_not_allow_values_for(:discount, -0.2, 1.2, 'a', nil)
 
-    should_allow_values_for(:quantity, 1, 2, 100, nil)
-    should_not_allow_values_for(:quantity, -1, 0, 'a')
+    should_allow_values_for(:quantity, 1, 2, 100)
+    should_not_allow_values_for(:quantity, -1, 0, 'a', nil)
 
     should "calculate a subtotal" do
       assert @order_item.subtotal > 0

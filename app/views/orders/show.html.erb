@@ -9,3 +9,7 @@
   <h2><%= Order.human_attribute_name('order_items') %> <% if @order.open? %> (<%= link_to_function t('orders.show.new_order_item'), "$('#add_order_item.modal').show();"%>) <% end %></h2>
   <%= render :partial => 'order_items' %>
 </div>
+
+<div id='actions'>
+  <%= link_to t('actions.back'), orders_path %>
+</div>

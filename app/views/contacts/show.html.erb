@@ -1,9 +1,7 @@
-<h1>Viewing <%= @contact.name %></h1>
+<h1><%= t('contacts.show.title') %></h1>
 
-<p>
-  <b>Name:</b>
-  <%=h @contact.name %>
-</p>
+<%= render @contact %>
 
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<div id='actions'>
+  <%= link_to t('actions.back'), contacts_path %>
+</div>

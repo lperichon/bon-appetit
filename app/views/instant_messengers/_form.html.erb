@@ -1,0 +1,9 @@
+<% semantic_remote_form_for [@contact, instant_messenger] do |f| %>
+  <% f.inputs do %>
+  <%= render :partial => 'instant_messengers/instant_messenger', :locals => {:f => f} %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.commit_button %>
+    <li><%= link_to_function t('actions.cancel'), "$('#new_instant_messenger_form').hide();$('#new_instant_messenger').reset();$('#new_instant_messenger_link').show()" %></li>
+  <% end %>
+<% end %>

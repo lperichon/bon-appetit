@@ -1,4 +1,4 @@
-<h1>Listing contacts</h1>
+<h1><%= t('contacts.index.title') %></h1>
 
 <div>
   <%= link_to t('contacts.index.all'), contacts_path %>
@@ -7,21 +7,19 @@
 <% end %>
 </div>
 
-<table class='table'>
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th class='last'>Actions</th>
-  </tr>
-
+<div id="orders" class='list'>
 <% @contacts.each_with_index do |contact, index| %>
-  <tr class='<%= odd_or_even(index) %>'>
-    <td><%=h contact.name %></td>
-    <td><%=h contact.age %> Years old</td>
-    <td class='last'><%= link_to 'Show', contact_path(contact) %> | <%= link_to 'Edit', edit_contact_path(contact) %> | <%= link_to 'Destroy', contact_path(contact), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class='contact element <%= odd_or_even(index) %>'>
+    <h3><%=h contact.name %></h3>
+    <ul>
+      <li><%= contact.age %></li>
+    </ul>
+    <div class='order-actions'><%= link_to t('actions.show'), contact_path(contact) %></div>
+  </div>
+
 <% end %>
-</table>
+</div>
+
 <div class='actions-bar'>
   <%= link_to 'New contact', new_contact_path %>
 </div>

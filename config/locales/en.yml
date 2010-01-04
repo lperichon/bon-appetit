@@ -259,7 +259,39 @@ en:
   contacts:
     index:
       all: "all"
+      title: "Listing contacts"
+    show:
+      title: "Viewing contact"
+    update:
+      success: "Contact was updated successfully!"
+    contact:
+      add_phone: "Add another phone"
+      add_address: "Add a new address"
+      add_email: "Add new email"
+      add_website: "Add new website"
+      add_instant_messenger: "Add new instant messenger"
   dashboards:
     show:
       total_by_dow_hour_title: "Total Sales By Day and Hour"
       products_pie_title: "Products Sold"
+  phones:
+    update:
+      notice: "Phone updated successfully!"
+    create:
+      notice: "Phone created successfully!"
+  websites:
+    update:
+      notice: "Website updated successfully!"
+    create:
+      notice: "Website created successfully!"
+  addresses:
+    update:
+      notice: "Address updated successfully!"
+    create:
+      notice: "Address created successfully!"
+  instant_messengers:
+    update:
+      notice: "Instant Messenger updated successfully!"
+    create:
+      notice: "Instant Messenger created successfully!"
+

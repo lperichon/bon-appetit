@@ -11,8 +11,8 @@ class OrderTest < ActiveSupport::TestCase
     should_belong_to :restaurant
     should_validate_presence_of :restaurant
 
-    should_allow_values_for(:discount, 0, 0.5, 1, nil)
-    should_not_allow_values_for(:discount, -0.2, 1.2, 'a')
+    should_allow_values_for(:discount, 0, 0.5, 1)
+    should_not_allow_values_for(:discount, -0.2, 1.2, 'a', nil)
   end
 
   context "a new order" do

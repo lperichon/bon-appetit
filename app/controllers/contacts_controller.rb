@@ -1,11 +1,19 @@
 class ContactsController < UserApplicationController
   # the same as inheriting from InheritedResources::Base
   inherit_resources do
-    actions :all, :except => :index
+    actions :all, :except => [:index, :edit]
   end
+
+  respond_to :js, :only => :update
 
   def index
     @contacts = apply_scopes(current_restaurant.contacts).all
+  end
+
+  def update
+    update! do |success, failure|
+      success.js { flash[:notice] = t('contacts.update.success') }
+    end
   end
 
   def autocomplete

@@ -20,8 +20,7 @@ body {
   font-weight: bold;
 }
 
-/* Begin Orders */
-#content.orders.show {
+#content.show {
   background: white;
   padding: 10px;
   border: 1px solid #6F705B;
@@ -29,11 +28,11 @@ body {
   -webkit-border-radius:10px;
 }
 
-#orders {
+.list {
   display: block;
 }
 
-#order {
+.element {
   padding: 10px;
   margin-top: 10px;
   display: block;
@@ -43,9 +42,11 @@ body {
   -webkit-border-radius:10px;
 }
 
-#order h3 {
+.element h3 {
   margin: 0;
 }
+
+/* Begin Orders */
 /* End Orders */
 
 /* Begin Dashboard */

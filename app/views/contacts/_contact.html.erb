@@ -1,0 +1,24 @@
+<div id='<%= dom_id @contact %>'>
+  <p>
+    <b><%= Contact.human_attribute_name('name') %>:</b>
+    <%= in_place_editor_for @contact, {:name => 'contacts/name'}, {:display => @contact.name} %>
+  </p>
+  <p>
+    <b><%= Contact.human_attribute_name('birthday') %>:</b>
+    <%= in_place_editor_for @contact, {:name => 'contacts/birthday'}, {:display => @contact.birthday} %>
+  </p>
+  <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
+  <p>
+    <b><%= Contact.human_attribute_name(field_name.pluralize) %>:</b>
+    <ul>
+    <% @contact.send(field_name.pluralize).each do |field| %>
+      <li><%= in_place_editor_for [@contact, field], {field_name.to_sym => field_name.pluralize + '/' + field_name}, {:display => send(field_name + '_label',field)} %></li>
+    <% end %>
+    </ul>
+    <%= link_to_function t('contacts.contact.add_' + field_name), "$('#new_#{field_name}_form').show();$('#new_#{field_name}_link').hide()", :id => "new_#{field_name}_link" %>
+    <div id='new_<%= field_name %>_form' style='display: none;'>
+    <%= render :partial => field_name.pluralize + '/form', :locals => {field_name.to_sym => @contact.send(field_name.pluralize).new} %>
+    </div>
+  </p>
+  <% end %>
+</div>
