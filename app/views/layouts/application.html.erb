@@ -44,7 +44,7 @@
           <li><%= link_to t('menu.contacts'), contacts_path %></li>
           <% if current_restaurant && current_restaurant.manager == current_user %>
             <li class='drop'><%= link_to t('menu.administrator'), '#' %><ul>
-              <li><%= link_to t('menu.restaurant'), edit_restaurant_path %></li>
+              <li><%= link_to t('menu.restaurant'), restaurant_path %></li>
               <li><%= link_to t('menu.subscription'), subscription_path %></li>
               <li><%= link_to t('menu.users'), users_path %></li>
               <li><%= link_to t('menu.products'), products_path %></li>

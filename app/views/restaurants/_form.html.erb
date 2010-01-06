@@ -1,8 +1,8 @@
 <% semantic_form_for(@restaurant, :url => restaurant_path) do |f| %>
   <% f.inputs do %>
-    <%= f.input :name %>
-    <%= f.input :include_tax %>
-    <%= f.input :tax_value %>
+    <%= render :partial => 'name', :locals => {:f => f} %>
+    <%= render :partial => 'include_tax', :locals => {:f => f} %>
+    <%= render :partial => 'tax_value', :locals => {:f => f} %>
   <% end %>
   <%= f.buttons %>
 <% end %>

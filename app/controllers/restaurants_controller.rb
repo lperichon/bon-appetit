@@ -1,6 +1,6 @@
 class RestaurantsController < UserApplicationController
   # GET /restaurant/edit
-  def edit
+  def show
     @restaurant = current_restaurant
   end
 
@@ -12,11 +12,10 @@ class RestaurantsController < UserApplicationController
     respond_to do |format|
       if @restaurant.update_attributes(params[:restaurant])
         flash[:notice] = t('restaurants.update.success')
-        format.html { redirect_to dashboard_path }
-        format.xml  { head :ok }
+        format.js { } # default update.js.rjs
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @restaurant.errors, :status => :unprocessable_entity }
+#        format.html { render :action => "show" }
+#        format.xml  { render :xml => @restaurant.errors, :status => :unprocessable_entity }
       end
     end
   end

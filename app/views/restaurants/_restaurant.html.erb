@@ -1,0 +1,14 @@
+<div id='<%= dom_id @restaurant %>'>
+  <p>
+    <b><%= Restaurant.human_attribute_name('name') %>:</b>
+    <%= in_place_editor_for @restaurant, {:name => 'name'}, {:path => restaurant_path} %>
+  </p>
+  <p>
+    <b><%= Restaurant.human_attribute_name('include_tax') %>:</b>
+    <%= in_place_editor_for @restaurant, {:include_tax => 'include_tax'}, {:path => restaurant_path} %>
+  </p>
+  <p>
+    <b><%= Restaurant.human_attribute_name('tax_value') %>:</b>
+    <%= in_place_editor_for @restaurant, {:tax_value => 'tax_value'}, {:path => restaurant_path} %>
+  </p>
+</div>

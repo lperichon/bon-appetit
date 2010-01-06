@@ -229,6 +229,8 @@ en:
   restaurants:
     update:
       success: "Restaurant was successfully updated."
+    show:
+      title: "This is your restaurant's profile"
   users:
     create:
       success: "User was successfully created."
