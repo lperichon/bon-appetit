@@ -226,6 +226,8 @@ en:
   profiles:
     update:
       success: "Profile successfully updated"
+    show:
+      title: "Editing your profile"
   restaurants:
     update:
       success: "Restaurant was successfully updated."
@@ -234,6 +236,12 @@ en:
   users:
     create:
       success: "User was successfully created."
+    user:
+      add_phone: "Add another phone"
+      add_address: "Add a new address"
+      add_email: "Add new email"
+      add_website: "Add new website"
+      add_instant_messenger: "Add new instant messenger"
   menu:
     dashboard: "Dashboard"
     orders: "Orders"
@@ -244,7 +252,7 @@ en:
     products: "Products"
     product_types: "Product Types"
     logout: "Logout"
-    profile: "Edit Profile"
+    profile: "Profile"
     login: "Login"
     signup: "Signup"
     welcome: "Welcome {{username}}!"

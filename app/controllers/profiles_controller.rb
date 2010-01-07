@@ -1,5 +1,5 @@
 class ProfilesController < UserApplicationController
-  def edit
+  def show
     @user = current_user
   end
 
@@ -10,7 +10,7 @@ class ProfilesController < UserApplicationController
       flash[:notice] = t('profiles.update.success')
       redirect_to dashboard_path
     else
-      render :action => :edit
+      render :action => :show
     end
   end
 end

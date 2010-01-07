@@ -1,4 +1,19 @@
 module ContactFieldActions
+  def self.included(base)
+    base.class_eval do
+      before_filter :load_parent
+    end
+  end
+
+  def load_parent
+    @parent = if params[:contact_id]
+      @contact = current_restaurant.contacts.find(params[:contact_id])
+    else
+      @user = current_restaurant.users.find(params[:user_id])
+    end
+
+  end
+
   def association_name
     self.field_name.pluralize
   end
@@ -8,24 +23,20 @@ module ContactFieldActions
   end
 
   def create
-    @contact = current_restaurant.contacts.find(params[:contact_id])
-    @field = @contact.send("#{self.association_name}").new(params[self.field_name.to_sym])
+    @field = @parent.send("#{self.association_name}").new(params[self.field_name.to_sym])
 
-    if @phone.save
+    if @field.save
       flash[:notice] = t(self.association_name + '.create.notice')
       respond_to do |format|
         format.js {}
       end
     else
-      render(:update) do |page|
-        page.replace("#new_order_item", :partial => 'form', :locals => {:order_item => @order_item})
-      end
+      # TODO: handle errors via js
     end
   end
 
   def update
-    @contact = current_restaurant.contacts.find(params[:contact_id])
-    @field = @contact.send("#{self.association_name}").find(params[:id])
+    @field = @parent.send("#{self.association_name}").find(params[:id])
 
     @field.attributes = params[self.field_name.to_sym]
     if @field.save

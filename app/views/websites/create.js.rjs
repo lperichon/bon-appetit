@@ -1,4 +1,4 @@
-page << "$('##{dom_id @contact}').replaceWith('#{escape_javascript render @contact}');"
+page << "$('##{dom_id @parent}').replaceWith('#{escape_javascript render @parent}');"
 
 flash.each do |type, message|
   page << "$.jGrowl('#{message}');"

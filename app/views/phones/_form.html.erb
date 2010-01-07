@@ -1,4 +1,4 @@
-<% semantic_remote_form_for [@contact, phone] do |f| %>
+<% semantic_remote_form_for [phone.owner, phone] do |f| %>
   <% f.inputs do %>
   <%= render :partial => 'phones/phone', :locals => {:f => f} %>
   <% end %>

@@ -1,4 +1,4 @@
-<% semantic_remote_form_for [@contact, instant_messenger] do |f| %>
+<% semantic_remote_form_for [instant_messenger.owner, instant_messenger] do |f| %>
   <% f.inputs do %>
   <%= render :partial => 'instant_messengers/instant_messenger', :locals => {:f => f} %>
   <% end %>

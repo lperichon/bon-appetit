@@ -21,7 +21,13 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :user_sessions
   end
   
-  map.resources :users
+  map.resources :users  do |users|
+    users.resources :phones
+    users.resources :addresses
+    users.resources :emails
+    users.resources :websites
+    users.resources :instant_messengers
+  end
   map.resources :product_types
   map.resources :products, :collection => {:autocomplete => :get}
   map.resources :contacts, :collection => {:autocomplete => :get} do |contact|
