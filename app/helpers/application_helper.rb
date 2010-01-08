@@ -56,4 +56,13 @@ module ApplicationHelper
   def rjs_end
     page << "}"
   end
+
+  def show_messages(flash)
+    output = ""
+    flash.each do |type, message|
+      output << "$.jGrowl('#{message}');"
+    end
+    flash.discard
+    output
+  end
 end

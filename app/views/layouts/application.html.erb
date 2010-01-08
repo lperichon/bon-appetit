@@ -29,10 +29,8 @@
   <%= stylesheet_link_tag "modal" %>
 </head>
 <body>
-  <% flash.each do |type, message| -%>
-    <% javascript_tag do -%>
-      $.jGrowl('<%= message %>');
-    <% end -%>
+  <% javascript_tag do -%>
+    <%= show_messages(flash) %>
   <% end -%>
   <div id="wrapper">
     <div id="header">

@@ -15,6 +15,5 @@ page.insert_html(:bottom, product_type_group , :partial => 'order_item', :locals
 # close new order item modal
 page << "$('#add_order_item.modal').hide();$('#new_order_item').reset();"
 
-flash.each do |type, message|
-  page << "$.jGrowl('#{message}');"
-end
+page << show_messages(flash)
+
