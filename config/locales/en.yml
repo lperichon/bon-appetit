@@ -319,3 +319,11 @@ en:
     index:
       title: "Listing product types"
       new: "New product type"
+  products:
+    update:
+      success: "Product successfully updated!"
+    show:
+      title: "Viewing Product"
+    index:
+      new: "New product"
+      title: "Listing products"

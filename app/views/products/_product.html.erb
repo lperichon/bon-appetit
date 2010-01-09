@@ -1,0 +1,22 @@
+<div id='<%= dom_id @product %>'>
+  <p>
+    <b><%= Product.human_attribute_name('product_type') %>:</b>
+    <%= in_place_editor_for @product, {:product_type => 'product_type'}, {:display => @product.product_type.name} %>
+  </p>
+  <p>
+    <b><%= Product.human_attribute_name('name') %>:</b>
+    <%= in_place_editor_for @product, :name => 'name' %>
+  </p>
+  <p>
+    <b><%= Product.human_attribute_name('code') %>:</b>
+    <%= in_place_editor_for @product, :code => 'code' %>
+  </p>
+  <p>
+    <b><%= Product.human_attribute_name('description') %>:</b>
+    <%= in_place_editor_for @product, :description => 'description' %>
+  </p>
+  <p>
+    <b><%= Product.human_attribute_name('price') %>:</b>
+    <%= in_place_editor_for @product, {:price => 'price'}, {:display => number_to_currency(@product.price, :unit => "$")} %>
+  </p>
+</div>
