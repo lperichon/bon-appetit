@@ -17,7 +17,7 @@ class ContactsController < UserApplicationController
   end
 
   def autocomplete
-    @contacts = current_restaurant.contacts.find(:all, :conditions => ['first_name LIKE ?', "%#{params[:q]}%"])
+    @contacts = current_restaurant.contacts.first_name_or_middle_name_or_last_name_like("#{params[:val]}")
     respond_to do |format|
       format.json { render :json => @contacts.collect {|c| {:id => c.id, :text => c.name}}.to_json, :layout => false}
     end
