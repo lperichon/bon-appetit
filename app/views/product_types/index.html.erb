@@ -1,18 +1,16 @@
-<h1>Listing product types</h1>
-
-<table class='table'>
-  <tr>
-    <th>Name</th>
-    <th class='last'>Actions</th>
-  </tr>
-
+<h1><%= t('.title') %></h1>
+<ul class='actions'>
+  <li class='first'><%= link_to t('.new'), new_product_type_path %></li>
+</ul>
+<div id='product_types' class='list'>
 <% @product_types.each_with_index do |product_type, index| %>
-  <tr class='<%= odd_or_even(index) %>'>
-    <td><%=h product_type.name %></td>
-    <td class='last'><%= link_to 'Show', product_type_path(product_type) %> | <%= link_to 'Edit', edit_product_type_path(product_type) %> | <%= link_to 'Destroy', product_type_path(product_type), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class='product-type element <%= odd_or_even(index) %>'>
+    <h3><%=h product_type.name %></h3>
+    <br/>
+    <ul class='actions'>
+      <li class='first'><%= link_to t('actions.show'), product_type_path(product_type) %></li>
+      <li><%= link_to t('actions.destroy'), product_type_path(product_type), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+    </ul>
+  </div>
 <% end %>
-</table>
-<div class='actions-bar'>
-  <%= link_to 'New product type', new_product_type_path %>
 </div>

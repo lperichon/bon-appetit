@@ -1,11 +1,11 @@
 <h1><%= t('contacts.index.title') %></h1>
-
-<div>
-  <%= link_to t('contacts.index.all'), contacts_path %>
-<% ('a'..'z').each do |c| %>
-  <%= link_to c, contacts_path(:starts_with => c) %>
-<% end %>
-</div>
+<ul class='actions'>
+  <li class='first'><%= link_to t('.new'), new_contact_path %></li>
+  <li><%= link_to t('contacts.index.all'), contacts_path %></li>
+  <% ('a'..'z').each do |c| %>
+    <li><%= link_to c, contacts_path(:starts_with => c) %></li>
+  <% end %>
+</ul>
 
 <div id="orders" class='list'>
 <% @contacts.each_with_index do |contact, index| %>
@@ -14,12 +14,9 @@
     <ul>
       <li><%= contact.age %></li>
     </ul>
-    <div class='order-actions'><%= link_to t('actions.show'), contact_path(contact) %></div>
+    <ul class='actions'>
+      <li class='first'><%= link_to t('actions.show'), contact_path(contact) %></li>
+    </ul>
   </div>
-
 <% end %>
-</div>
-
-<div class='actions-bar'>
-  <%= link_to 'New contact', new_contact_path %>
 </div>

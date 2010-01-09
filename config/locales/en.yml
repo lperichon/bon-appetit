@@ -38,6 +38,8 @@ en:
     signup: "Signup"
     cancel: "Cancel"
     show: "Show"
+    destroy: "Destroy"
+    confirm_destroy: "Are you sure?"
   activerecord: 
     errors: 
       messages: 
@@ -219,6 +221,7 @@ en:
       show_closed: "Show closed"
       hide_closed: "Hide closed"
       title: "Listing orders"
+      new: "New order"
     new:
       title: "New Order"
     new_order_item:
@@ -270,6 +273,7 @@ en:
     index:
       all: "all"
       title: "Listing contacts"
+      new: "New contact"
     show:
       title: "Viewing contact"
     update:
@@ -305,3 +309,13 @@ en:
     create:
       notice: "Instant Messenger created successfully!"
 
+  product_types:
+    show:
+      title: "Viewing Product Type"
+    update:
+      success: "Product Type successfully updated!"
+    new:
+      title: "New product type"
+    index:
+      title: "Listing product types"
+      new: "New product type"

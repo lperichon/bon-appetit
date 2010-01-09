@@ -1,12 +1,12 @@
 <h1><%= t('orders.index.title') %></h1>
-<div class='actions-bar'>
-  <%= link_to 'New order', new_order_path %>
+<ul class='actions'>
+  <li class='first'><%= link_to t('.new'), new_order_path %></li>
   <% if params[:opened].present? %>
-    <%= link_to t('orders.index.hide_closed'), orders_path %>
+    <li><%= link_to t('orders.index.hide_closed'), orders_path %></li>
   <% else %>
-    <%= link_to t('orders.index.show_closed'), orders_path(:opened => 'false') %>
+    <li><%= link_to t('orders.index.show_closed'), orders_path(:opened => 'false') %></li>
   <% end %>
-</div>
+</ul>
 <div id="orders" class='list'>
 <% @orders.each_with_index do |order, index| %>
   <div class='order element <%= odd_or_even(index) %>'>
@@ -22,7 +22,9 @@
       <li><span class='label'><%= Order.human_attribute_name('total') %>:</span> <%=h number_to_currency(order.total, :unit => "$") %></li>
       <li><span class='label'><%= Order.human_attribute_name('status') %>:</span> <%=h order_status_label(order) %></li>
     </ul>
-    <div class='order-actions'><%= link_to t('actions.show'), order_path(order) %></div>
+    <ul class='actions'>
+      <li class='first'><%= link_to t('actions.show'), order_path(order) %></li>
+    </ul>
   </div>
 <% end %>
 </div>

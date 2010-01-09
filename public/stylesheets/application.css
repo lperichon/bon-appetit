@@ -1,5 +1,5 @@
 body {
-    background: #D1D570;
+  background: #D1D570;
 }
 
 #header {
@@ -44,6 +44,31 @@ body {
 
 .element h3 {
   margin: 0;
+}
+
+.actions {
+  margin-left: 0;
+  padding-left: 0;
+  display: inline;
+}
+
+.actions li.first {
+  margin-left: 0;
+  border-left: none;
+  list-style: none;
+  display: inline;
+  padding: 0 5px 0 0;
+}
+
+.actions li {
+  margin-left: 0;
+  padding: 0 5px 0 10px;
+  border-left: 1px solid #000;
+  list-style: none;
+  display: inline;
+}
+.actions li a {
+  vertical-align: 8%;
 }
 
 /* Begin Orders */

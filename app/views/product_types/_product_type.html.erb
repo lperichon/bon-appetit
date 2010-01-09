@@ -1,0 +1,6 @@
+<div id='<%= dom_id @product_type %>'>
+  <p>
+    <b><%= ProductType.human_attribute_name('name') %>:</b>
+    <%= in_place_editor_for @product_type, :name => 'name' %>
+  </p>
+</div>
