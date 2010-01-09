@@ -35,11 +35,6 @@ class ProductTypesControllerTest < ActionController::TestCase
       should_respond_with :success
     end
 
-    context "get edit" do
-      setup { get :edit, :id => ProductType.make(:restaurant => @current_restaurant).id }
-      should_respond_with :success
-    end
-
     context "update product type" do
       setup do
         product_type = ProductType.make(:restaurant => @current_restaurant)
