@@ -7,13 +7,13 @@
   <div class='product element <%= odd_or_even(index) %>'>
     <h3><%=h product.product_type.name %></h3>
     <ul>
-      <li><%=h product.code %></li>
-      <li><%=h product.name %></li>
-      <li><%=h product.description %></li>
-      <li><%=h number_to_currency(product.price, :unit => "$") %></li>
+      <li><span class='label'><%= Product.human_attribute_name('code') %>:</span> <%=h product.code %></li>
+      <li><span class='label'><%= Product.human_attribute_name('name') %>:</span> <%=h product.name %></li>
+      <li><span class='label'><%= Product.human_attribute_name('description') %>:</span> <%=h product.description %></li>
+      <li><span class='label'><%= Product.human_attribute_name('price') %>:</span> <%=h number_to_currency(product.price, :unit => "$") %></li>
     </ul>
     <ul class='actions'>
-      <li class='first'><%= link_to 'Show', product_path(product) %></li>
+      <li class='first'><%= link_to t('actions.show'), product_path(product) %></li>
       <li><%= link_to t('actions.destroy'), product_path(product), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
     </ul>
   </div>
