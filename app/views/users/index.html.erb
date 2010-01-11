@@ -1,20 +1,18 @@
-<h1>Listing users</h1>
-
-<table class='table'>
-  <tr>
-    <th>Username</th>
-    <th>Email</th>
-    <th class='last'>Actions</th>
-  </tr>
-
+<h1><%= t('.title') %></h1>
+<ul class='actions'>
+  <li class='first'><%= link_to t('.new'), new_user_path %></li>
+</ul>
+<div class='list'>
 <% @users.each_with_index do |resource, index| %>
-  <tr class='<%= odd_or_even(index) %>'>
-    <td><%=h resource.username %></td>
-    <td><%=h resource.email %></td>
-    <td class='last'><%= link_to 'Show', user_path(resource) %> | <%= link_to 'Edit', edit_user_path(resource) %> | <%= link_to 'Destroy', user_path(resource), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <div class='user element <%= odd_or_even(index) %>'>
+    <h3><%=h resource.username %></h3>
+    <ul>
+      <li><%=h resource.email %></li>
+    </ul>
+    <ul class='actions'>
+      <li class='first'><%= link_to t('actions.show'), user_path(resource) %></li>
+      <li><%= link_to t('actions.destroy'), user_path(resource), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+    </ul>
+  </div>
 <% end %>
-</table>
-<div class='actions-bar'>
-  <%= link_to 'New user', new_user_path %>
 </div>

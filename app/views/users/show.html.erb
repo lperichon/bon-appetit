@@ -1,14 +1,7 @@
-<h1>Viewing <%= @user.username %></h1>
+<h1><%= t('.title') %></h1>
 
-<p>
-  <b>Username:</b>
-  <%=h @user.username %>
-</p>
+<%= render @user %>
 
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<ul class='actions'>
+  <li class='first'><%= link_to 'Back', users_path %></li>
+</ul>

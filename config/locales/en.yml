@@ -245,6 +245,13 @@ en:
       add_email: "Add new email"
       add_website: "Add new website"
       add_instant_messenger: "Add new instant messenger"
+    update:
+      success: "User updated successfully!"
+    show:
+      title: "Viewing User"
+    index:
+      title: "Listing users"
+      new: "New user"
   menu:
     dashboard: "Dashboard"
     orders: "Orders"

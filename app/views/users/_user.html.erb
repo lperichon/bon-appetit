@@ -1,11 +1,19 @@
 <div id='<%= dom_id @user %>'>
   <p>
+    <b><%= User.human_attribute_name('username') %>:</b>
+    <%= in_place_editor_for @user, {:name => 'users/username'}, {:display => @user.username} %>
+  </p>
+  <p>
+    <b><%= User.human_attribute_name('email') %>:</b>
+    <%= in_place_editor_for @user, {:name => 'users/email'}, {:display => @user.email} %>
+  </p>
+  <p>
     <b><%= User.human_attribute_name('name') %>:</b>
     <%= in_place_editor_for @user, {:name => 'contacts/name'}, {:display => @user.name} %>
   </p>
   <p>
     <b><%= User.human_attribute_name('birthday') %>:</b>
-    <%= in_place_editor_for @user, {:name => 'contacts/birthday'}, {:display => @user.birthday} %>
+    <%= in_place_editor_for @user, {:name => 'contacts/birthday'}, {:display => @user.birthday ? @user.birthday : '-'} %>
   </p>
   <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
   <p>
