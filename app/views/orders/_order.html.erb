@@ -1,6 +1,6 @@
 <div id='<%= dom_id @order %>'>
   <p>
-    <b><%= Order.human_attribute_name('contact') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('contact') %>:</span>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:contact => 'orders/contact'}, {:display => @order.contact.nil? ? 'no contact' : @order.contact.name} %>
     <% else %>
@@ -9,7 +9,7 @@
   </p>
 
   <p>
-    <b><%= Order.human_attribute_name('table') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('table') %>:</span>
     <% if @order.open? %>
         <%= in_place_editor_for @order, {:table_id => 'orders/table'}, {:display => @order.table_id.blank? ? 'no table' : @order.table_id} %>
     <% else %>
@@ -18,7 +18,7 @@
   </p>
 
   <p>
-    <b><%= Order.human_attribute_name('generated_at') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('generated_at') %>:</span>
     <% if @order.open? %>
       <%= in_place_editor_for @order, :generated_at => 'orders/generated_at' %>
     <% else %>
@@ -27,7 +27,7 @@
   </p>
 
   <p>
-    <b><%= Order.human_attribute_name('discount') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('discount') %>:</span>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:discount => 'orders/discount'}, {:display => discount_label(@order.discount)} %>
     <% else %>
@@ -36,12 +36,12 @@
   </p>
 
   <p>
-    <b><%= Order.human_attribute_name('total') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('total') %>:</span>
     <%=h number_to_currency(@order.total, :unit => "$") %>
   </p>
 
   <p>
-    <b><%= Order.human_attribute_name('closed') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('closed') %>:</span>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:closed => 'orders/closed'} %>
     <% else %>
@@ -51,7 +51,7 @@
   </p>
 
   <p>
-    <b><%= Order.human_attribute_name('notes') %>:</b>
+    <span class='label'><%= Order.human_attribute_name('notes') %>:</span>
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:notes => 'orders/notes'} %>
     <% else %>

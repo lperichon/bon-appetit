@@ -1,22 +1,22 @@
 <div id='<%= dom_id @product %>'>
   <p>
-    <b><%= Product.human_attribute_name('product_type') %>:</b>
+    <span class='label'><%= Product.human_attribute_name('product_type') %>:</span>
     <%= in_place_editor_for @product, {:product_type => 'product_type'}, {:display => @product.product_type.name} %>
   </p>
   <p>
-    <b><%= Product.human_attribute_name('name') %>:</b>
+    <span class='label'><%= Product.human_attribute_name('name') %>:</span>
     <%= in_place_editor_for @product, :name => 'name' %>
   </p>
   <p>
-    <b><%= Product.human_attribute_name('code') %>:</b>
+    <span class='label'><%= Product.human_attribute_name('code') %>:</span>
     <%= in_place_editor_for @product, :code => 'code' %>
   </p>
   <p>
-    <b><%= Product.human_attribute_name('description') %>:</b>
+    <span class='label'><%= Product.human_attribute_name('description') %>:</span>
     <%= in_place_editor_for @product, :description => 'description' %>
   </p>
   <p>
-    <b><%= Product.human_attribute_name('price') %>:</b>
+    <span class='label'><%= Product.human_attribute_name('price') %>:</span>
     <%= in_place_editor_for @product, {:price => 'price'}, {:display => number_to_currency(@product.price, :unit => "$")} %>
   </p>
 </div>

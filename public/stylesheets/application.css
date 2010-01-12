@@ -28,28 +28,12 @@ body {
   -webkit-border-radius:10px;
 }
 
-.list {
-  display: block;
-}
-
-.element {
-  padding: 10px;
-  margin-top: 10px;
-  display: block;
-  background: white;
-  border: 1px solid #6F705B;
-  -moz-border-radius:10px;
-  -webkit-border-radius:10px;
-}
-
-.element h3 {
-  margin: 0;
-}
-
+/* Begin actions */
 .actions {
   margin-left: 0;
   padding-left: 0;
-  display: inline;
+  display: block;
+  text-align: center;
 }
 
 .actions li.first {
@@ -70,9 +54,37 @@ body {
 .actions li a {
   vertical-align: 8%;
 }
+/* End actions */
+
+/* Begin index */
+.list {
+  display: block;
+}
+
+.element {
+  padding: 10px;
+  margin-top: 10px;
+  display: block;
+  background: white;
+  border: 1px solid #6F705B;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+}
+
+.element h3 {
+  margin: 0;
+}
+
+.element .actions {
+  display: inline;
+}
+/* End index */
 
 /* Begin Orders */
 /* End Orders */
+
+/* Begin Contacts */
+/* End Contacts */
 
 /* Begin Dashboard */
 #products_pie {

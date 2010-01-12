@@ -1,23 +1,23 @@
 <div id='<%= dom_id @user %>'>
   <p>
-    <b><%= User.human_attribute_name('username') %>:</b>
+    <span class='label'><%= User.human_attribute_name('username') %>:</span>
     <%= in_place_editor_for @user, {:name => 'users/username'}, {:display => @user.username} %>
   </p>
   <p>
-    <b><%= User.human_attribute_name('email') %>:</b>
+    <span class='label'><%= User.human_attribute_name('email') %>:</span>
     <%= in_place_editor_for @user, {:name => 'users/email'}, {:display => @user.email} %>
   </p>
   <p>
-    <b><%= User.human_attribute_name('name') %>:</b>
+    <span class='label'><%= User.human_attribute_name('name') %>:</span>
     <%= in_place_editor_for @user, {:name => 'contacts/name'}, {:display => @user.name} %>
   </p>
   <p>
-    <b><%= User.human_attribute_name('birthday') %>:</b>
+    <span class='label'><%= User.human_attribute_name('birthday') %>:</span>
     <%= in_place_editor_for @user, {:name => 'contacts/birthday'}, {:display => @user.birthday ? @user.birthday : '-'} %>
   </p>
   <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
   <p>
-    <b><%= User.human_attribute_name(field_name.pluralize) %>:</b>
+    <span class='label'><%= User.human_attribute_name(field_name.pluralize) %>:</span>
     <ul>
     <% @user.send(field_name.pluralize).each do |field| %>
       <li><%= in_place_editor_for [@user, field], {field_name.to_sym => field_name.pluralize + '/' + field_name}, {:display => send(field_name + '_label',field)} %></li>
