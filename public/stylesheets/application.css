@@ -85,4 +85,9 @@ body {
   width: 610px;
   height: 300px;
 }
+#total_by_dom {
+  margin: 0 auto;
+  width: 420px;
+  height: 320px;
+}
 /* End Dashboard */

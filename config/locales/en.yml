@@ -295,6 +295,7 @@ en:
     show:
       total_by_dow_hour_title: "Total Sales By Day and Hour"
       products_pie_title: "Products Sold"
+      total_by_dom_graph_title: "Total by day"
   phones:
     update:
       notice: "Phone updated successfully!"

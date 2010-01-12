@@ -1,6 +1,7 @@
 <h2>Welcome <%= current_user.username %>!</h2>
 <div id="total_by_dow_hour"></div>
 <div id="products_pie"></div>
+<div id="total_by_dom"></div>
 <% javascript_tag do %>
   window.onload = function () {
     var total_by_dow_hour_graph = Raphael("total_by_dow_hour"),
@@ -36,5 +37,12 @@
             this.label[1].attr({"font-weight": 400});
         }
     });
+
+    var r = Raphael("total_by_dom");
+    r.g.text(200, 10, '<%= t('dashboards.show.total_by_dom_graph_title') %>').attr({"font-size": 20});
+    var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    var y = [<%= @total_by_dom.collect {|v| "#{v}"}.join(',') %>]
+    var y2 = [<%= @total_by_dom_prev.collect {|v| "#{v}"}.join(',') %>]
+    r.g.linechart(20, 5, 400, 300, x, [y, y2], {shade: true, axis: "0 0 1 1"});
   };
 <% end %>

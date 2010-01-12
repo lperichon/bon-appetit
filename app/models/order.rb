@@ -13,8 +13,10 @@ class Order < ActiveRecord::Base
 
   named_scope :opened, :conditions  => {:closed => false}
   named_scope :this_month, :conditions => ["generated_at >= ?", Date.today.beginning_of_month]
+  named_scope :between, proc {|s, e| {:conditions => ["generated_at BETWEEN ? AND ?", s, e]}}
 
   # sqlite3 specific move this to environments or find out what happened to Searchlogic's modifiers
+  named_scope :by_dom, proc {|dom| {:conditions => ["strftime('%d', generated_at) = ?", "%02d" % dom]} }
   named_scope :by_dow, proc {|dow| {:conditions => ["strftime('%w', generated_at) = '?'", dow]} }
   named_scope :by_hour, proc {|h| {:conditions => ["strftime('%H', generated_at) = ?", "%02d" % h]} }
 

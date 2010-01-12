@@ -14,6 +14,17 @@ class DashboardsController < UserApplicationController
     @products_pie_labels = products_count.collect {|d| d[0]}
     @products_pie_data = products_count.collect {|d| d[1]}
     #@products_pie_data = [55, 20, 13, 32, 5, 1, 2, 10]
+
+    last_month_start = Date.today.beginning_of_month - 1.month
+    last_month_end = Date.today.beginning_of_month - 1.day 
+    @total_by_dom_prev = @total_by_dom = []
+    (1..31).each do |dom|
+      @total_by_dom_prev << current_restaurant.orders.between(last_month_start, last_month_end).by_dom(dom).sum('total')
+      @total_by_dom << current_restaurant.orders.this_month.by_dom(dom).sum('total')
+    end
+
+    @total_by_dom_prev = [294, 300, 204, 255, 348, 383, 334, 217, 114, 33, 44, 26, 41, 39, 52, 17, 13, 2, 0, 2, 5, 6, 64, 153, 294, 313, 195, 280, 365, 392, 340]
+    @total_by_dom = [184, 87, 35, 43, 55, 53, 79, 49, 19, 6, 1, 0, 1, 1, 10, 50, 181, 246, 246, 220, 249, 355, 373, 332, 233, 85, 54, 28, 33, 45, 72]
   end
 
 end
