@@ -9,6 +9,14 @@ body {
 #header h1 {
   float: left;
   margin: 10px;
+  font-family: "sniglet-1","sniglet-2",sans-serif;
+}
+#header h1 a {
+  text-decoration: none;
+}
+#header h1 a:hover {
+  background: inherit;
+  color: inherit;
 }
 
 #main {
@@ -99,7 +107,7 @@ body {
 }
 #total_by_dom {
   margin: 0 auto;
-  width: 420px;
-  height: 320px;
+  width: 620px;
+  height: 420px;
 }
 /* End Dashboard */
