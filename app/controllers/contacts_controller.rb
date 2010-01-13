@@ -7,7 +7,12 @@ class ContactsController < UserApplicationController
   respond_to :js, :only => :update
 
   def index
-    @contacts = apply_scopes(current_restaurant.contacts).all
+    @search = current_restaurant.contacts.search(params[:search])
+    if params[:search]
+      @contacts = @search.all
+    else
+      @contacts = apply_scopes(current_restaurant.contacts).all
+    end
   end
 
   def update

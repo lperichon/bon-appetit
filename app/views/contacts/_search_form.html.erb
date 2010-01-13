@@ -1,0 +1,13 @@
+<h2><%= t('contacts.search_form.title') %></h2>
+<% semantic_form_for @search,  :html => { :id => 'search_contacts_form' } do |f| %>
+  <% f.inputs do %>
+    <%= f.input :first_name_like %>
+    <%= f.input :middle_name_like %>
+    <%= f.input :last_name_like %>
+    <%= f.input :phones_number_like %>
+  <% end %>
+  <% f.buttons do %>
+    <li><input name="commit" type="submit" value="<%= t('actions.search') %>" /></li>
+    <li><%= link_to_function t('actions.cancel'), "$('#search_contacts.modal').hide();$('#search_contacts_form').reset()"%></li>
+  <% end %>
+<% end %>

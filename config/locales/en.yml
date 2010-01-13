@@ -40,6 +40,7 @@ en:
     show: "Show"
     destroy: "Destroy"
     confirm_destroy: "Are you sure?"
+    search: "Search"
   activerecord: 
     errors: 
       messages: 
@@ -291,6 +292,8 @@ en:
       add_email: "Add new email"
       add_website: "Add new website"
       add_instant_messenger: "Add new instant messenger"
+    search_form:
+      title: "Search contacts"
   dashboards:
     show:
       total_by_dow_hour_title: "Total Sales By Day and Hour"

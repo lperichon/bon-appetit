@@ -1,12 +1,15 @@
 <h1><%= t('contacts.index.title') %></h1>
 <ul class='list actions'>
   <li class='first'><%= link_to t('.new'), new_contact_path %></li>
+  <li><%= link_to_function t('actions.search'), "open_modal('search_contacts')" %></li>
   <li><%= link_to t('contacts.index.all'), contacts_path %></li>
   <% ('a'..'z').each do |c| %>
     <li><%= link_to c, contacts_path(:starts_with => c) %></li>
   <% end %>
 </ul>
-
+<div id='search_contacts' class='modal' style='display:none;'>
+  <%= render :partial => 'search_form' %>
+</div>
 <div id="orders" class='list'>
 <% @contacts.each_with_index do |contact, index| %>
   <div class='contact element <%= odd_or_even(index) %>'>
