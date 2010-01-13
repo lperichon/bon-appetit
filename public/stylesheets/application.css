@@ -40,6 +40,11 @@ body {
 .actions {
   margin-left: 0;
   padding-left: 0;
+  display: inline;
+  text-align: left;
+}
+
+.list.actions {
   display: block;
   text-align: center;
 }
@@ -81,10 +86,6 @@ body {
 
 .element h3 {
   margin: 0;
-}
-
-.element .actions {
-  display: inline;
 }
 /* End index */
 

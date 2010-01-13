@@ -1,5 +1,5 @@
 <h1><%= t('orders.index.title') %></h1>
-<ul class='actions'>
+<ul class='list actions'>
   <li class='first'><%= link_to t('.new'), new_order_path %></li>
   <% if params[:opened].present? %>
     <li><%= link_to t('orders.index.hide_closed'), orders_path %></li>
