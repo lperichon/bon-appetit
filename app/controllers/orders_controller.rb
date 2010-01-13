@@ -4,7 +4,13 @@ class OrdersController < UserApplicationController
   end
 
   def index
-    @orders = apply_scopes(current_restaurant.orders).all
+    @search = current_restaurant.orders.search(params[:search])
+    if params[:search]
+      @orders = @search.all
+    else
+      @orders = apply_scopes(current_restaurant.orders).all
+    end
+
   end
 
   respond_to :js, :only => :update

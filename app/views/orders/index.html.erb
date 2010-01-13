@@ -1,12 +1,11 @@
 <h1><%= t('orders.index.title') %></h1>
 <ul class='list actions'>
   <li class='first'><%= link_to t('.new'), new_order_path %></li>
-  <% if params[:opened].present? %>
-    <li><%= link_to t('orders.index.hide_closed'), orders_path %></li>
-  <% else %>
-    <li><%= link_to t('orders.index.show_closed'), orders_path(:opened => 'false') %></li>
-  <% end %>
+  <li><%= link_to_function t('actions.search'), "open_modal('search_orders')" %></li>
 </ul>
+<div id='search_orders' class='modal' style='display:none;'>
+  <%= render :partial => 'search_form' %>
+</div>
 <div id="orders" class='list'>
 <% @orders.each_with_index do |order, index| %>
   <div class='order element <%= odd_or_even(index) %>'>

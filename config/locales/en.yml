@@ -227,6 +227,8 @@ en:
       title: "New Order"
     new_order_item:
       title: "Add a new order item"
+    search_form:
+      title: "Search orders"
   profiles:
     update:
       success: "Profile successfully updated"

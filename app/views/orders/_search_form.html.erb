@@ -1,0 +1,12 @@
+<h2><%= t('orders.search_form.title') %></h2>
+<% semantic_form_for @search,  :html => { :id => 'search_orders_form' } do |f| %>
+  <% f.inputs do %>
+    <%= f.input :closed, :as => :select %>
+    <%= f.input :total_lt %>
+    <%= f.input :total_gt %>
+  <% end %>
+  <% f.buttons do %>
+    <li><input name="commit" type="submit" value="<%= t('actions.search') %>" /></li>
+    <li><%= link_to_function t('actions.cancel'), "$('#search_orders.modal').hide();$('#search_orders_form').reset()"%></li>
+  <% end %>
+<% end %>
