@@ -6,6 +6,9 @@ class Address < ActiveRecord::Base
   belongs_to :country
   belongs_to :province
 
+  acts_as_mappable :default_units => :kms
+  before_validation :geocode_address
+
   def city_name
     city.name if city
   end
@@ -30,4 +33,23 @@ class Address < ActiveRecord::Base
     self.country = Country.find_or_create_by_name(name.to_s.titleize) unless name.blank?
   end
 
+  def full_address
+    "#{self.address}, #{self.city.name} (#{self.zip}), #{self.province.name}, #{self.country.name}"
+  end
+
+  def mapped?
+    lat && lng
+  end
+
+  def coordinates
+    [lat, lng]
+  end
+
+  private
+
+  def geocode_address
+    geo=Geokit::Geocoders::MultiGeocoder.geocode (self.full_address)
+    errors.add(:address, t('address.geocode_error')) if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
+  end
 end

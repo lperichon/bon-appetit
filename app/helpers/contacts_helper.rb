@@ -4,7 +4,7 @@ module ContactsHelper
   end
 
   def address_label(address)
-    "#{address.type ? address.type.name : nil} - #{address.address}, #{address.city.name} (#{address.zip}), #{address.province.name}, #{address.country.name}"
+    "#{address.type ? address.type.name : nil} - #{address.full_address}"
   end
 
   def email_label(email)

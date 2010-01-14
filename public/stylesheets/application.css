@@ -93,6 +93,9 @@ body {
 /* End Orders */
 
 /* Begin Contacts */
+#gmap {
+  margin-top: 10px;
+}
 /* End Contacts */
 
 /* Begin Dashboard */

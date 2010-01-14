@@ -29,3 +29,9 @@ PhoneType.create!(:name => 'Other')
 WebsiteType.create!(:name => 'Other')
 AddressType.create!(:name => 'Other')
 InstantMessengerType.create!(:name => 'Other')
+InstantMessengerProtocol.create!(:name => 'MSN')
+
+# Create locations
+arg = Country.create!(:name => 'Argentina')
+bsas = arg.provinces.create!(:name => 'Buenos Aires')
+bsas.cities.create!(:name => 'San Isidro') 

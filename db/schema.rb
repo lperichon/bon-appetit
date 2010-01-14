@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100113203844) do
+ActiveRecord::Schema.define(:version => 20100114131853) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20100113203844) do
   create_table "addresses", :force => true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.integer  "type_id",     :default => 1
+    t.integer  "type_id",                                     :default => 1
     t.string   "address"
     t.integer  "city_id"
     t.integer  "province_id"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20100113203844) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "lat",         :precision => 15, :scale => 10
+    t.decimal  "lng",         :precision => 15, :scale => 10
   end
 
   create_table "cities", :force => true do |t|

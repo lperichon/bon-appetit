@@ -30,6 +30,9 @@
   <%= stylesheet_link_tag 'jquery.ui.autocomplete' %>
   <%= stylesheet_link_tag 'jquery.jgrowl' %>
   <%= stylesheet_link_tag "modal" %>
+
+  <%= GMap.header %>
+  <%= @contact.map.to_html if @contact && @contact.map %>
 </head>
 <body>
   <% javascript_tag do -%>

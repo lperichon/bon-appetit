@@ -341,3 +341,5 @@ en:
     index:
       new: "New product"
       title: "Listing products"
+  address:
+    geocode_error: "Could not Geocode address"

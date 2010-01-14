@@ -19,6 +19,9 @@
     <div id='new_<%= field_name %>_form' style='display: none;'>
     <%= render :partial => field_name.pluralize + '/form', :locals => {field_name.to_sym => @contact.send(field_name.pluralize).new} %>
     </div>
+    <% if field_name == 'address' %>
+      <%= @contact.map.div(:width => 600, :height => 400) if @contact && @contact.map %>
+    <% end %>
   </p>
   <% end %>
 </div>
