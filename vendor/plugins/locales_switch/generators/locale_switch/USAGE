@@ -1,0 +1,5 @@
+Description:
+  Add locale column to Model
+
+Example:
+  ./script/generate locale_switch [MODEL || 'user']

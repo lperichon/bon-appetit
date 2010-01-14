@@ -1,0 +1,35 @@
+= LocalesSwitch
+
+Following the idea from http://rails-i18n.org/wiki/pages/available_locales
+
+LocalesSwitch provides a simple way to add locale switching in your application.
+It extends Controller with *prepend_before_filter :set_locale*
+
+In Controller available methods are: 
+ *set_locale* - set current locale from params, session, current_user.site_language or I18n.default_locale
+ *available_locales* - return a hash of available locales. Key: language code, Value: language name. 
+Ex: # {"it-IT" => "Italiano", "en-US" => "American English"}
+
+In Helper: 
+ *language_selection* - display locales
+ *locale_identifier* - indicate a params key that must hold a locale code.
+
+== Example
+
+  <%= language_selection %> # => <a href="?locale=en">American English</a>&nbsp;Spanish
+  # NOTE: in this sample Spanish is currently selected lang.
+  
+  <% language_selection do |language_code, language| %>
+    <%= link_to language, "?#{locale_identifier}=#{language_code}" %><br />
+  <% end %> 
+  # => <a href="?locale=en">American English</a>&nbsp;"<a href="?locale=sp">Spanish</a>
+
+= TODO:
+
+add tests
+ability to change current_user prefered language and logged_in? identificator
+
+* GitHub Source: http://github.com/olkeene/locales_switch/
+
+Patches, ideas are always welcome.
+Copyright (c) 2008 Zhurbiy Oleg ( Ol.keene ), released under the MIT license
