@@ -1,5 +1,7 @@
 <% semantic_form_for(@restaurant, :url => {:controller => :setup, :action => :save_restaurant}) do |f| %>
-  <%= f.inputs %>
+  <% f.inputs do %>
+    <%= f.input :name %>
+  <% end %>
   <%= f.buttons %>
 <% end %>
 <%= link_to_previous_step :setup %> | <%= link_to_next_step :setup %>

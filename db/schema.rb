@@ -9,10 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100101201410) do
+ActiveRecord::Schema.define(:version => 20100113203844) do
+
+  create_table "address_type_translations", :force => true do |t|
+    t.string   "locale"
+    t.integer  "address_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "address_types", :force => true do |t|
-    t.string "description"
   end
 
   create_table "addresses", :force => true do |t|
@@ -29,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
   end
 
   create_table "cities", :force => true do |t|
-    t.string  "name"
     t.integer "province_id"
+    t.string  "name"
   end
 
   create_table "contacts", :force => true do |t|
@@ -45,8 +52,15 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
     t.string "name"
   end
 
+  create_table "email_type_translations", :force => true do |t|
+    t.string   "locale"
+    t.integer  "email_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "email_types", :force => true do |t|
-    t.string "description"
   end
 
   create_table "emails", :force => true do |t|
@@ -62,8 +76,15 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
     t.string "name"
   end
 
+  create_table "instant_messenger_type_translations", :force => true do |t|
+    t.string   "locale"
+    t.integer  "instant_messenger_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "instant_messenger_types", :force => true do |t|
-    t.string "description"
   end
 
   create_table "instant_messengers", :force => true do |t|
@@ -82,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "discount"
+    t.decimal  "discount",   :precision => 3, :scale => 2
     t.decimal  "subtotal",   :precision => 8, :scale => 2
     t.decimal  "unit_price", :precision => 8, :scale => 2
     t.text     "notes"
@@ -93,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
     t.datetime "generated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "discount"
+    t.decimal  "discount",      :precision => 3, :scale => 2
     t.boolean  "closed"
     t.decimal  "total",         :precision => 8, :scale => 2
     t.text     "notes"
@@ -101,8 +122,15 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
     t.integer  "contact_id"
   end
 
+  create_table "phone_type_translations", :force => true do |t|
+    t.string   "locale"
+    t.integer  "phone_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "phone_types", :force => true do |t|
-    t.string "description"
   end
 
   create_table "phones", :force => true do |t|
@@ -133,8 +161,8 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
   end
 
   create_table "provinces", :force => true do |t|
-    t.string  "name"
     t.integer "country_id"
+    t.string  "name"
   end
 
   create_table "restaurants", :force => true do |t|
@@ -227,8 +255,15 @@ ActiveRecord::Schema.define(:version => 20100101201410) do
     t.date     "birthday"
   end
 
+  create_table "website_type_translations", :force => true do |t|
+    t.string   "locale"
+    t.integer  "website_type_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "website_types", :force => true do |t|
-    t.string "description"
   end
 
   create_table "websites", :force => true do |t|

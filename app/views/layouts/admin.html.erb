@@ -15,8 +15,9 @@
       <div id="user-navigation">
         <ul>
           <% if current_user %>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Settings</a></li>
+          <% language_selection do |language_code, language| %>
+            <li><%= link_to language, "?#{locale_identifier}=#{language_code}" %></li>
+          <% end %>
           <li><a href="/admin/logout" class="logout">Logout</a></li>
           <% else %>
           <li><a href="/admin/login" class="login">Login</a></li>
@@ -29,6 +30,12 @@
         <%= semantic_menu do |root|
             root.add "Restaurants", admin_restaurants_path
             root.add "Countries", admin_countries_path
+            root.add "Email Types", admin_email_types_path
+            root.add "Phone Types", admin_phone_types_path
+            root.add "Address Types", admin_address_types_path
+            root.add "Instant Messenger Types", admin_instant_messenger_types_path
+            root.add "Instant Messenger Protocols", admin_instant_messenger_protocols_path
+            root.add "Website Types", admin_website_types_path
         end %>
         <% else %>
         <ul><li><a href="#">&nbsp</a></li></ul>

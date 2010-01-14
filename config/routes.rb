@@ -18,6 +18,12 @@ ActionController::Routing::Routes.draw do |map|
         province.resources :cities
       end
     end
+    admin.resources :email_types
+    admin.resources :phone_types
+    admin.resources :address_types
+    admin.resources :instant_messenger_types
+    admin.resources :instant_messenger_protocols
+    admin.resources :website_types
     admin.resources :user_sessions
   end
   

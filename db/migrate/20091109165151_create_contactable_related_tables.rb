@@ -51,7 +51,7 @@ class CreateContactableRelatedTables < ActiveRecord::Migration
     end
 
     create_table  :address_types do |t|
-      t.string    :description
+      t.string    :name
     end
 
     create_table  :cities do |t|
@@ -64,7 +64,7 @@ class CreateContactableRelatedTables < ActiveRecord::Migration
     end
 
     create_table  :email_types do |t|
-      t.string    :description
+      t.string    :name
     end
 
     create_table  :instant_messenger_protocols do |t|
@@ -72,11 +72,11 @@ class CreateContactableRelatedTables < ActiveRecord::Migration
     end
 
     create_table  :instant_messenger_types do |t|
-      t.string    :description
+      t.string    :name
     end
 
     create_table  :phone_types do |t|
-      t.string    :description
+      t.string    :name
     end
 
     create_table  :provinces do |t|
@@ -85,7 +85,7 @@ class CreateContactableRelatedTables < ActiveRecord::Migration
     end
 
     create_table  :website_types do |t|
-      t.string    :description
+      t.string    :name
     end
   end
 
