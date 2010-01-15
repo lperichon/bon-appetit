@@ -38,18 +38,57 @@
         }
     });
 
-    var r = Raphael("total_by_dom");
-    r.g.text(200, 10, '<%= t('dashboards.show.total_by_dom_graph_title') %>').attr({"font-size": 20});
-    var x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
-    var y = [<%= @total_by_dom.collect {|v| "#{v}"}.join(',') %>]
-    var y2 = [<%= @total_by_dom_prev.collect {|v| "#{v}"}.join(',') %>]
-    r.g.linechart(20, 5, 600, 400, x, [y, y2], {shade: true, axis: "0 0 1 1", symbol: "o"}).hoverColumn(function () {
-                    this.tags = r.set();
-                    for (var i = 0, ii = this.y.length; i < ii; i++) {
-                        this.tags.push(r.g.tag(this.x, this.y[i], '$' + this.values[i], 160, 5).insertBefore(this).attr([{fill: "#000"}, {fill: this.symbols[i].attr("fill")}]));
-                    }
-                }, function () {
-                    this.tags && this.tags.remove();
-                });
-  };
+    var chart = new Highcharts.Chart({
+    chart: {
+      renderTo: 'total_by_dom',
+      defaultSeriesType: 'areaspline'
+    },
+    title: {
+      text: '<%= t('dashboards.show.total_by_dom_graph_title') %>',
+      style: {
+        'font-size': '20',
+        'color': 'black'
+      }
+    },
+    legend: {
+      layout: 'vertical',
+      style: {
+         position: 'absolute',
+         bottom: 'auto',
+         left: '100px',
+         top: '60px'
+      },
+      borderWidth: 1,
+      backgroundColor: '#FFFFFF'
+   },
+   xAxis: {
+      categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+   },
+   yAxis: {
+      title: {
+         text: 'Total Sales'
+      }
+   },
+   tooltip: {
+      formatter: function() {
+                return '<b>'+ this.series.name +'</b><br/>'+ '$' + this.y;
+      }
+   },
+   credits: {
+      enabled: false
+   },
+   plotOptions: {
+      areaspline: {
+         fillOpacity: 0.5
+      }
+   },
+   series: [{
+      name: 'This Month',
+      data: [<%= @total_by_dom.collect {|v| "#{v}"}.join(',') %>]
+   }, {
+      name: 'Last Month',
+      data: [<%= @total_by_dom_prev.collect {|v| "#{v}"}.join(',') %>]
+   }]
+ });
+};
 <% end %>
