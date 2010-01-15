@@ -65,4 +65,23 @@ module ApplicationHelper
     flash.discard
     output
   end
+
+  def refresh_map(addresses)
+    out = ""
+    out << 'map.clearOverlays();'
+    addresses.each do |address|
+      if address.mapped?
+        lat = address.lat
+        lng = address.lng
+        info = map_address_info(address)
+        out << "var marker = addInfoWindowToMarker(new GMarker(new GLatLng(#{lat}, #{lng})), '#{info}', {});"
+        out << "map.addOverlay(marker);"
+      end
+    end
+    out
+  end
+
+  def map_address_info(address)
+    "#{address.type.name}<br/>#{address.full_address}"
+  end
 end

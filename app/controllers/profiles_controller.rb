@@ -1,6 +1,6 @@
 class ProfilesController < UserApplicationController
   def show
-    @user = current_user
+    @user = @parent = current_user
   end
 
   def update

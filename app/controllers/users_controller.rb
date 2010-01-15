@@ -8,8 +8,14 @@ class UsersController < UserApplicationController
 
   def update
     update! do |success, failure|
+
       success.js { flash[:notice] = t('users.update.success') }
     end
+  end
+
+  def show
+    @parent = @user
+    show!
   end
 
   # POST /users
