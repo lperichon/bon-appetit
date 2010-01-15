@@ -2,6 +2,8 @@
 
 <%= render @contact %>
 
+<%= @contact.map.div(:width => 600, :height => 400) if @contact && @contact.map %>
+
 <ul class='actions'>
   <li class='first'><%= link_to t('actions.back'), contacts_path %></li>
 </ul>

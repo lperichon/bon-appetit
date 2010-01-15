@@ -9,8 +9,5 @@
   </p>
   <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
     <%= render :partial => 'shared/contactable_field', :locals => {:field_name => field_name} %>
-    <% if field_name == 'address' %>
-        <%= @contact.map.div(:width => 600, :height => 400) if @contact && @contact.map %>
-    <% end %>
   <% end %>
 </div>

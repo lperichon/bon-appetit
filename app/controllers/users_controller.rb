@@ -13,11 +13,6 @@ class UsersController < UserApplicationController
     end
   end
 
-  def show
-    @parent = @user
-    show!
-  end
-
   # POST /users
   # POST /users.xml
   def create

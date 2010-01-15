@@ -1,3 +1,10 @@
+<%
+    @parent = if @contact
+      @contact
+    else
+      @user
+    end
+%>
 <div class='multi <%= field_name.pluralize %>'>
   <span class='label'><%= @parent.class.human_attribute_name(field_name.pluralize) %>:</span>
   <ul>
