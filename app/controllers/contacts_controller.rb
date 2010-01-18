@@ -22,9 +22,17 @@ class ContactsController < UserApplicationController
   end
 
   def autocomplete
-    @contacts = current_restaurant.contacts.first_name_or_middle_name_or_last_name_like("#{params[:val]}")
+    @contacts = current_restaurant.contacts.phones_number_like("#{params[:val]}")
+    if @contacts.empty?
+      @contacts = current_restaurant.contacts.first_name_or_middle_name_or_last_name_like("#{params[:val]}")
+    end
+
+    @phones = []
+    @contacts.each do |c|
+      @phones += c.phones
+    end
     respond_to do |format|
-      format.json { render :json => @contacts.collect {|c| {:id => c.id, :text => c.name}}.to_json, :layout => false}
+      format.json { render :json => @phones.collect {|p| {:id => p.owner.id, :text => "#{p.owner.name} - #{p.number}"}}.to_json, :layout => false}
     end
   end
 
