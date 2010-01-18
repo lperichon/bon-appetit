@@ -4,9 +4,7 @@
 function open_modal(element) {
   //Get the window height and width
   var winH = $(window).height();
-  console.log(winH);
   var winW = $(window).width();
-  console.log(winW);
 
   //Set the popup window to center
   $('#' + element + '.modal').css('top', winH/2-$('#' + element + '.modal').height()/2);
