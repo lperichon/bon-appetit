@@ -6,6 +6,13 @@ class UserApplicationController < ApplicationController
 
   before_filter :require_user
   before_filter :setup
+  before_filter :set_timezone
+
+  def set_timezone
+    if current_restaurant
+      Time.zone = current_restaurant.timezone
+    end
+  end
 
   def setup
     unless current_restaurant

@@ -3,7 +3,7 @@ class UserNotifier < ActionMailer::Base
     subject "Password Reset Instructions"
     from "Binary Logic Notifier <noreply@binarylogic.com>"
     recipients user.email
-    sent_on Time.now
+    sent_on Time.zone.now
     body :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
   end
 
@@ -11,7 +11,7 @@ class UserNotifier < ActionMailer::Base
     subject       "Activation Instructions"
     from          "Binary Logic Notifier <noreply@binarylogic.com>"
     recipients    user.email
-    sent_on       Time.now
+    sent_on       Time.zone.now
     body          :account_activation_url => register_url(user.perishable_token)
   end
 
@@ -19,7 +19,7 @@ class UserNotifier < ActionMailer::Base
     subject       "Activation Instructions"
     from          "Binary Logic Notifier <noreply@binarylogic.com>"
     recipients    user.email
-    sent_on       Time.now
+    sent_on       Time.zone.now
     body          :account_activation_url => register_url(user.perishable_token), :restaurant_name => restaurant.name
   end
 
@@ -27,7 +27,7 @@ class UserNotifier < ActionMailer::Base
     subject       "Activation Complete"
     from          "Binary Logic Notifier <noreply@binarylogic.com>"
     recipients    user.email
-    sent_on       Time.now
+    sent_on       Time.zone.now
     body          :root_url => root_url
   end
 

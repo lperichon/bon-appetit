@@ -8,7 +8,7 @@ class UsersController < UserApplicationController
 
   def update
     update! do |success, failure|
-
+      session[:locale] = @user.locale
       success.js { flash[:notice] = t('users.update.success') }
     end
   end

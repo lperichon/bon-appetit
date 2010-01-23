@@ -10,12 +10,9 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   filter_parameter_logging :password, :password_confirmation, :credit_card
   
-  helper_method :current_user_session, :current_user, :current_restaurant, :logged_in?
+  helper_method :current_user_session, :current_user, :current_restaurant, :available_locales
 
   private
-  def logged_in?
-    false
-  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

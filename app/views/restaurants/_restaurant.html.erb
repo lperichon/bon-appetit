@@ -11,4 +11,9 @@
     <span class='label'><%= Restaurant.human_attribute_name('tax_value') %>:</span>
     <%= in_place_editor_for @restaurant, {:tax_value => 'tax_value'}, {:path => restaurant_path} %>
   </p>
+
+  <p>
+    <span class='label'><%= Restaurant.human_attribute_name('timezone') %>:</span>
+    <%= in_place_editor_for @restaurant, {:timezone => 'timezone'}, {:display => @restaurant.timezone.blank? ? '-' : @restaurant.timezone ,:path => restaurant_path} %>
+  </p>
 </div>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100114131853) do
+ActiveRecord::Schema.define(:version => 20100118190152) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20100114131853) do
     t.integer  "manager_id"
     t.boolean  "include_tax"
     t.decimal  "tax_value",   :precision => 3, :scale => 2
+    t.string   "timezone"
   end
 
   create_table "restaurants_users", :id => false, :force => true do |t|
@@ -255,6 +256,7 @@ ActiveRecord::Schema.define(:version => 20100114131853) do
     t.string   "middle_name"
     t.string   "last_name"
     t.date     "birthday"
+    t.string   "locale"
   end
 
   create_table "website_type_translations", :force => true do |t|

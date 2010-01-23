@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
   default_scope :order => 'generated_at DESC'
 
   named_scope :opened, :conditions  => {:closed => false}
-  named_scope :this_month, :conditions => ["generated_at >= ?", Date.today.beginning_of_month]
+  named_scope :this_month, :conditions => ["generated_at >= ?", Time.zone.today.beginning_of_month]
   named_scope :between, proc {|s, e| {:conditions => ["generated_at BETWEEN ? AND ?", s, e]}}
 
   # sqlite3 specific move this to environments or find out what happened to Searchlogic's modifiers
@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
   named_scope :by_hour, proc {|h| {:conditions => ["strftime('%H', generated_at) = ?", "%02d" % h]} }
 
   def after_initialize
-    self.generated_at ||= DateTime.now
+    self.generated_at ||= Time.zone.now
     self.discount ||= 0
   end
 

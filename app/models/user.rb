@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :on => :update
   validates_presence_of :email
 
-  attr_accessible :username, :email, :password, :password_confirmation, :first_name, :middle_name, :last_name, :birthday, :phones_attributes, :addresses_attributes, :emails_attributes, :instant_messengers_attributes, :websites_attributes
+  attr_accessible :username, :email, :password, :password_confirmation, :first_name, :middle_name, :last_name, :birthday, :phones_attributes, :addresses_attributes, :emails_attributes, :instant_messengers_attributes, :websites_attributes, :locale
 
   # we need to make sure that either a password or openid gets set when the user activates his account
   def has_no_credentials?

@@ -12,7 +12,7 @@ module LocalesSwitch
   module Controller
     def self.included(base)
       base.class_eval do
-        prepend_before_filter :set_locale        
+        before_filter :set_locale        
       end
     end
   
@@ -20,7 +20,7 @@ module LocalesSwitch
     
     def set_locale
       # I18n.default_locale returns the current default locale. Defaults to 'en-US'
-      locale = params[LOCALE_IDENTIFIER] || session[LOCALE_IDENTIFIER] || (current_user.send(LOCALE_IDENTIFIER) if logged_in?) || I18n.default_locale
+      locale = params[LOCALE_IDENTIFIER] || session[LOCALE_IDENTIFIER] || (current_user.send(LOCALE_IDENTIFIER) if current_user) || I18n.default_locale
       session[LOCALE_IDENTIFIER] = I18n.locale = locale
     end
     
