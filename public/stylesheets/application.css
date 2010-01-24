@@ -28,7 +28,7 @@ body {
   font-weight: bold;
 }
 
-#content.show {
+#content.show, #content.edit, #content.update {
   background: white;
   padding: 10px;
   border: 1px solid #6F705B;

@@ -42,7 +42,12 @@ en:
     destroy: "Destroy"
     confirm_destroy: "Are you sure?"
     search: "Search"
-  activerecord: 
+  activerecord:
+    attributes:
+      subscription:
+        plan: 'Current Plan'
+        balance: 'Balance on Account'
+        profile: 'Credit Card'
     errors: 
       messages: 
         greater_than_or_equal_to: must be greater than or equal to {{count}}
@@ -348,3 +353,41 @@ en:
       title: "Listing products"
   address:
     geocode_error: "Could not Geocode address"
+  subscriptions:
+    credit_card:
+      title: "Credit Card"
+      expiration_date: "Card expires on:"
+    edit:
+      title: "Change Subscription Plan"
+      change_plan: "Change Plan"
+      plan: "Plan"
+      cancel_subscription: "I want to cancel my subscription"
+    history:
+      title: "Transaction History"
+    update:
+      plan_not_found: "Plan not available"
+      resources_exceeded: "You cannot change to plan {{plan_name}}. Resources exceeded"
+      success: "Successfully changed plans."
+      error_charging: "An error occured trying to charge your credit card. Please update your card information."
+      success_charging: "Thank you for your payment. Your credit card has been charged {{amount}}"
+    cancel:
+      success: "Your subscription has been canceled. You still have limited access to this site."
+    store_credit_card:
+      error_charging: "An error occured trying to charge your credit card. Please update your card information."
+      success_charging: "Thank you for your payment. Your credit card has been charged {{amount}}"
+      success: "Credit card info successfully updated. No charges have been made at this time."
+    show:
+      title: "Subscription Details"
+      edit: "Change Plan"
+      account_past_due: "Account is past due. Please update your credit card information now."
+      trial_ends: "Trial Period Ends"
+      paid_through: "Paid Through"
+      billing_info: "Billing Info"
+      no_credit_card: "(no credit card on file)"
+      error_processing_card: "There was an error processing your credit card."
+      update_credit_card: "Update Credit Card"
+      latest_transaction: "Latest Transaction"
+      transaction_success: "{{action_name}} card."
+      transaction_failed: "FAILED TO {{action_name}} card."
+      for_amount: "for {{amount}}"
+      history: "history"

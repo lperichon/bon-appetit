@@ -1,14 +1,15 @@
-<h1>Change Subscription Plan</h1>
+<h1><%= t('subscriptions.edit.title') %></h1>
 <p>
-	<strong>Current Plan:</strong>
-	<%= @subscription.plan.name.titleize %>
+  <span class='label'><%= Subscription.human_attribute_name('plan') %>:</span>
+  <%= @subscription.plan.name.titleize %>
 </p>
-<% form_for @subscription do |f| %>
-	<p>
-		<%= f.label :plan %><br />
-		<%= f.select :plan, @allowed_plans.collect {|p| [ p.name, p.id ] } %>
-	</p>
-	<p><%= f.submit "Change Plan" %></p>
+<% semantic_form_for @subscription, :url => subscription_path do |f| %>
+  <% f.inputs do %>
+    <%= f.input :plan, :name => 'subscription[plan]', :label => t('subscriptions.edit.plan'),  :as => :select, :collection => @allowed_plans.collect {|p| [ p.name, p.id ] } %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.commit_button :label => t('subscriptions.edit.change_plan') %>
+  <% end %>
 <% end %>
 
-<p style="font:small"><%= link_to "I want to cancel my subscription", cancel_subscription_path, :confirm => 'Are you sure?' %></p>
+<%= link_to t('subscriptions.edit.cancel_subscription'), cancel_subscription_path, :confirm => t('actions.confirm_destroy') %>

@@ -1,59 +1,62 @@
-<h1>Subscription Details</h1>
+<h1><%= t('subscriptions.show.title') %></h1>
 <fieldset>
-	<legend>Subscription</legend>
+	<legend><%= Subscription.human_name %></legend>
 	<p>
-		<strong>Plan:</strong>
+		<span class='label'><%= Subscription.human_attribute_name('plan') %>:</span>
 		<% plan = @subscription.plan %>
-		<%= plan.name.titleize %> <%= "(#{plan.rate.format} per #{ plan.interval==1 ? 'month' : pluralize(plan.interval, 'month')})" unless plan.free? %>
-		<%= button_to "Change Plan", edit_subscription_path, :method => :get %>
+		<%= plan.name.titleize %> <%= plan_description(plan) %>
+		<%= button_to t('subscriptions.show.edit'), edit_subscription_path, :method => :get %>
 	</p>
 	<% unless @subscription.free? %>
 		<p>
-			<strong>Status:</strong>
+			<span class='label'><%= Subscription.human_attribute_name('status') %>:</span>
 			<%= @subscription.state.titleize %>
 			<% if @subscription.past_due? %>
-				<span style="color:red">Account is past due. Please update your credit card information now.</span>
-			<% end %>			
+				<span style="color:red"><%= t('subscriptions.show.account_past_due') %></span>
+			<% end %>
 		</p>
 		<p>
 			<% if @subscription.trial? %>
-				<strong>Trial Period Ends:</strong>
+				<span class='label'><%= t('subscriptions.show.trial_ends') %>:</span>
 			<% else %>
-				<strong>Paid Through:</strong>
+				<span class='label'><%= t('subscriptions.show.paid_through') %>:</span>
 			<% end %>
 			<%= @subscription.next_renewal_on %>
 		</p>
 	<% end %>
 	<% unless @subscription.balance.zero? %>
 		<p>
-			<strong>Balance on Account:</strong>
+			<span class='label'><%= Subscription.human_attribute_name('balance') %>:</span>
 			<%= @subscription.balance.format %>
 		</p>
 	<% end %>
 </fieldset>
 <fieldset>
-	<legend>Billing Info</legend>
+	<legend><%= t('subscriptions.show.billing_info') %></legend>
 	<p>
-		<strong>Credit Card:</strong>
+		<span class='label'><%= Subscription.human_attribute_name('profile') %>:</span>
 	  <% if @subscription.profile.nil? || @subscription.profile.no_info? %>
-			(no credit card on file)
+      <%= t('subscriptions.show.no_credit_card') %>
 		<% else %>
 			<%= "#{@subscription.profile.card_type.titleize} #{@subscription.profile.card_display_number} Expires: #{@subscription.profile.card_expires_on}" %>
 			<% if @subscription.profile.error? %>
-				<span style="color:red">There was an error processing your credit card.</span>
+				<span style="color:red"><%= t('subscriptions.show.error_processing_card') %></span>
 			<% end %>
 		<% end %>
-		<%= button_to "Update Credit Card", credit_card_subscription_path, :method => :get %>
+		<%= button_to t('subscriptions.show.update_credit_card'), credit_card_subscription_path, :method => :get %>
 	</p>
 	<% if t = @subscription.latest_transaction %>
 	<p>
-		<strong>Latest Transaction:</strong>
+		<span class='label'><%= t('subscriptions.show.latest_transaction') %>:</span>
 			<%# make this a helper %>
 			<%= t.created_at %> :
-			<%= 'FAILED TO' unless t.success? %>
-			<%= t.action.capitalize %> card.
-			<%= "for #{t.amount.format}" unless t.amount.nil? %>
+      <% if t.success %>
+        <%= t('subscriptions.show.transaction_success', :action_name => t.action.capitalize) %>
+      <% else %>
+        <%= t('subscriptions.show.transaction_failed', :action_name => t.action.capitalize) %>
+      <% end %>
+			<%= t('subscriptions.show.for_amount', :amount => t.amount.format) unless t.amount.nil? %>
 			<%= t.message %>
-		<%= "(#{link_to 'history', history_subscription_path})" %>
+		<%= "(#{link_to t('subscriptions.show.history'), history_subscription_path})" %>
 	</p>
 <% end %>

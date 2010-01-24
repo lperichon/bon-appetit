@@ -11,26 +11,26 @@ class SubscriptionsController < UserApplicationController
 
   def update
     # find the plan
-    plan = SubscriptionPlan.find params[:subscription][:plan]
+    plan = SubscriptionPlan.find params[:subscription][:plan_id]
     if plan.nil?
-      flash[:notice] = "Plan not available"
+      flash[:notice] = t('subscriptions.update.plan_not_found')
       
     # make sure its an allowed plan
     elsif exceeded = @subscription.exceeds_plan?( plan ) 
-      flash[:notice] = "You cannot change to plan #{plan.name}. Resources exceeded"
+      flash[:notice] = t('subscriptions.update.resources_exceeded', :plan_name => plan.name)
       flash[:notice] << ": #{exceeded.keys.join(', ')}" if exceeded.is_a?(Hash)
       
     # perform the change
     # note, use #change_plan, dont just assign it
     elsif @subscription.change_plan(plan)  
-      flash[:notice] = "Successfully changed plans. "
+      flash[:notice] = t('subscriptions.update.success')
       
       # after change_plan, call renew
       case result = @subscription.renew
       when false
-        flash[:notice] << "An error occured trying to charge your credit card. Please update your card information."
+        flash[:notice] << t('subscriptions.update.error_charging')
       when Money
-        flash[:notice] << "Thank you for your payment. Your credit card has been charged #{result.format}"
+        flash[:notice] << t('subscriptions.update.success_charging', :amount => result.format)
       end
       return redirect_to subscription_path
     end
@@ -42,7 +42,7 @@ class SubscriptionsController < UserApplicationController
 
   def cancel
     @subscription.cancel
-    flash[:notice] = 'Your subscription has been canceled. You still have limited access to this site.'
+    flash[:notice] = t('subscriptions.cancel.success')
     redirect_to subscription_path
   end
 
@@ -58,11 +58,11 @@ class SubscriptionsController < UserApplicationController
 	    #debugger
 	    case result = @subscription.renew
       when false
-        flash[:notice] = "An error occured trying to charge your credit card. Please update your card information."
+        flash[:notice] = t('subscriptions.store_credit_card.error_charging')
       when Money
-	      flash[:notice] = "Thank you for your payment. Your credit card has been charged #{result.format}"
+	      flash[:notice] = t('subscriptions.store_credit_card.success_charging', :amount => result.format)
       else
-	      flash[:notice] = "Credit card info successfully updated. No charges have been made at this time."  
+	      flash[:notice] = t('subscriptions.store_credit_card.success')
       end
 	    return redirect_to subscription_path
     else

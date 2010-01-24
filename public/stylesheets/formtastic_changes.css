@@ -13,6 +13,10 @@ form.formtastic fieldset ol li label {
   width: 24%;
 }
 
+form.formtastic fieldset.buttons {
+  padding-left: 24%;
+}
+
 form.formtastic fieldset.buttons ol li a {
   vertical-align: middle;
 }
