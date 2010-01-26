@@ -12,4 +12,7 @@
 
 <ul class='actions'>
   <li class='first'><%= link_to t('actions.back'), orders_path %></li>
+  <% if @order.closed? %>
+    <li><%= link_to t('actions.download_invoice'), order_path(@order, :format => :pdf) %></li>
+  <% end %>
 </ul>

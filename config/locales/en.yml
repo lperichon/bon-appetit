@@ -42,6 +42,7 @@ en:
     destroy: "Destroy"
     confirm_destroy: "Are you sure?"
     search: "Search"
+    download_invoice: "Download Invoice"
   activerecord:
     attributes:
       subscription:
@@ -224,6 +225,8 @@ en:
       success: "Order was successfully updated."
     show:
       new_order_item: "Add new"
+      pdf:
+        error_order_open: "Order must be closed before invoicing"
     index:
       show_closed: "Show closed"
       hide_closed: "Hide closed"

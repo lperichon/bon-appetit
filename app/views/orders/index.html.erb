@@ -23,6 +23,9 @@
     </ul>
     <ul class='actions'>
       <li class='first'><%= link_to t('actions.show'), order_path(order) %></li>
+      <% if order.closed? %>
+        <li><%= link_to t('actions.download_invoice'), order_path(order, :format => :pdf) %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>

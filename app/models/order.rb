@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :contact
   has_many :order_items
+  has_attached_file :invoice
 
   accepts_nested_attributes_for :order_items
 
@@ -45,6 +46,38 @@ class Order < ActiveRecord::Base
 
   def open?
     !self.closed?
+  end
+
+  def create_invoice
+    sender = <<-EOS
+    Gregory Brown
+    200 Wonderful Drive
+    New Haven, CT 06511
+    EOS
+
+    recipient = <<-EOS
+    Cool Inc.
+    100 Awesome Street
+    West Foo, VT 01102
+    EOS
+
+    invoice = Invoice.new(:sender    => sender,
+                          :recipient => recipient,
+                          :period    => "2008.08.01 - 2008.08.31",
+                          :due       => "September 30th, 2008")
+
+    invoice.entry "Work on something awesome",  :hours => 10.5, :rate => 75.0
+    invoice.entry "Work on something terrible", :hours => 5.0,  :rate => 125.0
+    invoice.entry "Work on free software",      :hours => 20.0, :rate => 25.0
+    invoice.entry "Work for non-profit org",    :hours => 30.0, :rate => 45.0
+
+    filename = "invoice-#{self.id}.pdf"
+    file = invoice.save_as "tmp/#{filename}"
+
+    self.invoice = file
+    self.save
+
+    # paperclip creates a copy of the attached file, delete the original
   end
 
   protected

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100118190152) do
+ActiveRecord::Schema.define(:version => 20100125135537) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -116,12 +116,16 @@ ActiveRecord::Schema.define(:version => 20100118190152) do
     t.datetime "generated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "discount",      :precision => 3, :scale => 2
+    t.decimal  "discount",             :precision => 3, :scale => 2
     t.boolean  "closed"
-    t.decimal  "total",         :precision => 8, :scale => 2
+    t.decimal  "total",                :precision => 8, :scale => 2
     t.text     "notes"
     t.integer  "table_id"
     t.integer  "contact_id"
+    t.string   "invoice_file_name"
+    t.string   "invoice_content_type"
+    t.integer  "invoice_file_size"
+    t.datetime "invoice_updated_at"
   end
 
   create_table "phone_type_translations", :force => true do |t|
