@@ -74,7 +74,7 @@ class Order < ActiveRecord::Base
     filename = "invoice-#{self.id}.pdf"
     file = invoice.save_as "tmp/#{filename}"
 
-    self.invoice = file
+    self.invoice = File.new(RAILS_ROOT+"/tmp/#{filename}")
     self.save
 
     # paperclip creates a copy of the attached file, delete the original
