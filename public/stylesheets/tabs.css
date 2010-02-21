@@ -1,0 +1,28 @@
+.ui-widget-content {
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.ui-widget-header {
+  background: none;
+  border: none;
+}
+
+.ui-tabs .ui-tabs-nav {
+  padding-left: 2em;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active {
+  border: 1px solid #6F705B;
+}
+
+.ui-tabs .ui-tabs-hide {
+  display: inherit;
+  position: absolute;
+  left: -10000px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a {
+  background: none;
+}

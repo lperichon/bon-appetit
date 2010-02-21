@@ -1,7 +1,24 @@
-<h2>Welcome <%= current_user.username %>!</h2>
-<div id="total_by_dow_hour"></div>
-<div id="products_pie"></div>
-<div id="total_by_dom"></div>
+<% @enable_tabs = true %>
+<% content_for :tab_links do %>
+   <ul>
+      <li><a href="#tabs-1"><%= t('dashboards.show.total_by_dow_hour_title') %></a></li>
+      <li><a href="#tabs-2"><%= t('dashboards.show.products_pie_title') %></a></li>
+      <li><a href="#tabs-3"><%= t('dashboards.show.total_by_dom_graph_title') %></a></li>
+   </ul>
+<% end %>
+<div id="tabs-1">
+  <h2>Welcome <%= current_user.username %>!</h2>
+  <div id="total_by_dow_hour"></div>
+</div>
+<div id="tabs-2">
+  <h2>Welcome <%= current_user.username %>!</h2>
+  <div id="products_pie"></div>
+</div>
+<div id="tabs-3">
+  <h2>Welcome <%= current_user.username %>!</h2>
+  <div id="total_by_dom"></div>
+</div>
+
 <% javascript_tag do %>
   window.onload = function () {
     var total_by_dow_hour_graph = Raphael("total_by_dow_hour"),

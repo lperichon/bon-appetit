@@ -4,6 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Bon Appetit</title>
   <%= javascript_include_tag 'jquery-1.3.2.min' %>
+  <%= javascript_include_tag 'jquery-ui-1.7.2.custom.min' %>
   <%= javascript_include_tag 'jquery.templating' %>
   <%= javascript_include_tag 'jquery.ui.autocomplete.ext' %>
   <%= javascript_include_tag 'jquery.ui.autocomplete' %>
@@ -33,6 +34,11 @@
   <%= stylesheet_link_tag 'jquery.ui.autocomplete' %>
   <%= stylesheet_link_tag 'jquery.jgrowl' %>
   <%= stylesheet_link_tag "modal" %>
+  <%= stylesheet_link_tag 'jquery.ui.core' %>
+  <%= stylesheet_link_tag 'jquery.ui.theme' %>
+  <%= stylesheet_link_tag 'jquery.ui.tabs' %>
+  <%= stylesheet_link_tag 'tabs' %>
+
 
   <%= GMap.header %>
   <%= @contact.map.to_html if @contact && @contact.map %>
@@ -69,9 +75,21 @@
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
-      <div id="content" class='<%= controller_name %> <%= controller.action_name %>'>
-        <%= yield %>
-      </div>
+      <% if @enable_tabs %>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $("#tabs").tabs();
+          });
+        </script>
+        <div id='tabs'>
+          <%= yield :tab_links %>
+      <% end %>
+          <div id="content" class='<%= controller_name %> <%= controller.action_name %>'>
+            <%= yield %>
+          </div>
+      <% if @enable_tabs %>
+        </div>
+      <% end %>
       <div class="clear"></div>
     </div>
     <div id="footer">
