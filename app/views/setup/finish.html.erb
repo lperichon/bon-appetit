@@ -1,4 +1,9 @@
-<div class='modal'>
+<div id='finish_step' class='modal'>
 Thank You!!
 <%= link_to_previous_step :setup %>
 </div>
+
+
+<% javascript_tag do %>
+  open_modal('finish_step');
+<% end %>
