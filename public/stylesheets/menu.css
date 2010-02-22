@@ -51,9 +51,11 @@ ul.menu {
 	padding: 0;
 	float: right;
   background: #909528;
-	-khtml-opacity: 0.75;      /* khtml, old safari */
-	-moz-opacity: 0.75;       /* mozilla, netscape */
-	opacity: 0.75;           /* fx, safari, opera */
+  /* dont use opacity (hides main menu dropdown)
+	-khtml-opacity: 0.75;
+	-moz-opacity: 0.75;
+	opacity: 0.75;
+  */
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
 }
