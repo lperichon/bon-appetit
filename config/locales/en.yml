@@ -295,6 +295,9 @@ en:
       new: "New contact"
     show:
       title: "Viewing contact"
+      order_history_title: "Order History"
+      details_title: "Details"
+      map_title: "Map"
     update:
       success: "Contact was updated successfully!"
     contact:

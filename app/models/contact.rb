@@ -4,6 +4,8 @@ class Contact < ActiveRecord::Base
 
   named_scope :starts_with, proc {|c| { :conditions => ["first_name LIKE ?", "#{c}%"] } }
 
+  has_many :orders
+
   def map
     @map ||= prepare_map
   end

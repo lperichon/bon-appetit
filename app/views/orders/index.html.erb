@@ -6,27 +6,5 @@
 <div id='search_orders' class='modal' style='display:none;'>
   <%= render :partial => 'search_form' %>
 </div>
-<div id="orders" class='list'>
-<% @orders.each_with_index do |order, index| %>
-  <div class='order element <%= odd_or_even(index) %>'>
-    <h3><%=h order.to_s %> - <%=h order.generated_at %></h3>
-    <ul>
-      <% if order.contact.present? %>
-      <li><span class='label'><%= Order.human_attribute_name('contact') %>:</span> <%=h order.contact.name %></li>
-      <% end %>
-      <% if order.table_id.present? %>
-      <li><span class='label'><%= Order.human_attribute_name('table') %>:</span> <%=h order.table_id %></li>
-      <% end %>
-      <li><span class='label'><%= Order.human_attribute_name('discount') %>:</span> <%=h discount_label(order.discount) %></li>
-      <li><span class='label'><%= Order.human_attribute_name('total') %>:</span> <%=h number_to_currency(order.total, :unit => "$") %></li>
-      <li><span class='label'><%= Order.human_attribute_name('status') %>:</span> <%=h order_status_label(order) %></li>
-    </ul>
-    <ul class='actions'>
-      <li class='first'><%= link_to t('actions.show'), order_path(order) %></li>
-      <% if order.closed? %>
-        <li><%= link_to t('actions.download_invoice'), order_path(order, :format => :pdf) %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-</div>
+
+<%= render :partial => 'list', :locals => {:orders => @orders} %>
