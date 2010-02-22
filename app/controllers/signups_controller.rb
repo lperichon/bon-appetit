@@ -1,9 +1,5 @@
 class SignupsController < ApplicationController
-  before_filter :require_user, :except => [:new, :create]
-
-  def new
-    @user = User.new
-  end
+  before_filter :require_user, :except => :create
 
   def create
     @user = User.new
@@ -11,9 +7,9 @@ class SignupsController < ApplicationController
     if @user.signup!(params)
       @user.deliver_activation_instructions!
       flash[:notice] = t('signups.create.success')
-      redirect_to login_url
+      redirect_to root_path
     else
-      render :action => :new
+      rediret_to root_path
     end
   end
   

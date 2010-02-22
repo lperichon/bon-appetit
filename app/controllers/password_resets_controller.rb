@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
       redirect_to login_url
     else
       flash[:notice] = t('password_resets.create.failure')
-      render :action => :new  
+      render :action => :_reset
     end
   end
 

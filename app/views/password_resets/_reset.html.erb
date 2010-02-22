@@ -1,0 +1,10 @@
+<h2><%= t('password_resets.reset.title') %></h2>
+
+<p><%= t('password_resets.reset.instructions') %></p>
+
+<% semantic_form_for :password_reset, :url => password_resets_path do |f|%>
+  <% f.inputs do %>
+    <%= f.input 'email' %>
+  <% end %>
+  <%= f.buttons %> <%= link_to_function t('actions.cancel'), "$('#reset').hide()" %>
+<% end %>
