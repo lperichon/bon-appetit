@@ -9,7 +9,7 @@
   </p>
   <p>
     <span class='label'><%= User.human_attribute_name('name') %>:</span>
-    <%= in_place_editor_for @user, {:name => 'contacts/name'}, {:display => @user.name} %>
+    <%= in_place_editor_for @user, {:name => 'contacts/name'}, {:display => @user.name.blank? ? '-' : @user.name} %>
   </p>
   <p>
     <span class='label'><%= User.human_attribute_name('birthday') %>:</span>
