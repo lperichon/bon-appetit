@@ -23,11 +23,11 @@
         <ul class='menu'>
           <% if current_user %>
           <li><%= link_to t('menu.dashboard'), dashboard_path %></li>
-          <li><%= link_to t('menu.logout'), logout_path %></li>
+          <li class='last'><%= link_to t('menu.logout'), logout_path %></li>
           <% else %>
           <li><%= link_to_function t('menu.login'), "open_modal('login')" %></li>
-          <% end %>
           <li class='last'><%= link_to_function t('menu.signup'), "open_modal('signup')" %></li>
+          <% end %>
         </ul>
     </div>
     <div id="main">
