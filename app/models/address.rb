@@ -48,7 +48,7 @@ class Address < ActiveRecord::Base
   private
 
   def geocode_address
-    geo=Geokit::Geocoders::MultiGeocoder.geocode (self.full_address)
+    geo=Geokit::Geocoders::MultiGeocoder.geocode(self.full_address)
     errors.add(:address, t('address.geocode_error')) if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
   end

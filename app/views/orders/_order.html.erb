@@ -8,6 +8,17 @@
     <% end %>
   </p>
 
+  <% if @order.contact %>
+  <p>
+    <span class='label'><%= Order.human_attribute_name('address') %>:</span>
+    <% if @order.open? %>
+      <%= in_place_editor_for @order, {:address => 'orders/address'}, {:display => @order.address.nil? ? 'no address selected' : @order.address.full_address} %>
+    <% else %>
+      <%=h @order.address.full_address if @order.address %>
+    <% end %>
+  </p>
+  <% end %>
+
   <p>
     <span class='label'><%= Order.human_attribute_name('table') %>:</span>
     <% if @order.open? %>

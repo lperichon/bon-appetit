@@ -10,13 +10,20 @@ class OrdersController < UserApplicationController
     else
       @orders = apply_scopes(current_restaurant.orders).all
     end
-
   end
 
   respond_to :js, :only => :update
   respond_to :pdf, :only => :show
 
   def update
+    contact = nil
+    name = params[:order_contact_autocomplete]
+    if( params[:order][:contact_id].present? )
+      contact = current_restaurant.contacts.find(params[:order][:contact_id])
+    end
+    if (params[:order][:contact_id].blank? && name.present?)
+      resource.contact = current_restaurant.contacts.create!(:first_name => name)
+    end
     update! do |success, failure|
       success.js { flash[:notice] = t('orders.update.success') }
     end

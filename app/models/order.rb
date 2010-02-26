@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :restaurant
   belongs_to :contact
+  belongs_to :address
   has_many :order_items
   has_attached_file :invoice
 
@@ -96,7 +97,17 @@ class Order < ActiveRecord::Base
   end
 
   def freeze_values
+    # freeze address
+    address_attributes = self.address.attributes
+    address_attributes.delete('id')
+    address_attributes.delete('owner_id')
+    address_attributes.delete('owner_type')
+    self.address = Address.create!(address_attributes)
+
+    # freeze order items
     self.order_items.each { |oi| oi.freeze_values; oi.save }
+
+    # freeze total
     self.total = calculate_total
   end
 end
