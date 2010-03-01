@@ -109,5 +109,8 @@ class Order < ActiveRecord::Base
 
     # freeze total
     self.total = calculate_total
+
+    # freeze contact name
+    self.contact_name = self.contact.full_name
   end
 end

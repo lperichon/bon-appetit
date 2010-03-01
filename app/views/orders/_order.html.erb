@@ -4,11 +4,10 @@
     <% if @order.open? %>
       <%= in_place_editor_for @order, {:contact => 'orders/contact'}, {:display => @order.contact.nil? ? 'no contact' : @order.contact.name} %>
     <% else %>
-      <%=h @order.contact.name if @order.contact %>
+      <%=h @order.contact_name %>
     <% end %>
   </p>
 
-  <% if @order.contact %>
   <p>
     <span class='label'><%= Order.human_attribute_name('address') %>:</span>
     <% if @order.open? %>
@@ -17,7 +16,6 @@
       <%=h @order.address.full_address if @order.address %>
     <% end %>
   </p>
-  <% end %>
 
   <p>
     <span class='label'><%= Order.human_attribute_name('table') %>:</span>
