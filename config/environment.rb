@@ -63,4 +63,6 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
+ExceptionNotifier.exception_recipients = %w(perichon@gmail.com)
+
 Mime::Type.register 'application/pdf', :pdf
