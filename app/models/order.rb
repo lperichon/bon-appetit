@@ -98,11 +98,13 @@ class Order < ActiveRecord::Base
 
   def freeze_values
     # freeze address
-    address_attributes = self.address.attributes
-    address_attributes.delete('id')
-    address_attributes.delete('owner_id')
-    address_attributes.delete('owner_type')
-    self.address = Address.create!(address_attributes)
+    if self.address.present?
+      address_attributes = self.address.attributes
+      address_attributes.delete('id')
+      address_attributes.delete('owner_id')
+      address_attributes.delete('owner_type')
+      self.address = Address.create!(address_attributes)
+    end
 
     # freeze order items
     self.order_items.each { |oi| oi.freeze_values; oi.save }
@@ -111,6 +113,6 @@ class Order < ActiveRecord::Base
     self.total = calculate_total
 
     # freeze contact name
-    self.contact_name = self.contact.full_name
+    self.contact_name = self.contact.name if self.contact.present?
   end
 end

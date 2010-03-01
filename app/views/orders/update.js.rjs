@@ -1,3 +1,8 @@
 page << "$('##{dom_id @order}').replaceWith('#{escape_javascript render @order}');"
 
+if @order.closed?
+  page << "$('#add_order_item').remove();"
+  page << "$('#order_items').replaceWith('#{escape_javascript render :partial => 'order_items'}');"
+end
+
 page << show_messages(flash)

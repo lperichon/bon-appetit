@@ -1,3 +1,4 @@
+page << "$('##{dom_id @order}').replaceWith('#{escape_javascript render @order}');"
 page << "$('##{dom_id @order_item}').replaceWith('#{escape_javascript render @order_item}');"
 
 page << show_messages(flash)

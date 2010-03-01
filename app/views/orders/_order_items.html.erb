@@ -1,10 +1,13 @@
-<% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
-  <h3><%= product_type.name %></h3>
-  <div id='<%= product_type.name.dasherize %>'>
-    <% order_items.each do |order_item| %>
-       <div class='order-item'>
-         <%= render :partial => 'order_items/order_item', :locals => {:order_item => order_item} %>
-       </div>
-    <% end %>
-  </div>
-<% end %>
+<div id='order_items'>
+  <h2><%= Order.human_attribute_name('order_items') %> <% if @order.open? %> (<%= link_to_function t('orders.show.new_order_item'), "open_modal('add_order_item')"%>) <% end %></h2>
+  <% @order.order_items.group_by { |oi| oi.product.product_type }.each do |product_type, order_items| %>
+    <h3><%= product_type.name %></h3>
+    <div id='<%= product_type.name.dasherize %>'>
+      <% order_items.each do |order_item| %>
+         <div class='order-item'>
+           <%= render :partial => 'order_items/order_item', :locals => {:order_item => order_item} %>
+         </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

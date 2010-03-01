@@ -1,1 +1,1 @@
-<%= f.input :address, :as => :radio, :collection => @order.contact.addresses, :label_method => :full_address %>
+<%= f.input :address, :as => :radio, :collection => @order.contact.present? ? @order.contact.addresses : [], :label_method => :full_address %>
