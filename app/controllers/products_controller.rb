@@ -13,9 +13,9 @@ class ProductsController < UserApplicationController
   end
 
   def autocomplete
-    @products = current_restaurant.products.find(:all, :conditions => ['name LIKE ?', "%#{params[:q]}%"])
+    @products = current_restaurant.products.name_or_code_like("#{params[:q]}")
     respond_to do |format|
-      format.json { render :json => @products.collect {|p| {:id => p.id, :text => p.name}}.to_json, :layout => false}
+      format.json { render :json => @products.collect {|p| {:id => p.id, :text => "#{p.code} - #{p.name}"}}.to_json, :layout => false}
     end
   end
 
