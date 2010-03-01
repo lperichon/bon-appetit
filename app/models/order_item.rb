@@ -31,6 +31,7 @@ class OrderItem < ActiveRecord::Base
   def freeze_values
     self.unit_price = self.product.price
     self.subtotal =  calculate_subtotal
+    self.product_name = self.product.name
   end
 
   private

@@ -1,26 +1,30 @@
 <div id='<%= dom_id order_item %>' class='order-item'>
- <h4><%= order_item.product.name %></h4>
- <ul>
-   <li><%= OrderItem.human_attribute_name('quantity') %>:
-     <% if @order.open? %>
+  <% if @order.closed? %>
+    <h4><%= order_item.product_name %></h4>
+  <% elsif order_item.product.present? %>
+    <h4><%= order_item.product.name %></h4>
+  <% end %>
+  <ul>
+    <li><%= OrderItem.human_attribute_name('quantity') %>:
+      <% if @order.open? %>
         <%= in_place_editor_for [@order, order_item], :quantity %>
-     <% else %>
+      <% else %>
         <%= order_item.quantity %>
-     <% end %>
-   </li>
-   <li><%= OrderItem.human_attribute_name('discount') %>:
-     <% if @order.open? %>
+      <% end %>
+    </li>
+    <li><%= OrderItem.human_attribute_name('discount') %>:
+      <% if @order.open? %>
         <%= in_place_editor_for [@order, order_item], {:discount => 'orders/discount'}, {:display => discount_label(order_item.discount)} %>
-     <% else %>
-       <%= discount_label(order_item.discount) %>
-     <% end %>
-   </li>
-   <li><%= OrderItem.human_attribute_name('notes') %>:
-     <% if @order.open? %>
-       <%= in_place_editor_for [@order, order_item], {:notes => 'orders/notes'} %>
-     <% else %>
-       <%=h order_item.notes %>
-     <% end %>
-   </li>
- </ul>
+      <% else %>
+        <%= discount_label(order_item.discount) %>
+      <% end %>
+    </li>
+    <li><%= OrderItem.human_attribute_name('notes') %>:
+      <% if @order.open? %>
+        <%= in_place_editor_for [@order, order_item], {:notes => 'orders/notes'} %>
+      <% else %>
+        <%= h order_item.notes %>
+      <% end %>
+    </li>
+  </ul>
 </div>
