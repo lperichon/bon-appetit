@@ -16,20 +16,19 @@ class Invoice < Prawn::Document
   def initialize(options={})
      @sender     = options[:sender]
      @recipient  = options[:recipient]
-     @period     = options[:period]
-     @due        = options[:due]
-     @email      = options[:email] || "gregory.t.brown@gmail.com"
      @entries    = []
+     @discount = options[:discount]
+     @subtotal = options[:subtotal]
+     @taxes = options[:taxes]
+     @total = options[:total]
      super()
   end
 
-  def entry(description,options={})
-    @entries << [description, options[:hours], options[:rate]]
-  end
-
-  def total
-    sum = @entries.inject(0) { |s,r| s + r[1] * r[2] }
-    "$ %0.2f" % sum
+  def entry(name ,qty, unit_price, discount,subtotal)
+    @entries << [name, qty, "$#{unit_price}", "$#{qty*unit_price}"]
+    if discount > 0
+      @entries << ["#{name} - Bonif. %#{discount*100}", "", "", "-$#{qty*unit_price - subtotal}" ]
+    end
   end
 
   def draw_invoice
@@ -37,36 +36,36 @@ class Invoice < Prawn::Document
     draw_sender
     draw_recipient
 
-    bounding_box([bounds.right - 210, bounds.top]) do
-      draw_work_done
-      move_down(5)
-      draw_billing_info
-    end
-
     move_down 100
 
     pad(10) do
-      text "Work Period Details", :align => :center, :size => 16
+      text "Invoice Items", :align => :center, :size => 16
     end
 
     table @entries,
       :position   => :center,
-      :headers    => ["Description","Hours","Rate"],
+      :headers    => ["Name","Quantity","Unit Price", "Subtotal"],
       :row_colors => :pdf_writer,
       :vertical_padding => 2,
       :widths => { 0 => 200, 1 => 100, 2 => 100 }
 
+    totals = []
+    totals << ["Subtotal: $#{@subtotal}"]
+    if @discount > 0
+      totals << ["Bonif. %#{@discount*100}: -$#{@subtotal - @subtotal*@discount}"]
+    end
+    if @taxes > 0
+      totals << ["Taxes: $#{@taxes}"]
+    end
+    totals << ["Total: $#{@total}"]
+
     pad(5) do
-      table [["Total Due: #{total}"]],
+      table totals,
         :position   => :center,
         :align      => :right,
         :vertical_padding => 2,
         :row_colors => ["ffff40"]
      end
-
-     self.y = bounds.bottom + 20
-     stroke_horizontal_line bounds.left, bounds.right
-     text "Please feel free to email #{@email} with any problems.", :at => [0,0]
   end
 
   def draw_sender
@@ -83,21 +82,6 @@ class Invoice < Prawn::Document
       :horizontal_padding => 10,
       :vertical_padding   => 5,
       :width   => 150
-  end
-
-  def draw_work_done
-    cell bounds.top_left,
-      :text               => "Work done for #{@period}",
-      :horizontal_padding => 5,
-      :vertical_padding   => 2,
-      :background_color   => "dddddd",
-      :width              => 204
-  end
-
-  def draw_billing_info
-    table [["BILLING INFORMATION"],
-           ["Please submit payment on or before:\n#{@due}\n\nThanks!"]],
-     :border_style => :grid, :widths => {0 => 204}
   end
 
   def save_as(file)

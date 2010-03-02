@@ -51,26 +51,20 @@ class Order < ActiveRecord::Base
 
   def create_invoice
     sender = <<-EOS
-    Gregory Brown
-    200 Wonderful Drive
-    New Haven, CT 06511
+    #{self.restaurant.name}
     EOS
 
     recipient = <<-EOS
-    Cool Inc.
-    100 Awesome Street
-    West Foo, VT 01102
+    #{self.contact_name if self.contact_name.present?}
+    #{self.address.full_address if self.address.present?}
+    table:#{self.table_id}
     EOS
 
-    invoice = Invoice.new(:sender    => sender,
-                          :recipient => recipient,
-                          :period    => "2008.08.01 - 2008.08.31",
-                          :due       => "September 30th, 2008")
+    invoice = Invoice.new(:sender    => sender, :recipient => recipient, :subtotal => self.subtotal, :taxes => self.calculate_tax(self.subtotal), :discount => self.discount, :total => self.total)
 
-    invoice.entry "Work on something awesome",  :hours => 10.5, :rate => 75.0
-    invoice.entry "Work on something terrible", :hours => 5.0,  :rate => 125.0
-    invoice.entry "Work on free software",      :hours => 20.0, :rate => 25.0
-    invoice.entry "Work for non-profit org",    :hours => 30.0, :rate => 45.0
+    self.order_items.each do |oi|
+      invoice.entry oi.product_name, oi.quantity, oi.unit_price, oi.discount, oi.subtotal
+    end
 
     filename = "invoice-#{self.id}.pdf"
     file = invoice.save_as "tmp/#{filename}"
@@ -84,16 +78,16 @@ class Order < ActiveRecord::Base
   protected
 
   def calculate_subtotal
-    subtotal = self.order_items.collect {|oi| oi.subtotal}.sum
-    subtotal - self.discount*subtotal
+    self.order_items.collect {|oi| oi.subtotal}.sum
   end
 
   def calculate_total
-    self.calculate_subtotal + self.calculate_tax
+    subtotal = self.calculate_subtotal
+    subtotal - self.discount*subtotal + self.calculate_tax(subtotal)
   end
 
-  def calculate_tax
-    self.restaurant.include_tax? ? self.restaurant.tax_value*self.calculate_subtotal : 0
+  def calculate_tax(subtotal)
+    self.restaurant.include_tax? ? self.restaurant.tax_value*subtotal : 0
   end
 
   def freeze_values
@@ -110,6 +104,7 @@ class Order < ActiveRecord::Base
     self.order_items.each { |oi| oi.freeze_values; oi.save }
 
     # freeze total
+    self.subtotal = calculate_subtotal
     self.total = calculate_total
 
     # freeze contact name
