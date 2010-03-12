@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100302191428) do
+ActiveRecord::Schema.define(:version => 20100304195301) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -25,22 +25,36 @@ ActiveRecord::Schema.define(:version => 20100302191428) do
   create_table "addresses", :force => true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.integer  "type_id",                                     :default => 1
+    t.integer  "type_id",      :default => 1
     t.string   "address"
     t.integer  "city_id"
-    t.integer  "province_id"
     t.integer  "country_id"
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "lat",         :precision => 15, :scale => 10
-    t.decimal  "lng",         :precision => 15, :scale => 10
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.integer  "division1_id"
+    t.integer  "division2_id"
+    t.integer  "division3_id"
+    t.integer  "division4_id"
   end
 
   create_table "cities", :force => true do |t|
-    t.integer "province_id"
-    t.string  "name"
+    t.integer "country_id",                                                  :null => false
+    t.integer "geonames_id",                                                 :null => false
+    t.string  "name",                                                        :null => false
+    t.decimal "latitude",                     :precision => 14, :scale => 8, :null => false
+    t.decimal "longitude",                    :precision => 14, :scale => 8, :null => false
+    t.string  "country_iso_code_two_letters"
+    t.integer "geonames_timezone_id"
+    t.string  "code"
+    t.integer "division_id"
   end
+
+  add_index "cities", ["code"], :name => "index_cities_on_code"
+  add_index "cities", ["division_id"], :name => "index_cities_on_division_id"
+  add_index "cities", ["geonames_id"], :name => "index_cities_on_geonames_id", :unique => true
 
   create_table "contacts", :force => true do |t|
     t.integer "restaurant_id", :null => false
@@ -51,8 +65,36 @@ ActiveRecord::Schema.define(:version => 20100302191428) do
   end
 
   create_table "countries", :force => true do |t|
-    t.string "name"
+    t.string  "iso_code_two_letter",                   :null => false
+    t.string  "iso_code_three_letter",                 :null => false
+    t.integer "iso_number",                            :null => false
+    t.string  "name",                                  :null => false
+    t.string  "capital"
+    t.string  "continent"
+    t.integer "geonames_id",                           :null => false
+    t.string  "alternate_names",       :limit => 5000
   end
+
+  add_index "countries", ["geonames_id"], :name => "index_countries_on_geonames_id"
+  add_index "countries", ["iso_code_two_letter"], :name => "index_countries_on_iso_code_two_letter", :unique => true
+
+  create_table "divisions", :force => true do |t|
+    t.integer "country_id",                                                                                 :null => false
+    t.integer "parent_id"
+    t.integer "level",                                                                       :default => 1
+    t.string  "code",                                                                                       :null => false
+    t.integer "geonames_id",                                                                                :null => false
+    t.string  "name",                                                                                       :null => false
+    t.string  "alternate_names",              :limit => 5000
+    t.decimal "latitude",                                     :precision => 14, :scale => 8,                :null => false
+    t.decimal "longitude",                                    :precision => 14, :scale => 8,                :null => false
+    t.string  "country_iso_code_two_letters"
+    t.integer "geonames_timezone_id"
+  end
+
+  add_index "divisions", ["code"], :name => "index_divisions_on_code"
+  add_index "divisions", ["geonames_id"], :name => "index_divisions_on_geonames_id", :unique => true
+  add_index "divisions", ["parent_id"], :name => "index_divisions_on_parent_id"
 
   create_table "email_type_translations", :force => true do |t|
     t.string   "locale"
@@ -168,11 +210,6 @@ ActiveRecord::Schema.define(:version => 20100302191428) do
     t.datetime "updated_at"
     t.decimal  "price",           :precision => 8, :scale => 2
     t.string   "code"
-  end
-
-  create_table "provinces", :force => true do |t|
-    t.integer "country_id"
-    t.string  "name"
   end
 
   create_table "restaurants", :force => true do |t|

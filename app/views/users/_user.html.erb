@@ -20,6 +20,6 @@
     <%= in_place_editor_for @user, {:locale => 'users/locale'}, {:display => @user.locale.blank? ? '-' : t('this_file_language')} %>
   </p>
   <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
-    <%= render :partial => 'shared/contactable_field', :locals => {:parent_class => User, :instance => @user, :field_name => field_name} %>
+    <%= render :partial => 'shared/contactable_field', :locals => {:field_name => field_name} %>
   <% end %>
 </div>

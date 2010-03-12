@@ -9,11 +9,13 @@
   <span class='label'><%= @parent.class.human_attribute_name(field_name.pluralize) %>:</span>
   <ul>
   <% @parent.send(field_name.pluralize).each do |field| %>
+    <% @field = field %>
     <li><%= in_place_editor_for [@parent, field], {field_name.to_sym => field_name.pluralize + '/' + field_name}, {:display => send(field_name + '_label',field)} %></li>
   <% end %>
   </ul>
   <%= link_to_function t(@parent.class.to_s.downcase.pluralize.dasherize + '.' + @parent.class.to_s.downcase.dasherize + '.add_' + field_name), "$('#new_#{field_name}_form').show();$('#new_#{field_name}_link').hide()", :id => "new_#{field_name}_link" %>
   <div id='new_<%= field_name %>_form' style='display: none;'>
+    <% @field = @parent.send(field_name.pluralize).new %>
     <%= render :partial => field_name.pluralize + '/form', :locals => {field_name.to_sym => @parent.send(field_name.pluralize).new} %>
   </div>
 </div>

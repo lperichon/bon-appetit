@@ -1,4 +1,4 @@
-<h1>Listing cities for <%= link_to parent.name, admin_country_province_path(parent.country, parent) %></h1>
+<h1>Listing cities for <%= link_to parent.name, admin_country_division_path(parent.country, parent) %></h1>
 
 <table class='table'>
   <tr>
@@ -7,13 +7,13 @@
   </tr>
 
 <% collection.each_with_index do |resource, index| %>
-  <% parent = resource.province %>
+  <% parent = resource.division %>
   <tr class='<%= odd_or_even(index) %>'>
     <td><%=h resource.name %></td>
-    <td class='last'><%= link_to 'Show', admin_country_province_city_path(parent.country, parent, resource) %> | <%= link_to 'Edit', edit_admin_country_province_city_path(parent.country, parent, resource) %> | <%= link_to 'Destroy', admin_country_province_city_path(parent.country, parent, resource), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class='last'><%= link_to 'Show', admin_country_division_city_path(parent.country, parent, resource) %> | <%= link_to 'Edit', edit_admin_country_division_city_path(parent.country, parent, resource) %> | <%= link_to 'Destroy', admin_country_division_city_path(parent.country, parent, resource), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 <div class='actions-bar'>
-  <%= link_to 'New city', new_admin_country_province_city_path %>
+  <%= link_to 'New city', new_admin_country_division_city_path %>
 </div>

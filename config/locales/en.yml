@@ -43,6 +43,7 @@ en:
     confirm_destroy: "Are you sure?"
     search: "Search"
     download_invoice: "Download Invoice"
+    clear: "Clear..."
   activerecord:
     attributes:
       subscription:
@@ -400,3 +401,9 @@ en:
       transaction_failed: "FAILED TO {{action_name}} card."
       for_amount: "for {{amount}}"
       history: "history"
+  divisions:
+    prompt: "Please select a division..."
+  countries:
+    prompt: "Please select a country..."
+  cities:
+    prompt: "Select a city..."

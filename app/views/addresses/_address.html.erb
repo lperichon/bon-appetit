@@ -1,6 +1,30 @@
+<span id='<%= dom_id @field %>_country'>
+  <% clear_children = "$('.#{dom_id @field}.division').html('')" %>
+  <% update_child_division = remote_function(:url => {:controller => 'divisions', :action => 'index'}, :with => "'field_dom_id=#{dom_id @field}&search[country_id]=' + $('##{dom_id @field}_country #address_country_id').val()", :update => "#{dom_id @field}_division1") %>
+  <%= f.input :country, :prompt => t('countries.prompt'), :include_blank => t('actions.clear'), :input_html => {:onchange => "#{clear_children};#{update_child_division}"}%>
+</span>
+<% (1..4).each do |level| %>
+<span id='<%= dom_id @field %>_division<%= level %>' class='<%= dom_id @field %> division <%= (0..level - 1).to_a.reverse.map {|i| "child#{i} "}  %>'>
+  <% if level == 1
+       empty = @field.country.blank? || @field.country.first_level_divisions.empty?
+       collection = @field.country.first_level_divisions unless empty
+     else
+       empty = @field.send("division#{level - 1}").blank? || @field.send("division#{level - 1}").children.empty?
+       collection = @field.send("division#{level - 1}").children unless empty
+     end %>
+  <% unless empty %>
+    <% clear_children = "$('.#{dom_id @field}.division.child#{level}').html('')" %>
+    <% update_child_division = remote_function(:url => {:controller => 'divisions', :action => 'index'}, :with => "'field_dom_id=#{dom_id @field}&search[country_id]=' + $('##{dom_id @field}_country #address_country_id').val() + '&search[parent_id]=' + $('##{dom_id @field}_division#{level} #address_division#{level}_id').val() +'&search[level]=#{level + 1}'", :update => "#{dom_id @field}_division#{level + 1}") %>
+    <% update_city = remote_function(:url => {:controller => 'cities', :action => 'index'}, :with => "'field_dom_id=#{dom_id @field}&search[country_id]=' + $('##{dom_id @field}_country #address_country_id').val() + '&search[division_id]=' + $('##{dom_id @field}_division#{level} #address_division#{level}_id').val()", :update => "#{dom_id @field}_city") %>
+    <%= f.input "division#{level}".to_sym, :collection => collection, :prompt => t('divisions.prompt'), :include_blank => t('actions.clear'), :input_html => {:onchange => "#{clear_children};#{update_child_division};#{update_city}"} %>
+  <% end %>
+</span>
+<% end %>
+<span id='<%= dom_id @field %>_city' class='<%= dom_id @field %> division child1 child2 child3 child4'>
+  <% unless @field.cities.empty? %>
+    <%= f.input :city, :collection => @field.cities, :prompt => t('cities.prompt'), :include_blank => t('actions.clear') %>
+  <% end %>
+</span>
 <%= f.input :address %>
-<%= f.input :city %>
 <%= f.input :zip %>
-<%= f.input :province %>
-<%= f.input :country %>
 <%= f.input :type %>

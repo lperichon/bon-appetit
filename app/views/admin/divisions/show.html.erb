@@ -5,14 +5,14 @@
   <%=h resource.name %>
 </p>
 
-<%= link_to 'Edit', edit_admin_country_province_path(resource) %> |
-<%= link_to 'Back', admin_country_provinces_path %>
+<%= link_to 'Edit', edit_admin_country_division_path(parent, resource) %> |
+<%= link_to 'Back', admin_country_divisions_path %>
 
 <% content_for :sidebar do %>
   <% content_tag :div, :class => 'block' do %>
     <h3>List</h3>
     <ul class='navigation'>
-      <li><%= link_to 'Cities', admin_country_province_cities_path(parent, resource)%></li>
+      <li><%= link_to 'Cities', admin_country_division_cities_path(parent, resource)%></li>
     </ul>
   <% end %>
 <% end %>

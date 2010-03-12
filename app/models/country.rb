@@ -1,4 +1,8 @@
 class Country < ActiveRecord::Base
-  has_many :provinces
-  validates_presence_of :name
+  has_many :cities
+  has_many :divisions
+
+  def first_level_divisions
+    self.divisions.level_equals(1)
+  end
 end

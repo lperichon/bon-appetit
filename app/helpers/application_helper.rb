@@ -82,6 +82,6 @@ module ApplicationHelper
   end
 
   def map_address_info(address)
-    "#{address.type.name}<br/>#{address.full_address}"
+    "#{address.type.try(:name)}<br/>#{address.full_address}"
   end
 end

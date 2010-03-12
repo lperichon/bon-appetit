@@ -14,8 +14,8 @@ ActionController::Routing::Routes.draw do |map|
       restaurant.resources :contacts
     end
     admin.resources :countries do |country|
-      country.resources :provinces do |province|
-        province.resources :cities
+      country.resources :divisions do |division|
+        division.resources :cities
       end
     end
     admin.resources :email_types
@@ -49,7 +49,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :restaurant
   map.resource :subscription, :member=>{:history=>:get, :credit_card=>:get, :cancel=>:get, :store_credit_card=>:post}
   map.setup_wizard 'setup', :controller => 'setup'
-  
+
+  map.resources :divisions, :only => :index
+  map.resources :cities, :only => :index
+
   map.resources :signups
   map.resources :user_sessions
   map.resources :password_resets

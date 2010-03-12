@@ -1,11 +1,11 @@
-class City < ActiveRecord::Base
+class Division < ActiveRecord::Base
   belongs_to :country
-  belongs_to :division
+  belongs_to :parent, :class_name => "Division"
 
-  # Returns an array with all the parents of this city
+  # Returns an array with all the parents of this administrative region
   #
-  # The first position in the array is the +country+ and up to 4 more positions
-  # can contain the ADM1, ADM2, ADM3 and ADM4 divisions containing the city
+  # The first position in the array is the +country+ and up to 3 more positions
+  # can contain the ADM1, ADM2 and ADM3 divisions containing this one
   def containers
     return @containers unless @containers.nil?
     container_codes = []
