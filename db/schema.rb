@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100304195301) do
+ActiveRecord::Schema.define(:version => 20100317151340) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -112,6 +112,19 @@ ActiveRecord::Schema.define(:version => 20100304195301) do
     t.string   "owner_type"
     t.integer  "type_id",    :default => 1
     t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "identification_types", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "identifications", :force => true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "type_id"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

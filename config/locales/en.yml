@@ -256,6 +256,7 @@ en:
     create:
       success: "User was successfully created."
     user:
+      add_identification: "Add another identification"
       add_phone: "Add another phone"
       add_address: "Add a new address"
       add_email: "Add new email"
@@ -305,6 +306,7 @@ en:
     update:
       success: "Contact was updated successfully!"
     contact:
+      add_identification:  "Add another identification"
       add_phone: "Add another phone"
       add_address: "Add a new address"
       add_email: "Add new email"
@@ -327,6 +329,11 @@ en:
       notice: "Website updated successfully!"
     create:
       notice: "Website created successfully!"
+  identifications:
+    update:
+      notice: "Identification updated successfully!"
+    create:
+      notice: "Identification created successfully!"
   emails:
     update:
       notice: "Email updated successfully!"

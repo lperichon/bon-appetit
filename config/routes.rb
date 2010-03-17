@@ -24,6 +24,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :instant_messenger_types
     admin.resources :instant_messenger_protocols
     admin.resources :website_types
+    admin.resources :identification_types
     admin.resources :user_sessions
   end
   
@@ -33,6 +34,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :emails
     users.resources :websites
     users.resources :instant_messengers
+    users.resources :identifications
   end
   map.resources :product_types
   map.resources :products, :collection => {:autocomplete => :get}
@@ -42,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
     contact.resources :emails
     contact.resources :websites
     contact.resources :instant_messengers
+    contact.resources :identifications
   end
   map.resources :orders, :has_many => :order_items
   map.resource :dashboard

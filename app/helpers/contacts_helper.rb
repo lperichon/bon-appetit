@@ -1,4 +1,8 @@
 module ContactsHelper
+  def identification_label(identification)
+    "#{identification.type ? identification.type.name : nil} - #{identification.code}"
+  end
+
   def phone_label(phone)
     "#{phone.type ? phone.type.name : nil} - #{phone.number}"
   end

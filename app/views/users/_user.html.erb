@@ -19,7 +19,7 @@
     <span class='label'><%= User.human_attribute_name('locale') %>:</span>
     <%= in_place_editor_for @user, {:locale => 'users/locale'}, {:display => @user.locale.blank? ? '-' : t('this_file_language')} %>
   </p>
-  <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
+  <% ['identification','phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
     <%= render :partial => 'shared/contactable_field', :locals => {:field_name => field_name} %>
   <% end %>
 </div>

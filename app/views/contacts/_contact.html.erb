@@ -7,7 +7,7 @@
     <span class='label'><%= Contact.human_attribute_name('birthday') %>:</span>
     <%= in_place_editor_for @contact, {:name => 'contacts/birthday'}, {:display => @contact.birthday} %>
   </p>
-  <% ['phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
+  <% ['identification','phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
     <%= render :partial => 'shared/contactable_field', :locals => {:field_name => field_name} %>
   <% end %>
 </div>
