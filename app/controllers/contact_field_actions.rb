@@ -47,4 +47,16 @@ module ContactFieldActions
       end
     end
   end
+
+  def destroy
+    @field = @parent.send("#{self.association_name}").find(params[:id])
+    @field_dom_id = dom_id @field
+    if @field.destroy
+      flash[:notice] = t(self.association_name + '.destroy.notice')
+
+      respond_to do |format|
+        format.js {}
+      end
+    end
+  end
 end

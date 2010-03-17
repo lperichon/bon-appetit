@@ -324,32 +324,43 @@ en:
       notice: "Phone updated successfully!"
     create:
       notice: "Phone created successfully!"
+    destroy:
+      notice: "Phone destroyed successfully!"
   websites:
     update:
       notice: "Website updated successfully!"
     create:
       notice: "Website created successfully!"
+    destroy:
+      notice: "Website destroyed successfully!"
   identifications:
     update:
       notice: "Identification updated successfully!"
     create:
       notice: "Identification created successfully!"
+    destroy:
+      notice: "Identification destroyed successfully!"
   emails:
     update:
       notice: "Email updated successfully!"
     create:
       notice: "Email created successfully!"
+    destroy:
+      notice: "Email destroyed successfully!"
   addresses:
     update:
       notice: "Address updated successfully!"
     create:
       notice: "Address created successfully!"
+    destroy:
+      notice: "Address destroyed successfully!"
   instant_messengers:
     update:
       notice: "Instant Messenger updated successfully!"
     create:
       notice: "Instant Messenger created successfully!"
-
+    destroy:
+      notice: "Instant Messenger destroyed successfully!"
   product_types:
     show:
       title: "Viewing Product Type"
