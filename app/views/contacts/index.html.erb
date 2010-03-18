@@ -19,6 +19,7 @@
     </ul>
     <ul class='actions'>
       <li class='first'><%= link_to t('actions.show'), contact_path(contact) %></li>
+      <li class='last'><%= link_to t('actions.destroy'), contact_path(contact), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
     </ul>
   </div>
 <% end %>
