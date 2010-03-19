@@ -13,7 +13,7 @@
   <% end %>
   </ul>
   <%= link_to_function t(@parent.class.to_s.downcase.pluralize.dasherize + '.' + @parent.class.to_s.downcase.dasherize + '.add_' + field_name), "$('#new_#{field_name}_form').show();$('#new_#{field_name}_link').hide()", :id => "new_#{field_name}_link" %>
-  <div id='new_<%= field_name %>_form' style='display: none;'>
+  <div id='new_<%= field_name %>_form' class = 'new_field_form' style='display: none;'>
     <%= render :partial => field_name.pluralize + '/form', :locals => {field_name.to_sym => @parent.send(field_name.pluralize).new } %>
   </div>
 </div>

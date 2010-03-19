@@ -314,6 +314,8 @@ en:
       add_instant_messenger: "Add new instant messenger"
     search_form:
       title: "Search contacts"
+    new:
+      title: "New contact"
   dashboards:
     show:
       total_by_dow_hour_title: "Total Sales By Day and Hour"

@@ -3,7 +3,7 @@
 <%= f.input :last_name %>
 <%= f.input :birthday, :as => :calendar %>
 
-<div id='phones'>
+<div id='phones' class='multi phones'>
   <%= f.label :phones, 'Phones' %>
   <% f.inputs :for => :phones do |pf|%>
     <%= render :partial => 'phones/phone', :locals => {:f => pf} %>
@@ -12,37 +12,37 @@
 </div>
 <%= add_new_record_link f.object, :phone, f %>
 
-<div id='addresses'>
+<div id='addresses' class='multi addresses'>
   <%= f.label :addresses, 'Addresses' %>
   <% f.inputs :for => :addresses do |af|%>
-    <%= render :partial => 'contacts/address', :locals => {:f => af} %>
+    <%= render :partial => 'addresses/address', :locals => {:f => af} %>
     <%= remove_link_unless_new_record(af) %>
   <% end %>
 </div>
 <%= add_new_record_link f.object, :address, f %>
 
-<div id="emails">
+<div id="emails" class='multi emails'>
   <%= f.label :emails, 'Emails' %>
   <% f.inputs :for => :emails do |ef| %>
-    <%= render :partial => 'contacts/email', :locals => {:f => ef} %>
+    <%= render :partial => 'emails/email', :locals => {:f => ef} %>
     <%= remove_link_unless_new_record(ef) %>
   <% end %>
 </div>
 <%= add_new_record_link f.object, :email, f %>
 
-<div id='instant_messengers'>
+<div id='instant_messengers' class='multi instant_messengers'>
   <%= f.label :instant_messengers, 'Instant Messengers' %>
   <% f.inputs :for => :instant_messengers do |imf|%>
-    <%= render :partial => 'contacts/instant_messenger', :locals => {:f => imf } %>
+    <%= render :partial => 'instant_messengers/instant_messenger', :locals => {:f => imf } %>
     <%= remove_link_unless_new_record(imf) %>
   <% end %>
 </div>
 <%= add_new_record_link f.object, :instant_messenger, f %>
 
-<div id='websites'>
+<div id='websites' class='multi websites'>
   <%= f.label :websites, 'Websites'%>
   <% f.inputs :for => :websites do |wf|%>
-    <%= render :partial => 'contacts/website', :locals => {:f => wf} %>
+    <%= render :partial => 'websites/website', :locals => {:f => wf} %>
     <%= remove_link_unless_new_record(wf) %>
   <% end %>
 </div>

@@ -24,8 +24,15 @@ body {
   padding: 20px;
 }
 
-.label {
+.label, form label {
   font-weight: bold;
+}
+.new_field_form {
+  margin-left: 20px;
+}
+
+.multi form, .multi .inputs {
+  margin-left: 10px;
 }
 
 #content.show, #content.edit, #content.update, #content.new {
@@ -40,7 +47,7 @@ body {
 .actions {
   margin-left: 0;
   padding-left: 0;
-  display: inline;
+  display: inline-block;
   text-align: left;
 }
 
