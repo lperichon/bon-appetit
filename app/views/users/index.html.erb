@@ -3,15 +3,17 @@
   <li class='first'><%= link_to t('.new'), new_user_path %></li>
 </ul>
 <div class='list'>
-<% @users.each_with_index do |resource, index| %>
+<% @users.each_with_index do |user, index| %>
   <div class='user element <%= odd_or_even(index) %>'>
-    <h3><%=h resource.username %></h3>
+    <h3><%=h user.username %></h3>
     <ul>
-      <li><%=h resource.email %></li>
+      <li><%=h user.email %></li>
     </ul>
     <ul class='actions'>
-      <li class='first'><%= link_to t('actions.show'), user_path(resource) %></li>
-      <li><%= link_to t('actions.destroy'), user_path(resource), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+      <li class='first'><%= link_to t('actions.show'), user_path(user) %></li>
+      <% unless user == current_user %>
+      <li><%= link_to t('actions.destroy'), user_path(user), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>

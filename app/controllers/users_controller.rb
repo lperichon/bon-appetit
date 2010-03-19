@@ -35,6 +35,15 @@ class UsersController < UserApplicationController
 
   protected
 
+  def destroy_resource(resource)
+    resource.restaurants.delete(current_restaurant)
+    if resource.restaurants.empty?
+      resource.destroy
+    else
+      resource.save
+    end
+  end
+
   def begin_of_association_chain
     current_restaurant
   end
