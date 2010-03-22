@@ -1,6 +1,8 @@
 <h1><%= t('orders.index.title') %></h1>
 <ul class='list actions'>
   <li class='first'><%= link_to t('.new'), new_order_path %></li>
+  <li class='live' style='<%= 'display:none;' unless @live %>'><%= t('.refreshing') %>(<%= link_to_function t('.stop'), "stop_live()" %>)</li>
+  <li class='static' style='<%= 'display:none;' if @live %>'><%= link_to_function t('.live'), "start_live()" %></li>
   <li><%= link_to_function t('actions.search'), "open_modal('search_orders')" %></li>
 </ul>
 <div id='search_orders' class='modal' style='display:none;'>
@@ -8,3 +10,20 @@
 </div>
 
 <%= render :partial => 'list', :locals => {:orders => @orders} %>
+
+<%= hidden_field_tag :last_order_id, @orders.first.id %>
+
+
+<% javascript_tag do %>
+  start_live = function() {
+    $('.static').hide();
+    $('.live').show();
+    my_var = setInterval(function() {jQuery.ajax({data:'search[id_gt]=' + $('#last_order_id').val(), dataType:'script', type:'get', url:'/orders'})}, 5 * 1000) 
+  }
+  stop_live = function() {
+    $('.static').show();
+    $('.live').hide();
+    clearInterval(my_var);
+  }
+<% end %>
+

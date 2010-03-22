@@ -1,0 +1,9 @@
+unless @orders.empty?
+  orders_list = ""
+  @orders.each_with_index do |order, index|
+    orders_list += escape_javascript render :partial => 'list_element', :locals => {:order => order, :index => index}
+  end
+
+  page << "$('#orders.list').prepend('#{orders_list}');"
+  page << "$('#last_order_id').val('#{@orders.first.id}')"
+end

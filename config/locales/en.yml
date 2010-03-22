@@ -236,6 +236,9 @@ en:
       hide_closed: "Hide closed"
       title: "Listing orders"
       new: "New order"
+      live: "Live"
+      refreshing: "Refreshing every 5s."
+      stop: "stop"
     new:
       title: "New Order"
     new_order_item:

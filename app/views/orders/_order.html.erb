@@ -29,7 +29,7 @@
   <p>
     <span class='label'><%= Order.human_attribute_name('generated_at') %>:</span>
     <% if @order.open? %>
-      <%= in_place_editor_for @order, :generated_at => 'orders/generated_at' %>
+      <%= in_place_editor_for @order, {:generated_at => 'orders/generated_at'}, {:display => @order.generated_at } %>
     <% else %>
       <%=h @order.generated_at %>
     <% end %>

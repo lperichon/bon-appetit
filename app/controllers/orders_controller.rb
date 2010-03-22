@@ -10,6 +10,13 @@ class OrdersController < UserApplicationController
     else
       @orders = apply_scopes(current_restaurant.orders).all
     end
+
+    @live = params[:live] || false
+
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
   respond_to :js, :only => :update
