@@ -40,6 +40,7 @@ class OrdersController < UserApplicationController
     show! do |success, failure|
       success.pdf do
         if @order.closed?
+          # TODO: move to the model. create invoice on close.
           @order.create_invoice unless @order.invoice
           file_path = RAILS_ROOT + '/public' + @order.invoice.url(:original, false)
           send_file file_path, :type=>"application/pdf"

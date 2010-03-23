@@ -17,7 +17,7 @@ class Order < ActiveRecord::Base
   named_scope :this_month, :conditions => ["generated_at >= ?", Time.zone.today.beginning_of_month]
   named_scope :between, proc {|s, e| {:conditions => ["generated_at BETWEEN ? AND ?", s, e]}}
 
-  # sqlite3 specific move this to environments or find out what happened to Searchlogic's modifiers
+  #TODO: sqlite3 specific move this to environments or find out what happened to Searchlogic's modifiers
   named_scope :by_dom, proc {|dom| {:conditions => ["strftime('%d', generated_at) = ?", "%02d" % dom]} }
   named_scope :by_dow, proc {|dow| {:conditions => ["strftime('%w', generated_at) = '?'", dow]} }
   named_scope :by_hour, proc {|h| {:conditions => ["strftime('%H', generated_at) = ?", "%02d" % h]} }
@@ -72,7 +72,7 @@ class Order < ActiveRecord::Base
     self.invoice = File.new(RAILS_ROOT+"/tmp/#{filename}")
     self.save
 
-    # paperclip creates a copy of the attached file, delete the original
+    # TODO: paperclip creates a copy of the attached file, delete the original
   end
 
   protected

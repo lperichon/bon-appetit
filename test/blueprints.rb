@@ -42,6 +42,7 @@ Order.blueprint do
   restaurant
   discount {rand}
   generated_at { Sham.date }
+  contact
 end
 
 User.blueprint do

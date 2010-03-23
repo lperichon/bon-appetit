@@ -8,6 +8,9 @@ class OrderTest < ActiveSupport::TestCase
 
     should_have_many :order_items
 
+    should_belong_to :contact
+    should_belong_to :address
+
     should_belong_to :restaurant
     should_validate_presence_of :restaurant
 
@@ -44,6 +47,14 @@ class OrderTest < ActiveSupport::TestCase
 
       should("freeze the total") do
         assert_no_difference("@order.total") { @order.discount = 1 }
+      end
+
+      should "freeze the contact name" do
+        assert @order.contact_name = @order.contact.name
+      end
+
+      should "freeze the subtotal" do
+        assert_no_difference("@order.subtotal") { @order.discount = 1 }
       end
     end
   end

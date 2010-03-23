@@ -39,15 +39,29 @@ class OrderItemTest < ActiveSupport::TestCase
     end
   end
 
-  context "an order item" do
-    setup {@order_item = make_order_item}
+  context "an order item from a closed order" do
+    setup do
+      @order_item = make_order_item
+      @order_item.order.closed = true
+      @order_item.order.save
+    end
 
-    context "after the order is closed" do
-      setup { @order_item.order.closed = true; @order_item.order.save; }
+    should "freeze the unit price" do
+      unit_price = @order_item.unit_price
+      @order_item.product.price = 10
+      assert_equal unit_price, @order_item.unit_price
+    end
 
-      should "freeze the unit price" do
-        #assert_no_difference("@order_item.unit_price") { @order_item.product.price = 10 }
-      end
+    should "freeze the product name" do
+      product_name = @order_item.product_name
+      @order_item.product.name = 'Duff beer'
+      assert_equal product_name, @order_item.product_name
+    end
+
+    should "freeze the subtotal" do
+      subtotal = @order_item.subtotal
+      @order_item.product.price = 10
+      assert_equal subtotal, @order_item.subtotal
     end
   end
 end
