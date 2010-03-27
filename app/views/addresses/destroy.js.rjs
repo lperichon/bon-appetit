@@ -1,3 +1,0 @@
-page << "$('##{@field_dom_id}').remove();"
-
-page << show_messages(flash)

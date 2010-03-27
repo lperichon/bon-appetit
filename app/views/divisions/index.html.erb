@@ -1,9 +1,0 @@
-<% unless @divisions.empty? %>
-<li id="address_division<%= @level %>_input" class="select optional">
-  <label for="address_division<%= @level %>_id">Division<%=@level%></label>
-    <% clear_children = "$('.#{@field_dom_id}.division.child#{@level}').html('')" %>
-    <% update_child_division = remote_function(:url => {:controller => 'divisions', :action => 'index'}, :with => "'field_dom_id=#{@field_dom_id}&search[country_id]=' + $('##{@field_dom_id}_country #address_country_id').val() + '&search[parent_id]=' + $('##{@field_dom_id}_division#{@level} #address_division#{@level}_id').val() +'&search[level]=#{@level + 1}'", :update => "#{@field_dom_id}_division#{@level + 1}") %>
-    <% update_city = remote_function(:url => {:controller => 'cities', :action => 'index'}, :with => "'field_dom_id=#{@field_dom_id}&search[country_id]=' + $('##{@field_dom_id}_country #address_country_id').val() + '&search[division_id]=' + $('##{@field_dom_id}_division#{@level} #address_division#{@level}_id').val()", :update => "#{@field_dom_id}_city") %>
-    <%= collection_select :address, "division#{@level}_id", @divisions, :id, :name, {:prompt => t('divisions.prompt'), :include_blank => t('actions.clear')} , {:onchange => "#{clear_children};#{update_child_division};#{update_city}"} %>
-</li>
-<% end %>

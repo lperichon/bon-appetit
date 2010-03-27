@@ -1,4 +1,6 @@
 class ProfilesController < UserApplicationController
+  helper ContactableHelper
+
   def show
     @user = current_user
   end

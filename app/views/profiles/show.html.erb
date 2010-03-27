@@ -1,2 +1,2 @@
 <h1><%= t('profiles.show.title') %></h1>
-<%= render @user %>
+<%= render :partial => 'contactable/contactable', :locals => {:contactable => @user} %>

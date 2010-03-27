@@ -29,22 +29,13 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :users  do |users|
-    users.resources :phones
-    users.resources :addresses
-    users.resources :emails
-    users.resources :websites
-    users.resources :instant_messengers
-    users.resources :identifications
+    users.contactable_resources
   end
+  
   map.resources :product_types
   map.resources :products, :collection => {:autocomplete => :get}
   map.resources :contacts, :collection => {:autocomplete => :get} do |contact|
-    contact.resources :phones
-    contact.resources :addresses
-    contact.resources :emails
-    contact.resources :websites
-    contact.resources :instant_messengers
-    contact.resources :identifications
+    contact.contactable_resources
   end
   map.resources :orders, :has_many => :order_items
   map.resource :dashboard
@@ -52,9 +43,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :restaurant
   map.resource :subscription, :member=>{:history=>:get, :credit_card=>:get, :cancel=>:get, :store_credit_card=>:post}
   map.setup_wizard 'setup', :controller => 'setup'
-
-  map.resources :divisions, :only => :index
-  map.resources :cities, :only => :index
 
   map.resources :signups
   map.resources :user_sessions

@@ -1,9 +1,0 @@
-<% semantic_remote_form_for [email.owner, email] do |f| %>
-  <% f.inputs do %>
-  <%= render :partial => 'emails/email', :locals => {:f => f} %>
-  <% end %>
-  <% f.buttons do %>
-    <%= f.commit_button %>
-    <li><%= link_to_function t('actions.cancel'), "$('#new_email_form').hide();$('#new_email').reset();$('#new_email_link').show()" %></li>
-  <% end %>
-<% end %>

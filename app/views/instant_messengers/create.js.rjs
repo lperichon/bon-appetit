@@ -1,3 +1,0 @@
-page << "$('.multi.instant_messengers').replaceWith('#{escape_javascript render :partial => 'shared/contactable_field', :locals => {:field_name => 'instant_messenger'}}');"
-
-page << show_messages(flash)

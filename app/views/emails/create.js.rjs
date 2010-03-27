@@ -1,3 +1,0 @@
-page << "$('.multi.emails').replaceWith('#{escape_javascript render :partial => 'shared/contactable_field', :locals => {:field_name => 'email'}}');"
-
-page << show_messages(flash)

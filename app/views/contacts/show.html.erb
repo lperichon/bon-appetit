@@ -9,7 +9,7 @@
 <div id="tabs-1">
   <h1><%= t('contacts.show.title') %></h1>
 
-  <%= render @contact %>
+  <%= render :partial => 'contactable/contactable', :locals => {:contactable => @contact} %>
 
   <ul class='actions'>
     <li class='first'><%= link_to t('actions.back'), contacts_path %></li>

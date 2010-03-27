@@ -1,4 +1,3 @@
-<div id='<%= dom_id @user %>'>
   <p>
     <span class='label'><%= User.human_attribute_name('username') %>:</span>
     <%= in_place_editor_for @user, {:username => 'users/username'}, {:display => @user.username} %>
@@ -7,19 +6,7 @@
     <span class='label'><%= User.human_attribute_name('email') %>:</span>
     <%= in_place_editor_for @user, {:email => 'users/email'}, {:display => @user.email} %>
   </p>
-  <p>
-    <span class='label'><%= User.human_attribute_name('name') %>:</span>
-    <%= in_place_editor_for @user, {:name => 'contacts/name'}, {:display => @user.name.blank? ? '-' : @user.name} %>
-  </p>
-  <p>
-    <span class='label'><%= User.human_attribute_name('birthday') %>:</span>
-    <%= in_place_editor_for @user, {:birthday => 'contacts/birthday'}, {:display => @user.birthday ? @user.birthday : '-'} %>
-  </p>
-  <p>
+   <p>
     <span class='label'><%= User.human_attribute_name('locale') %>:</span>
     <%= in_place_editor_for @user, {:locale => 'users/locale'}, {:display => @user.locale.blank? ? '-' : t('this_file_language')} %>
   </p>
-  <% ['identification','phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
-    <%= render :partial => 'shared/contactable_field', :locals => {:field_name => field_name} %>
-  <% end %>
-</div>

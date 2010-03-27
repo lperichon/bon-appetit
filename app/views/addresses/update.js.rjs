@@ -1,5 +1,0 @@
-page << "$('.multi.addresses').replaceWith('#{escape_javascript render :partial => 'shared/contactable_field', :locals => {:field_name => 'address'}}');"
-
-page << refresh_map(@parent.addresses) if @contact
-
-page << show_messages(flash)

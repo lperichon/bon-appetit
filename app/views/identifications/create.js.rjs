@@ -1,3 +1,0 @@
-page << "$('.multi.identifications').replaceWith('#{escape_javascript render :partial => 'shared/contactable_field', :locals => {:field_name => 'identification'}}');"
-
-page << show_messages(flash)

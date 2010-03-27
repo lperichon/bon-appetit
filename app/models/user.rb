@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   contactable
-  
+
   acts_as_authentic do |c|
     c.validates_length_of_login_field_options = {:on => :update, :minimum => 3}
     c.merge_validates_format_of_login_field_options({:on => :update})

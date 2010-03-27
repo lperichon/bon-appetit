@@ -1,9 +1,0 @@
-<% semantic_remote_form_for [identification.owner, identification] do |f| %>
-  <% f.inputs do %>
-  <%= render :partial => 'identifications/identification', :locals => {:f => f} %>
-  <% end %>
-  <% f.buttons do %>
-    <%= f.commit_button %>
-    <li><%= link_to_function t('actions.cancel'), "$('#new_identification_form').hide();$('#new_identification').reset();$('#new_identification_link').show()" %></li>
-  <% end %>
-<% end %>

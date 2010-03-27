@@ -1,6 +1,6 @@
 <h1><%= t('.title') %></h1>
 
-<%= render @user %>
+<%= render :partial => 'contactable/contactable', :locals => {:contactable => @user, :custom_fields => 'users/user'} %>
 
 <ul class='actions'>
   <li class='first'><%= link_to 'Back', users_path %></li>

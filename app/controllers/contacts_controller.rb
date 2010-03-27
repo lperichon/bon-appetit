@@ -1,4 +1,6 @@
 class ContactsController < UserApplicationController
+  helper ContactableHelper  
+
   # the same as inheriting from InheritedResources::Base
   inherit_resources do
     actions :all, :except => [:index, :edit]
