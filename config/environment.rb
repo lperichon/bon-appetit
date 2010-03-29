@@ -26,7 +26,7 @@ Rails::Initializer.run do |config|
   config.gem "foreigner"
   config.gem "authlogic"
   config.gem "searchlogic"
-  config.gem "contactable", :version => '1.0'
+  config.gem "contactable", :version => '>1.0'
   config.gem 'lperichon-jintastic', :lib => 'jintastic'
   # gems required for saasramp
   config.gem 'activemerchant', :lib => 'active_merchant'
