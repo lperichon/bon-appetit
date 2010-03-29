@@ -1,0 +1,16 @@
+<div id='<%= dom_id contactable %>'>
+
+  <%= render contactable rescue nil%>
+
+  <p>
+    <span class='label'><%= contactable.class.human_attribute_name('name') %>:</span>
+    <%= in_place_editor_for contactable, {:name => 'contactable/name'}, {:display => contactable.name.blank? ? '-' : contactable.name} %>
+  </p>
+  <p>
+    <span class='label'><%= contactable.class.human_attribute_name('birthday') %>:</span>
+    <%= in_place_editor_for contactable, {:birthday => 'contactable/birthday'}, {:display => contactable.birthday.blank? ? '-' : contactable.birthday} %>
+  </p>
+  <% ['identification','phone', 'email', 'address', 'instant_messenger', 'website'].each do |field_name| %>
+    <%= render :partial => 'contactable/contactable_field', :locals => {:contactable => contactable, :field_name => field_name} %>
+  <% end %>
+</div>

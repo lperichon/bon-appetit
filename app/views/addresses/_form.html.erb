@@ -1,0 +1,9 @@
+<% semantic_remote_form_for [address.owner, address] do |f| %>
+  <% f.inputs do %>
+    <%= render :partial => 'addresses/address', :locals => {:f => f, :address => address} %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.commit_button %>
+    <li><%= link_to_function t('actions.cancel'), "$('#new_address_form').hide();$('#new_address').reset();$('#new_address_link').show()" %></li>
+  <% end %>
+<% end %>

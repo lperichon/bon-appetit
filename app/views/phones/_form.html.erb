@@ -1,0 +1,9 @@
+<% semantic_remote_form_for [phone.owner, phone] do |f| %>
+  <% f.inputs do %>
+  <%= render :partial => 'phones/phone', :locals => {:f => f} %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.commit_button %>
+    <li><%= link_to_function t('actions.cancel'), "$('#new_phone_form').hide();$('#new_phone').reset();$('#new_phone_link').show()"%></li>
+  <% end %>
+<% end %>

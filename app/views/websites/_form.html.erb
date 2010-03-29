@@ -1,0 +1,9 @@
+<% semantic_remote_form_for [website.owner, website] do |f| %>
+  <% f.inputs do %>
+  <%= render :partial => 'websites/website', :locals => {:f => f} %>
+  <% end %>
+  <% f.buttons do %>
+    <%= f.commit_button %>
+    <li><%= link_to_function t('actions.cancel'), "$('#new_website_form').hide();$('#new_website').reset();$('#new_website_link').show()" %></li>
+  <% end %>
+<% end %>

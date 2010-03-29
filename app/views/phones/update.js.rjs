@@ -1,0 +1,3 @@
+page << "$('.multi.phones').replaceWith('#{escape_javascript render :partial => 'contactable/contactable_field', :locals => {:contactable => @contactable, :field_name => 'phone'}}');"
+
+page << show_messages(flash)

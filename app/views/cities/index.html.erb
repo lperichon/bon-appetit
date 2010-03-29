@@ -1,0 +1,6 @@
+<% unless @cities.empty? %>
+<li id="address_city_input" class="select optional">
+  <label for="address_city_id">City</label>
+  <%= collection_select :address, :city_id, @cities, :id, :name, {:prompt => t('cities.prompt'), :include_blank => t('actions.clear')} %>
+</li>
+<% end %>
