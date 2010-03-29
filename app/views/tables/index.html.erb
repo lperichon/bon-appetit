@@ -1,0 +1,18 @@
+<h1><%= t('.title') %></h1>
+<ul class='list actions'>
+  <li class='first'><%= link_to t('.new'), new_table_path %></li>
+</ul>
+<div id='tables' class='list'>
+<% @tables.each_with_index do |table, index| %>
+  <div class='table element <%= odd_or_even(index) %>'>
+    <h3><%=h table.id %></h3>
+    <ul>
+      <li><span class='label'><%= Table.human_attribute_name('max_party') %>:</span> <%=h table.max_party %></li>
+    </ul>
+    <ul class='actions'>
+      <li class='first'><%= link_to t('actions.show'), table_path(table) %></li>
+      <li><%= link_to t('actions.destroy'), table_path(table), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+    </ul>
+  </div>
+<% end %>
+</div>

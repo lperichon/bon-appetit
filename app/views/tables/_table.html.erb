@@ -1,0 +1,6 @@
+<div id='<%= dom_id @table %>'>
+  <p>
+    <span class='label'><%= Table.human_attribute_name('max_party') %>:</span>
+    <%= in_place_editor_for @table, :max_party => 'max_party' %>
+  </p>
+</div>

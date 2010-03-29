@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100317151340) do
+ActiveRecord::Schema.define(:version => 20100329145214) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -290,6 +290,13 @@ ActiveRecord::Schema.define(:version => 20100317151340) do
   add_index "subscriptions", ["state"], :name => "index_subscriptions_on_state"
   add_index "subscriptions", ["subscriber_id"], :name => "index_subscriptions_on_subscriber_id"
   add_index "subscriptions", ["subscriber_type"], :name => "index_subscriptions_on_subscriber_type"
+
+  create_table "tables", :force => true do |t|
+    t.integer  "restaurant_id"
+    t.integer  "max_party"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username"

@@ -33,6 +33,7 @@ class OrdersController < UserApplicationController
     end
     update! do |success, failure|
       success.js { flash[:notice] = t('orders.update.success') }
+      failure.js { flash[:notice] = t('orders.update.failure') }
     end
   end
 

@@ -1,0 +1,10 @@
+<h1><%= t('.title') %></h1>
+
+<% semantic_form_for(@table) do |f| %>
+  <% f.inputs do %>
+    <%= render :partial => 'max_party' %>
+  <% end %>
+  <%= f.buttons %>
+<% end %>
+
+<%= link_to t('actions.back'), tables_path %>

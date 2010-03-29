@@ -31,7 +31,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users  do |users|
     users.contactable_resources
   end
-  
+
+  map.resources :tables
   map.resources :product_types
   map.resources :products, :collection => {:autocomplete => :get}
   map.resources :contacts, :collection => {:autocomplete => :get} do |contact|

@@ -4,6 +4,8 @@ class Restaurant < ActiveRecord::Base
   has_many :products
   has_many :orders
   has_many :contacts
+  has_many :tables
+  
   has_and_belongs_to_many :users
   belongs_to :manager, :class_name => 'User'
 

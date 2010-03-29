@@ -227,6 +227,7 @@ en:
   orders:
     update:
       success: "Order was successfully updated."
+      failure: "Order was not updated"
     show:
       new_order_item: "Add new"
       pdf:
@@ -287,6 +288,7 @@ en:
     signup: "Signup"
     welcome: "Welcome {{username}}!"
     subscription: "Subscription"
+    tables: "Tables"
   application:
     copyright: "Copyright &copy; 2009 Bon Appetit."
   product:
@@ -430,3 +432,13 @@ en:
     prompt: "Please select a country..."
   cities:
     prompt: "Select a city..."
+  tables:
+    update:
+      success: "Table updated successfully!"
+    show:
+      title: "Viewing Table"
+    new:
+      title: "New table"
+    index:
+      title: "Listing Tables"
+      new: "New table"

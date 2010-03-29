@@ -72,6 +72,7 @@
       <ul class='menu'>
           <li><%= link_to t('menu.dashboard'), dashboard_path %></li>
           <li><%= link_to t('menu.orders'), orders_path %></li>
+          <li><%= link_to t('menu.tables'), tables_path %></li>
           <li><%= link_to t('menu.contacts'), contacts_path %></li>
           <% if current_restaurant && current_restaurant.manager == current_user %>
             <li class='drop'><%= link_to t('menu.administrator'), '#' %><ul>
