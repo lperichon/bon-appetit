@@ -23,6 +23,11 @@ ProductType.blueprint do
   name
 end
 
+Table.blueprint do
+  restaurant
+  max_party { rand(5) + 1 }
+end
+
 Product.blueprint do
   restaurant
   product_type

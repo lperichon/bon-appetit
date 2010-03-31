@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100329145214) do
+ActiveRecord::Schema.define(:version => 20100329190205) do
 
   create_table "address_type_translations", :force => true do |t|
     t.string   "locale"
@@ -296,6 +296,8 @@ ActiveRecord::Schema.define(:version => 20100329145214) do
     t.integer  "max_party"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "top"
+    t.integer  "left"
   end
 
   create_table "users", :force => true do |t|

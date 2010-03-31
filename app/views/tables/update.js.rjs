@@ -1,0 +1,7 @@
+if @table.present?
+  page << "$('##{dom_id @table}').replaceWith('#{escape_javascript render @table}');"
+else
+  page << "$('.draggable-table .handle').hide();$('#edit_diagram_link').show();$('#save_diagram_button').hide();$('.draggable-table').draggable('destroy');"
+end
+
+page << show_messages(flash)

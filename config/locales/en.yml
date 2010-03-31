@@ -44,6 +44,8 @@ en:
     search: "Search"
     download_invoice: "Download Invoice"
     clear: "Clear..."
+    edit: "Edit"
+    save: "Save"
   activerecord:
     attributes:
       subscription:
@@ -442,3 +444,5 @@ en:
     index:
       title: "Listing Tables"
       new: "New table"
+      view_as_list: "View as list"
+      view_as_diagram: "View as diagram"

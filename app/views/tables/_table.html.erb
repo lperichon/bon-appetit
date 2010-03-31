@@ -3,4 +3,8 @@
     <span class='label'><%= Table.human_attribute_name('max_party') %>:</span>
     <%= in_place_editor_for @table, :max_party => 'max_party' %>
   </p>
+  <p>
+    <span class='label'><%= Table.human_attribute_name('position') %>:</span>
+    <%= in_place_editor_for @table, {:position => 'position'},{ :display =>position_label(@table)} %>
+  </p>
 </div>
