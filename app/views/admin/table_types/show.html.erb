@@ -1,0 +1,12 @@
+<h1>Viewing <%= resource.name %></h1>
+<p>
+  <b>Symbol:</b>
+  <%=h resource.symbol %>
+</p>
+<p>
+  <b>Name:</b>
+  <%=h resource.name %>
+</p>
+
+<%= link_to 'Edit', edit_admin_table_type_path(resource) %> |
+<%= link_to 'Back', admin_table_types_path %>

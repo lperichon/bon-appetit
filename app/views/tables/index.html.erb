@@ -10,6 +10,7 @@
     <h3><%=h table.id %></h3>
     <ul>
       <li><span class='label'><%= Table.human_attribute_name('max_party') %>:</span> <%=h table.max_party %></li>
+      <li><span class='label'><%= Table.human_attribute_name('type') %>:</span> <%=h table.type.name %></li>
     </ul>
     <ul class='actions'>
       <li class='first'><%= link_to t('actions.show'), table_path(table) %></li>
@@ -20,10 +21,17 @@
 </div>
 
 <style type="text/css">
-  #diagram_actions { position: absolute; right: 0; top: 0;}
-  .draggable-table { width: 150px; height: 150px; float: left; border: 1px solid #ccc; position: absolute;}
+  #diagram_actions { position: absolute; right: 10px; top: 10px;}
+  .draggable-table { float: left; border: 1px solid black; position: absolute;}
+  .draggable-table.square.party_1, .draggable-table.square.party_2 {width: 30px; height: 30px; }
+  .draggable-table.round.party_1, .draggable-table.round.party_2 {width: 30px; height: 30px; -moz-border-radius: 15px; -webkit-border-radius: 15px;}
+  .draggable-table.square.party_3 {width: 50px; height: 30px; }
+  .draggable-table.round.party_3 {width: 50px; height: 50px; -moz-border-radius: 25px; -webkit-border-radius: 25px;}
   .draggable-table .handle {cursor: move;}
-  #table_diagram { width: 98%; height:350px; border:2px solid #ccc; padding: 10px; position: relative;}
+  .draggable_table .table-actions ul.actions {width: 150px;}
+  #table_diagram { width: 98%; height:350px; padding: 10px; position: relative;}
+
+
 </style>
 
 <script type="text/javascript">
@@ -46,24 +54,37 @@
           dataType: "script"
     });
   };
+
+  openEditor = function() {
+    $('.draggable-table .handle').show();
+    $('.draggable-table').draggable({containment: '#table_diagram', handle: '.handle'});
+    $('#edit_diagram_link').hide();
+    $('#save_diagram_button').show();
+  };
+
+  closeEditor = function() {
+    $('.draggable-table .handle').hide();
+    $('#edit_diagram_link').show();
+    $('#save_diagram_button').hide();
+    $('.draggable-table').draggable('destroy');
+  };
 </script>
 
 <div id="table_diagram" class='diagram' style='display:none;'>
   <div id='diagram_actions'>
-    <div id='edit_diagram_link'><%= link_to_function t('actions.edit'), "$('.draggable-table .handle').show(); $('.draggable-table').draggable({containment: '#table_diagram', handle: '.handle'}); $('#edit_diagram_link').hide();$('#save_diagram_button').show();" %></div>
-    <div id='save_diagram_button' style='display:none;'><%= button_to_function t('actions.save'), "updatePositions();" %></div>
+    <div id='edit_diagram_link'><%= link_to_function t('actions.edit'), "openEditor()" %></div>
+    <div id='save_diagram_button' style='display:none;'><%= button_to_function t('actions.save'), "updatePositions();" %>(<%= link_to_function 'cancel', 'closeEditor()' %>)</div>
   </div>
   <% @tables.each do |table| %>
-  <div id='<%= table.id %>' class="draggable-table ui-widget-content" style='top: <%= table.top %>px; left: <%= table.left %>px'>
-    <h3><%=h table.id %></h3> <span class='handle' style='display:none'>(move)</span>
-    <ul>
-      <li><span class='label'><%= Table.human_attribute_name('max_party') %>:</span> <%=h table.max_party %></li>
-    </ul>
-    <ul class='actions'>
-      <li class='first'><%= link_to t('actions.show'), table_path(table) %></li>
-      <li><%= link_to t('actions.destroy'), table_path(table), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
-    </ul>
-  </div>
+    <div id='<%= table.id %>' class="draggable-table ui-widget-content <%= table.type.symbol %> party_<%= table.max_party %>" style='top: <%= table.top %>px; left: <%= table.left %>px'>
+      <h3><%=h table.id %></h3> <span class='handle' style='display:none'>(move)</span>
+      <span class='table-actions'>
+        <ul class='actions'>
+          <li class='first'><%= link_to t('actions.show'), table_path(table) %></li>
+          <li><%= link_to t('actions.destroy'), table_path(table), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+        </ul>
+      </span>
+    </div>
   <% end %>
 </div>
 <!-- End demo -->

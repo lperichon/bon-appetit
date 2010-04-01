@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
         division.resources :cities
       end
     end
+    admin.resources :table_types
     admin.resources :email_types
     admin.resources :phone_types
     admin.resources :address_types

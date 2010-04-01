@@ -2,6 +2,7 @@
 
 <% semantic_form_for(@table) do |f| %>
   <% f.inputs do %>
+    <%= render :partial => 'type', :locals => {:f => f} %>
     <%= render :partial => 'max_party', :locals => {:f => f} %>
     <%= render :partial => 'position', :locals => {:f => f} %>
   <% end %>

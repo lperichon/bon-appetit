@@ -7,4 +7,8 @@
     <span class='label'><%= Table.human_attribute_name('position') %>:</span>
     <%= in_place_editor_for @table, {:position => 'position'},{ :display =>position_label(@table)} %>
   </p>
+  <p>
+    <span class='label'><%= Table.human_attribute_name('type') %>:</span>
+    <%= in_place_editor_for @table, {:type => 'type'}, { :display => @table.type.present? ? @table.type.name : '-'} %>
+  </p>
 </div>
