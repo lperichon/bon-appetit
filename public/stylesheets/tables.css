@@ -1,0 +1,50 @@
+#diagram_actions {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.draggable-table {
+  float: left;
+  border: 1px solid black;
+  position: absolute;
+}
+
+.draggable-table.square.party_1, .draggable-table.square.party_2 {
+  width: 30px;
+  height: 30px;
+}
+
+.draggable-table.round.party_1, .draggable-table.round.party_2 {
+  width: 30px;
+  height: 30px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
+.draggable-table.square.party_3 {
+  width: 50px;
+  height: 30px;
+}
+
+.draggable-table.round.party_3 {
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+}
+
+.draggable-table .handle {
+  cursor: move;
+}
+
+.draggable_table .table-actions ul.actions {
+  width: 150px;
+}
+
+#table_diagram {
+  width: 98%;
+  height: 350px;
+  padding: 10px;
+  position: relative;
+}

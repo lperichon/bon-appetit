@@ -20,8 +20,12 @@
   <%= javascript_include_tag 'g.line' %>
   <%= javascript_include_tag 'highcharts.src' %>
   <%= javascript_include_tag 'excanvas.compiled' %>
+
+  <% if File.exist? File.join(Rails.public_path, "javascripts/#{controller.controller_name}.js") %>
+    <%= javascript_include_tag controller.controller_name %>
+  <% end %>
   
-  <script type="text/javascript" src="http://use.typekit.com/yua3zvu.js"></script>
+  v<script type="text/javascript" src="http://use.typekit.com/yua3zvu.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   <script type="text/javascript" charset="utf-8">
@@ -57,6 +61,9 @@
   <%= stylesheet_link_tag 'jquery.ui.tabs' %>
   <%= stylesheet_link_tag 'tabs' %>
 
+  <% if File.exist? File.join(Rails.public_path, "stylesheets/#{controller.controller_name}.css") %>
+    <%= stylesheet_link_tag controller.controller_name %>
+  <% end %>
 
   <%= GMap.header %>
   <%= @contact.map.to_html if @contact && @contact.map %>

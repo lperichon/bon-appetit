@@ -1,7 +1,7 @@
 if @table.present?
   page << "$('##{dom_id @table}').replaceWith('#{escape_javascript render @table}');"
 else
-  page << "closeEditor();"
+  page << "Tables.closeEditor();"
 end
 
 page << show_messages(flash)

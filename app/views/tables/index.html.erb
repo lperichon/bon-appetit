@@ -1,9 +1,11 @@
 <h1><%= t('.title') %></h1>
+
 <ul class='list actions'>
   <li class='first'><%= link_to t('.new'), new_table_path %></li>
-  <li id='table_list_link' style='display:none;'><%= link_to_function t('tables.index.view_as_list'), "$('#table_list_link').hide(); $('#table_diagram_link').show(); $('#table_list').show(); $('#table_diagram').hide();" %></li>
-  <li id='table_diagram_link'><%= link_to_function t('tables.index.view_as_diagram'), "$('#table_list_link').show(); $('#table_diagram_link').hide(); $('#table_list').hide(); $('#table_diagram').show();" %></li>
+  <li id='table_list_link' style='display:none;'><%= link_to_function t('tables.index.view_as_list'), "Tables.viewAsList()" %></li>
+  <li id='table_diagram_link'><%= link_to_function t('tables.index.view_as_diagram'), "Tables.viewAsDiagram()" %></li>
 </ul>
+
 <div id='table_list' class='list'>
 <% @tables.each_with_index do |table, index| %>
   <div class='table element <%= odd_or_even(index) %>'>
@@ -20,60 +22,10 @@
 <% end %>
 </div>
 
-<style type="text/css">
-  #diagram_actions { position: absolute; right: 10px; top: 10px;}
-  .draggable-table { float: left; border: 1px solid black; position: absolute;}
-  .draggable-table.square.party_1, .draggable-table.square.party_2 {width: 30px; height: 30px; }
-  .draggable-table.round.party_1, .draggable-table.round.party_2 {width: 30px; height: 30px; -moz-border-radius: 15px; -webkit-border-radius: 15px;}
-  .draggable-table.square.party_3 {width: 50px; height: 30px; }
-  .draggable-table.round.party_3 {width: 50px; height: 50px; -moz-border-radius: 25px; -webkit-border-radius: 25px;}
-  .draggable-table .handle {cursor: move;}
-  .draggable_table .table-actions ul.actions {width: 150px;}
-  #table_diagram { width: 98%; height:350px; padding: 10px; position: relative;}
-
-
-</style>
-
-<script type="text/javascript">
-  getCurrentPositions = function() {
-    current_positions = "";
-    $('.draggable-table').each(
-      function(index, element) {
-        current_positions += "&tables_attributes[" + $(element).attr('id') + "][top]=" + $(element).position().top;
-        current_positions += "&tables_attributes[" + $(element).attr('id') + "][left]=" + $(element).position().left;
-      }
-    );
-    return current_positions;
-  };
-
-  updatePositions = function() {
-    $.ajax({
-          type: "POST",
-          url: '/tables/update',
-          data: "_method='PUT'" + getCurrentPositions(),
-          dataType: "script"
-    });
-  };
-
-  openEditor = function() {
-    $('.draggable-table .handle').show();
-    $('.draggable-table').draggable({containment: '#table_diagram', handle: '.handle'});
-    $('#edit_diagram_link').hide();
-    $('#save_diagram_button').show();
-  };
-
-  closeEditor = function() {
-    $('.draggable-table .handle').hide();
-    $('#edit_diagram_link').show();
-    $('#save_diagram_button').hide();
-    $('.draggable-table').draggable('destroy');
-  };
-</script>
-
 <div id="table_diagram" class='diagram' style='display:none;'>
   <div id='diagram_actions'>
-    <div id='edit_diagram_link'><%= link_to_function t('actions.edit'), "openEditor()" %></div>
-    <div id='save_diagram_button' style='display:none;'><%= button_to_function t('actions.save'), "updatePositions();" %>(<%= link_to_function 'cancel', 'closeEditor()' %>)</div>
+    <div id='edit_diagram_link'><%= link_to_function t('actions.edit'), "Tables.openEditor()" %></div>
+    <div id='save_diagram_button' style='display:none;'><%= button_to_function t('actions.save'), "Tables.updatePositions();" %>(<%= link_to_function t('actions.cancel'), 'Tables.closeEditor()' %>)</div>
   </div>
   <% @tables.each do |table| %>
     <div id='<%= table.id %>' class="draggable-table ui-widget-content <%= table.type.symbol %> party_<%= table.max_party %>" style='top: <%= table.top %>px; left: <%= table.left %>px'>
