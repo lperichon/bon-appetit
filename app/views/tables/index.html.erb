@@ -32,7 +32,7 @@
   </div>
   <% @tables.each do |table| %>
     <div id='<%= table.id %>'
-         class="draggable-table ui-widget-content <%= table.type.symbol %> party_<%= table.max_party %>"
+         class="draggable-table ui-widget-content <%= table.type.symbol %> party_<%= table.max_party %> <%= table.status %>"
          style='top: <%= table.top %>px; left: <%= table.left %>px'>
       <span class='table-container'>
         <span class='table-id'><h3><%=h table.id %></h3></span>
