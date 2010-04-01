@@ -28,14 +28,14 @@ var Tables = {
     $.ajax({
           type: "POST",
           url: '/tables/update',
-          data: "_method='PUT'" + getCurrentPositions(),
+          data: "_method='PUT'" + Tables.getCurrentPositions(),
           dataType: "script"
     });
   },
 
   openEditor: function() {
     $('.draggable-table .handle').show();
-    $('.draggable-table').draggable({containment: '#table_diagram', handle: '.handle'});
+    $('.draggable-table').draggable({containment: '#table_diagram'});
     $('#edit_diagram_link').hide();
     $('#save_diagram_button').show();
   },

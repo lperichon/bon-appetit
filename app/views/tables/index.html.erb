@@ -25,12 +25,17 @@
 <div id="table_diagram" class='diagram' style='display:none;'>
   <div id='diagram_actions'>
     <div id='edit_diagram_link'><%= link_to_function t('actions.edit'), "Tables.openEditor()" %></div>
-    <div id='save_diagram_button' style='display:none;'><%= button_to_function t('actions.save'), "Tables.updatePositions();" %>(<%= link_to_function t('actions.cancel'), 'Tables.closeEditor()' %>)</div>
+    <div id='save_diagram_button' style='display:none;'>
+      <%= button_to_function t('actions.save'), "Tables.updatePositions();" %>
+      (<%= link_to_function t('actions.cancel'), 'Tables.closeEditor()' %>)
+    </div>
   </div>
   <% @tables.each do |table| %>
-    <div id='<%= table.id %>' class="draggable-table ui-widget-content <%= table.type.symbol %> party_<%= table.max_party %>" style='top: <%= table.top %>px; left: <%= table.left %>px'>
-      <h3><%=h table.id %></h3> <span class='handle' style='display:none'>(move)</span>
-      <span class='table-actions'>
+    <div id='<%= table.id %>'
+         class="draggable-table ui-widget-content <%= table.type.symbol %> party_<%= table.max_party %>"
+         style='top: <%= table.top %>px; left: <%= table.left %>px'>
+      <span class='table-container'>
+        <span class='table-id'><h3><%=h table.id %></h3></span>
         <ul class='actions'>
           <li class='first'><%= link_to t('actions.show'), table_path(table) %></li>
           <li><%= link_to t('actions.destroy'), table_path(table), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
