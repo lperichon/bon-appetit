@@ -30,16 +30,19 @@
   cursor: move;
 }
 
+/* square 1 & square 2 size */
 .draggable-table.square.party_1 .table-container .table-id, .draggable-table.square.party_2 .table-container .table-id {
   width: 30px;
   height: 30px;
 }
 
+/* square 1 & square 2 label position */
 .draggable-table.square.party_1 .table-container .table-id h3, .draggable-table.square.party_2 .table-container .table-id h3 {
   margin-top: 6px;
   margin-left: 9px;
 }
 
+/* round 1 & round 2 & round 3 size */
 .draggable-table.round.party_1 .table-container .table-id, .draggable-table.round.party_2 .table-container .table-id {
   width: 30px;
   height: 30px;
@@ -47,21 +50,48 @@
   -webkit-border-radius: 15px;
 }
 
+/* round 1 & round 2 & round 3 label position */
 .draggable-table.round.party_1 .table-container .table-id h3, .draggable-table.round.party_2 .table-container .table-id h3 {
   margin-top: 6px;
   margin-left: 9px;
 }
 
-.draggable-table.square.party_3 .table-container .table-id{
-  width: 50px;
+/* square 3 & square 4 size */
+.draggable-table.square.party_3 .table-container .table-id, .draggable-table.square.party_4 .table-container .table-id {
+  width: 60px;
   height: 30px;
 }
 
-.draggable-table.round.party_3 .table-container .table-id{
+/* square 3 & square 4 label position */
+.draggable-table.square.party_3 .table-container .table-id h3, .draggable-table.square.party_4 .table-container .table-id h3 {
+  margin-top: 6px;
+  margin-left: 23px;
+}
+
+/* square 5 & square 6 size */
+.draggable-table.square.party_5 .table-container .table-id, .draggable-table.square.party_6 .table-container .table-id {
+  width: 90px;
+  height: 30px;
+}
+
+/* square 5 & square 6 label position */
+.draggable-table.square.party_5 .table-container .table-id h3, .draggable-table.square.party_6 .table-container .table-id h3 {
+  margin-top: 6px;
+  margin-left: 38px;
+}
+
+/* round 4 & round 5 & round 6 size */
+.draggable-table.round.party_4 .table-container .table-id, .draggable-table.round.party_5 .table-container .table-id, .draggable-table.round.party_6 .table-container .table-id {
   width: 50px;
   height: 50px;
   -moz-border-radius: 25px;
   -webkit-border-radius: 25px;
+}
+
+/* round 4 & round 5 & round 6 label position */
+.draggable-table.round.party_4 .table-container .table-id h3, .draggable-table.round.party_5 .table-container .table-id h3, .draggable-table.round.party_6 .table-container .table-id h3 {
+  margin-top: 15px;
+  margin-left: 18px;
 }
 
 .draggable-table .table-container {
