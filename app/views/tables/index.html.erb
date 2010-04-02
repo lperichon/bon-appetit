@@ -36,10 +36,21 @@
          style='top: <%= table.top %>px; left: <%= table.left %>px'>
       <span class='table-container'>
         <span class='table-id'><h3><%=h table.id %></h3></span>
-        <ul class='actions'>
+        <ul class='table-actions'>
           <li class='first'><%= link_to t('actions.show'), table_path(table) %></li>
           <li><%= link_to t('actions.destroy'), table_path(table), :confirm => t('actions.confirm_destroy'), :method => :delete %></li>
+          <li><%= link_to t('tables.index.new_order'), new_order_path('order[table_id]' => table.id) %></li>
+          <% unless table.open_orders.empty? %>
+            <li><%= t('tables.index.open_orders') %>
+              <ul>
+                <% table.open_orders.each do |order| %>
+                <li><%= link_to order.to_s, order_path(order) %></li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
         </ul>
+
       </span>
     </div>
   <% end %>

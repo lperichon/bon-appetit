@@ -23,15 +23,15 @@
 }
 
 
-.draggable-table .table-container .actions {
+.draggable-table .table-container .table-actions {
   display: none;
 }
 
-.draggable-table.ui-draggable:hover .table-container .actions {
+.draggable-table.ui-draggable:hover .table-container .table-actions {
   display: none;
 }
 
-.draggable-table:hover .table-container .actions {
+.draggable-table:hover .table-container .table-actions {
   display: inline-block;
 }
 
@@ -114,8 +114,9 @@
   margin: 0;
 }
 
-.draggable-table .table-container .actions {
-  margin: 0 0 0 5px;
+.draggable-table .table-container .table-actions {
+  margin: 0;
+  padding-left: 20px;
   vertical-align: top;
   width: 150px;
 }
