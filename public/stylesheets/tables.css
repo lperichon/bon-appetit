@@ -39,14 +39,17 @@
   cursor: move;
 }
 
-/* square 1 & square 2 size */
-.draggable-table.square.party_1 .table-container .table-id, .draggable-table.square.party_2 .table-container .table-id {
+/* horizontal-horizontal 1 & 2 size */
+.draggable-table.horizontal.party_1 .table-container .table-id,
+.draggable-table.horizontal.party_2 .table-container .table-id,
+.draggable-table.vertical.party_1 .table-container .table-id,
+.draggable-table.vertical.party_2 .table-container .table-id {
   width: 30px;
   height: 30px;
 }
 
-/* square 1 & square 2 label position */
-.draggable-table.square.party_1 .table-container .table-id h3, .draggable-table.square.party_2 .table-container .table-id h3 {
+/* horizontal-vertical 1 & 2 label position */
+.draggable-table.horizontal.party_1 .table-container .table-id h3, .draggable-table.horizontal.party_2 .table-container .table-id h3 {
   margin-top: 6px;
   margin-left: 9px;
 }
@@ -65,28 +68,52 @@
   margin-left: 9px;
 }
 
-/* square 3 & square 4 size */
-.draggable-table.square.party_3 .table-container .table-id, .draggable-table.square.party_4 .table-container .table-id {
+/* horizontal 3 & horizontal 4 size */
+.draggable-table.horizontal.party_3 .table-container .table-id, .draggable-table.horizontal.party_4 .table-container .table-id {
   width: 60px;
   height: 30px;
 }
 
-/* square 3 & square 4 label position */
-.draggable-table.square.party_3 .table-container .table-id h3, .draggable-table.square.party_4 .table-container .table-id h3 {
+/* horizontal 3 & horizontal 4 label position */
+.draggable-table.horizontal.party_3 .table-container .table-id h3, .draggable-table.horizontal.party_4 .table-container .table-id h3 {
   margin-top: 6px;
   margin-left: 23px;
 }
 
-/* square 5 & square 6 size */
-.draggable-table.square.party_5 .table-container .table-id, .draggable-table.square.party_6 .table-container .table-id {
+/* vertical 3 & vertical 4 size */
+.draggable-table.vertical.party_3 .table-container .table-id, .draggable-table.vertical.party_4 .table-container .table-id {
+  width: 30px;
+  height: 60px;
+}
+
+/* vertical 3 & vertical 4 label position */
+.draggable-table.vertical.party_3 .table-container .table-id h3, .draggable-table.vertical.party_4 .table-container .table-id h3 {
+  margin-top: 22px;
+  margin-left: 9px;
+}
+
+/* horizontal 5 & horizontal 6 size */
+.draggable-table.horizontal.party_5 .table-container .table-id, .draggable-table.horizontal.party_6 .table-container .table-id {
   width: 90px;
   height: 30px;
 }
 
-/* square 5 & square 6 label position */
-.draggable-table.square.party_5 .table-container .table-id h3, .draggable-table.square.party_6 .table-container .table-id h3 {
+/* horizontal 5 & horizontal 6 label position */
+.draggable-table.horizontal.party_5 .table-container .table-id h3, .draggable-table.horizontal.party_6 .table-container .table-id h3 {
   margin-top: 6px;
   margin-left: 38px;
+}
+
+/* vertical 5 & vertical 6 size */
+.draggable-table.vertical.party_5 .table-container .table-id, .draggable-table.vertical.party_6 .table-container .table-id {
+  width: 30px;
+  height: 90px;
+}
+
+/* vertical 5 & vertical 6 label position */
+.draggable-table.vertical.party_5 .table-container .table-id h3, .draggable-table.vertical.party_6 .table-container .table-id h3 {
+  margin-top: 36px;
+  margin-left: 8px;
 }
 
 /* round 4 & round 5 & round 6 size */
