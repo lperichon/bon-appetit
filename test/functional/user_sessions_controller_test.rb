@@ -2,10 +2,6 @@ require 'test_helper'
 require 'blueprints'
 
 class UserSessionsControllerTest < ActionController::TestCase
-  context "get new" do
-    setup { get :new }
-    should_respond_with :success
-  end
   context "as a registered user" do
     setup { @user = User.make; UserSession.find.destroy }
 

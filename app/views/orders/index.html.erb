@@ -11,7 +11,7 @@
 
 <%= render :partial => 'list', :locals => {:orders => @orders} %>
 
-<%= hidden_field_tag :last_order_id, @orders.first.id %>
+<%= hidden_field_tag :last_order_id, @orders.first.id unless @orders.empty? %>
 
 
 <% javascript_tag do %>

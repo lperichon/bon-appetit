@@ -2,12 +2,6 @@ require 'test_helper'
 require 'blueprints'
 
 class PasswordResetsControllerTest < ActionController::TestCase
-
-  context "get new" do
-    setup { get :new }
-    should_respond_with :success
-  end
-
   context "as an active user" do
     setup { @user = User.make; UserSession.find.destroy; @user.reload}
 

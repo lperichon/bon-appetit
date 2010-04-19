@@ -23,7 +23,13 @@ ProductType.blueprint do
   name
 end
 
+TableType.blueprint do
+  symbol { Sham.name.downcase }
+  name { Sham.name }
+end
+
 Table.blueprint do
+  type { TableType.make }
   restaurant
   max_party { rand(5) + 1 }
 end
@@ -44,6 +50,7 @@ OrderItem.blueprint do
 end
 
 Order.blueprint do
+  table
   restaurant
   discount {rand}
   generated_at { Sham.date }

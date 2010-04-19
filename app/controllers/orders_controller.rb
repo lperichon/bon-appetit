@@ -5,6 +5,7 @@ class OrdersController < UserApplicationController
 
   def index
     @search = current_restaurant.orders.search(params[:search])
+    @orders = []
     if params[:search]
       @orders = @search.all
     else

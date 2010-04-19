@@ -49,16 +49,6 @@ class UsersControllerTest < ActionController::TestCase
       should_respond_with :success
     end
 
-    context "get edit" do
-      setup do
-        user = User.make
-        @current_restaurant.users << user
-        @current_restaurant.save
-        get :edit, :id => user.id
-      end
-      should_respond_with :success
-    end
-
     context "update user" do
       setup do
         user = User.make
